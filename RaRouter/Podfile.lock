@@ -5,12 +5,12 @@ DEPENDENCIES:
   - AnyCodable
 
 SPEC REPOS:
-  https://cdn.cocoapods.org/:
+  trunk:
     - AnyCodable
 
 SPEC CHECKSUMS:
   AnyCodable: bb05e19c676899e0fd511652f2d83bfa044e2503
 
-PODFILE CHECKSUM: 74264444727bcdf792814359d2bb963d84a503a0
+PODFILE CHECKSUM: 4539dce57dac95c68ba30e4b3bde72bf4daec6df
 
 COCOAPODS: 1.9.1
