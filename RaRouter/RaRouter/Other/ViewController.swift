@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  RaRouter
 //
-//  Created by MBCore on 2020/4/7.
+//  Created by Rakuyo on 2020/4/7.
 //  Copyright © 2020 Rakuyo. All rights reserved.
 //
 
@@ -12,9 +12,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view.
     }
-
-
 }
-
