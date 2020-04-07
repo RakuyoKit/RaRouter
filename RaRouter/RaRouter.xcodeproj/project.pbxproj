@@ -18,6 +18,8 @@
 		3A3747FD243C13E800DA1651 /* Router+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3747F8243C13E800DA1651 /* Router+Extension.swift */; };
 		3A3747FE243C13E800DA1651 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3747F9243C13E800DA1651 /* Router.swift */; };
 		3A3747FF243C13E800DA1651 /* RouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3747FA243C13E800DA1651 /* RouterProtocol.swift */; };
+		3A374802243C148700DA1651 /* RaRouter.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 3A374800243C148600DA1651 /* RaRouter.podspec */; };
+		3A374803243C148700DA1651 /* push.sh in Resources */ = {isa = PBXBuildFile; fileRef = 3A374801243C148600DA1651 /* push.sh */; };
 		483B9990DA510EAF0ED7E8F3 /* Pods_RaRouter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8FDD88AC1309928984D73F4 /* Pods_RaRouter.framework */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +37,8 @@
 		3A3747F8243C13E800DA1651 /* Router+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Router+Extension.swift"; sourceTree = "<group>"; };
 		3A3747F9243C13E800DA1651 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		3A3747FA243C13E800DA1651 /* RouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouterProtocol.swift; sourceTree = "<group>"; };
+		3A374800243C148600DA1651 /* RaRouter.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = RaRouter.podspec; sourceTree = SOURCE_ROOT; };
+		3A374801243C148600DA1651 /* push.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = push.sh; sourceTree = SOURCE_ROOT; };
 		468A012BED050C741CBED866 /* Pods-RaRouter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RaRouter.debug.xcconfig"; path = "Target Support Files/Pods-RaRouter/Pods-RaRouter.debug.xcconfig"; sourceTree = "<group>"; };
 		6DBD8580A3305CE5331BFA3C /* Pods-RaRouter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RaRouter.release.xcconfig"; path = "Target Support Files/Pods-RaRouter/Pods-RaRouter.release.xcconfig"; sourceTree = "<group>"; };
 		A8FDD88AC1309928984D73F4 /* Pods_RaRouter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RaRouter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -82,6 +86,8 @@
 		3A3747DB243C128500DA1651 /* RaRouter */ = {
 			isa = PBXGroup;
 			children = (
+				3A374801243C148600DA1651 /* push.sh */,
+				3A374800243C148600DA1651 /* RaRouter.podspec */,
 				3A3747F0243C128F00DA1651 /* Core */,
 				3A3747F1243C129400DA1651 /* Other */,
 			);
@@ -182,8 +188,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A374802243C148700DA1651 /* RaRouter.podspec in Resources */,
 				3A3747E9243C128700DA1651 /* LaunchScreen.storyboard in Resources */,
 				3A3747E6243C128700DA1651 /* Assets.xcassets in Resources */,
+				3A374803243C148700DA1651 /* push.sh in Resources */,
 				3A3747E4243C128500DA1651 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
