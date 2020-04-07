@@ -1,0 +1,16 @@
+PODS:
+  - AnyCodable (1.2.0)
+
+DEPENDENCIES:
+  - AnyCodable
+
+SPEC REPOS:
+  https://cdn.cocoapods.org/:
+    - AnyCodable
+
+SPEC CHECKSUMS:
+  AnyCodable: bb05e19c676899e0fd511652f2d83bfa044e2503
+
+PODFILE CHECKSUM: 74264444727bcdf792814359d2bb963d84a503a0
+
+COCOAPODS: 1.9.1
