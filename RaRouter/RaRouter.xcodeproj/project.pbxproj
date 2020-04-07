@@ -13,6 +13,7 @@
 		3A3747E4243C128500DA1651 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A3747E2243C128500DA1651 /* Main.storyboard */; };
 		3A3747E6243C128700DA1651 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A3747E5243C128700DA1651 /* Assets.xcassets */; };
 		3A3747E9243C128700DA1651 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A3747E7243C128700DA1651 /* LaunchScreen.storyboard */; };
+		483B9990DA510EAF0ED7E8F3 /* Pods_RaRouter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8FDD88AC1309928984D73F4 /* Pods_RaRouter.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,9 @@
 		3A3747E5243C128700DA1651 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A3747E8243C128700DA1651 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3A3747EA243C128700DA1651 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		468A012BED050C741CBED866 /* Pods-RaRouter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RaRouter.debug.xcconfig"; path = "Target Support Files/Pods-RaRouter/Pods-RaRouter.debug.xcconfig"; sourceTree = "<group>"; };
+		6DBD8580A3305CE5331BFA3C /* Pods-RaRouter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RaRouter.release.xcconfig"; path = "Target Support Files/Pods-RaRouter/Pods-RaRouter.release.xcconfig"; sourceTree = "<group>"; };
+		A8FDD88AC1309928984D73F4 /* Pods_RaRouter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RaRouter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +35,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				483B9990DA510EAF0ED7E8F3 /* Pods_RaRouter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1E6956189F253306E6372BAB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				468A012BED050C741CBED866 /* Pods-RaRouter.debug.xcconfig */,
+				6DBD8580A3305CE5331BFA3C /* Pods-RaRouter.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		3A3747D0243C128500DA1651 = {
 			isa = PBXGroup;
 			children = (
 				3A3747DB243C128500DA1651 /* RaRouter */,
 				3A3747DA243C128500DA1651 /* Products */,
+				1E6956189F253306E6372BAB /* Pods */,
+				7D4110123DC259F1B9B30372 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -83,6 +100,14 @@
 			path = Other;
 			sourceTree = "<group>";
 		};
+		7D4110123DC259F1B9B30372 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A8FDD88AC1309928984D73F4 /* Pods_RaRouter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -90,9 +115,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3A3747ED243C128700DA1651 /* Build configuration list for PBXNativeTarget "RaRouter" */;
 			buildPhases = (
+				0693937999FD2448B4BA2A79 /* [CP] Check Pods Manifest.lock */,
 				3A3747D5243C128500DA1651 /* Sources */,
 				3A3747D6243C128500DA1651 /* Frameworks */,
 				3A3747D7243C128500DA1651 /* Resources */,
+				6A77D929F3F284F98F59DB92 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -148,6 +175,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0693937999FD2448B4BA2A79 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RaRouter-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6A77D929F3F284F98F59DB92 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RaRouter/Pods-RaRouter-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RaRouter/Pods-RaRouter-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RaRouter/Pods-RaRouter-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3A3747D5243C128500DA1651 /* Sources */ = {
@@ -298,6 +367,7 @@
 		};
 		3A3747EE243C128700DA1651 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 468A012BED050C741CBED866 /* Pods-RaRouter.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -316,6 +386,7 @@
 		};
 		3A3747EF243C128700DA1651 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6DBD8580A3305CE5331BFA3C /* Pods-RaRouter.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

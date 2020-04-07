@@ -1,0 +1,22 @@
+source 'https://cdn.cocoapods.org/'
+
+platform :ios, '10.0'
+
+use_frameworks!
+
+use_modular_headers!
+inhibit_all_warnings!
+
+install! 'cocoapods',
+         :preserve_pod_file_structure => true,
+         :generate_multiple_pod_projects => true
+#         :incremental_installation => true
+
+target 'RaRouter' do
+  
+  pod 'AnyCodable'
+  # pod 'URLNavigator'
+  # pod 'Swinject'
+  
+end
+
