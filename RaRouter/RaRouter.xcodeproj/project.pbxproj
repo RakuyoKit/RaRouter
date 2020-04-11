@@ -88,11 +88,11 @@
 		3A3747DB243C128500DA1651 /* RaRouter */ = {
 			isa = PBXGroup;
 			children = (
+				9176B1A662ABCC16E0B85DA9 /* README.md */,
 				3A374801243C148600DA1651 /* push.sh */,
 				3A374800243C148600DA1651 /* RaRouter.podspec */,
 				3A3747F0243C128F00DA1651 /* Core */,
 				3A3747F1243C129400DA1651 /* Other */,
-				9176B1A662ABCC16E0B85DA9 /* README.md */,
 			);
 			path = RaRouter;
 			sourceTree = "<group>";
