@@ -2,7 +2,8 @@
 
 > [中文](https://github.com/rakuyoMo/RaRouter/blob/master/README_CN.md)
 
-`RaRouter` is a lightweight routing component with a face-to-face protocol. By using the type provided by default or customizing the Router, you can quickly build your own routing component and decouple your own projects.
+`RaRouter` is a lightweight protocol-oriented router. By using the type provided by default or customizing the
+ Router, you can quickly build your own routing component and decouple your own projects.
 
 ## Prerequisites
 
