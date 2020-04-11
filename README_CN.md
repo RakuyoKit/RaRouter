@@ -58,7 +58,7 @@ let controller = try? Router<Global>.viewController(router)
     例如上面的 `do` 示例中，我传入了一个 `(String, Int)` 类型的元组，而 `getResult` 实例中，我只传入了一个 `String`。到了 `viewController
 `，因为从编码上来说 `"rakuyo://moduleA/create"` 不需要任何参数（假如我们编写了那些代码），所以我可以省略 `param`。
 
-3. 对于 `Global` 泛型，将在后面的小节中将详细介绍
+3. 对于 `Global` 泛型，将在后面的小节中将详细介绍。
 
 ### 封装
 
@@ -116,9 +116,9 @@ let frame = try? Router<ModuleA>.calculateFrame(with: 375)
 
 ### 注册
 
-最后，我们需要注册我们刚刚定义的路由。
+最后，我们需要注册刚刚定义的路由。
 
-对应默认提供的三种操作，每种操作都有不同的注册方法。其最大的不同就是闭包的返回值。
+对于默认提供的三种操作，每种操作都有不同的注册方法。而它们的区别在于闭包的返回值不同：
 
 - `viewController`
 
