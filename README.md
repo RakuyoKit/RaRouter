@@ -20,7 +20,7 @@ pod 'RaRouter'
 
 ## Feature
 
-> The following content will tell you how to use, but basically will not explain "**why**". See [wiki] (https://github.com/rakuyoMo/RaRouter/wiki) for more content. The complete code example can refer to the content in the demo
+> The following content will tell you how to use, but basically will not explain "**why**". See [wiki](https://github.com/rakuyoMo/RaRouter/wiki) for more content. The complete code example can refer to the content in the demo
 
 ### Execute route
 
@@ -39,7 +39,7 @@ try? Router<Global>.do(router, param: ("parameter", 1))
 ```swift
 let router = "rakuyo://moduleA/calculate/frame"
 
-let result = try? Router<Global>.getResult(router, param: "参数")
+let result = try? Router<Global>.getResult(router, param: "parameter")
 ```
 
 -`viewController`: execute certain operations and get the returned` UIViewController` subclass:
@@ -104,7 +104,7 @@ public extension Router where Module == ModuleA {
 }
 ```
 
-Now, when we execute the test code in the [Execute route](#Execute route) section, we can write:
+Now, when we execute the test code in the [Execute route](#execute-route) section, we can write:
 
 ```swift
 // for `viewController`
