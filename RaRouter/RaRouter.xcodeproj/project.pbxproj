@@ -21,6 +21,8 @@
 		3A374802243C148700DA1651 /* RaRouter.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 3A374800243C148600DA1651 /* RaRouter.podspec */; };
 		3A374803243C148700DA1651 /* push.sh in Resources */ = {isa = PBXBuildFile; fileRef = 3A374801243C148600DA1651 /* push.sh */; };
 		483B9990DA510EAF0ED7E8F3 /* Pods_RaRouter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8FDD88AC1309928984D73F4 /* Pods_RaRouter.framework */; };
+		9176B49600BA9A625F6EEF8D /* README_CN.md in Sources */ = {isa = PBXBuildFile; fileRef = 9176B1A662ABCC16E0B85DA9 /* README_CN.md */; };
+		BF93EFAC64EDB273C4A1D55A /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = BF93EB0B44DE2DC136339056 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,7 +43,9 @@
 		3A374801243C148600DA1651 /* push.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = push.sh; sourceTree = SOURCE_ROOT; };
 		468A012BED050C741CBED866 /* Pods-RaRouter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RaRouter.debug.xcconfig"; path = "Target Support Files/Pods-RaRouter/Pods-RaRouter.debug.xcconfig"; sourceTree = "<group>"; };
 		6DBD8580A3305CE5331BFA3C /* Pods-RaRouter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RaRouter.release.xcconfig"; path = "Target Support Files/Pods-RaRouter/Pods-RaRouter.release.xcconfig"; sourceTree = "<group>"; };
+		9176B1A662ABCC16E0B85DA9 /* README_CN.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README_CN.md; path = ../../README_CN.md; sourceTree = "<group>"; };
 		A8FDD88AC1309928984D73F4 /* Pods_RaRouter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RaRouter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF93EB0B44DE2DC136339056 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +90,8 @@
 		3A3747DB243C128500DA1651 /* RaRouter */ = {
 			isa = PBXGroup;
 			children = (
+				BF93EB0B44DE2DC136339056 /* README.md */,
+				9176B1A662ABCC16E0B85DA9 /* README_CN.md */,
 				3A374801243C148600DA1651 /* push.sh */,
 				3A374800243C148600DA1651 /* RaRouter.podspec */,
 				3A3747F0243C128F00DA1651 /* Core */,
@@ -253,6 +259,8 @@
 				3A3747DF243C128500DA1651 /* SceneDelegate.swift in Sources */,
 				3A3747FC243C13E800DA1651 /* RouterError.swift in Sources */,
 				3A3747FB243C13E800DA1651 /* RouterFactory.swift in Sources */,
+				9176B49600BA9A625F6EEF8D /* README_CN.md in Sources */,
+				BF93EFAC64EDB273C4A1D55A /* README.md in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
