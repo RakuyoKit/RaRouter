@@ -2,6 +2,12 @@
 
 `RaRouter` 是一个面相协议的轻量级路由组件，通过使用默认提供的类型，或自定义 Router，您可以快速搭建自己的路由组件，进而解耦自己的项目。
 
+## 基本要求
+
+- 运行 **iOS 10** 及以上版本的设备。
+- 使用 **Xcode 10** 及以上版本编译。
+- **Swift 5.0** 以及以上版本。
+
 ## 安装
 
 ### CocoaPods
@@ -12,8 +18,8 @@ pod 'RaRouter'
 
 ## 使用
 
-> 下面的内容将告诉您如何使用该库，但基本不会说 "**为什么**"。相关内容可以参考 [设计](#设计)
-> 完整的示例可以参考 demo 中的内容
+> 下面的内容将告诉您如何使用该库，但基本不会说 "**为什么**"。更多内容见 [wiki](https://github.com/rakuyoMo/RaRouter/wiki)。完整的代码示例可以参考 demo
+> 中的内容
 
 ### 执行路由
 
@@ -190,5 +196,6 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 }
 ```
 
-## 面相协议与自定义
+--------
 
+更多内容请参考 [wiki](https://github.com/rakuyoMo/RaRouter/wiki)
