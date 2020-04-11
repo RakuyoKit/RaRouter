@@ -26,7 +26,7 @@ pod 'RaRouter'
 
 `RaRouter` provides the following three routing operations by default:
 
--`do`: execute certain operations:
+- `do`: execute certain operations:
 
 ```swift
 let router = "rakuyo://moduleA/do/something"
@@ -34,7 +34,7 @@ let router = "rakuyo://moduleA/do/something"
 try? Router<Global>.do(router, param: ("parameter", 1))
 ```
 
--`getResult`: execute some operation and get its return value:
+- `getResult`: execute some operation and get its return value:
 
 ```swift
 let router = "rakuyo://moduleA/calculate/frame"
@@ -42,7 +42,7 @@ let router = "rakuyo://moduleA/calculate/frame"
 let result = try? Router<Global>.getResult(router, param: "parameter")
 ```
 
--`viewController`: execute certain operations and get the returned` UIViewController` subclass:
+- `viewController`: execute certain operations and get the returned`UIViewController` subclass:
 
 ```swift
 let router = "rakuyo://moduleA/create"
@@ -54,9 +54,10 @@ Some explanations:
 
 1. During the execution of routing, if an error occurs, an exception will be thrown inside `RaRouter` (`RouterError`). So when performing routing, you need to add `try`.
 
-2. For the `param` parameter, it is of type` Any? `, And the default is` nil`. This means that you can pass any parameters you want without any restrictions.
+2. For the `param` parameter, it is of type` Any? `, And the default is `nil`. This means that you can pass
+ any parameters you want without any restrictions.
 
-    For example, in the `do` example above, I passed in a tuple of type` (String, Int)`, while in the
+    For example, in the `do` example above, I passed in a tuple of type`(String, Int)`, while in the
      `getResult` instance, I only passed in a `String`. When we arrived at `viewController`, because coding
       said `"rakuyo://moduleA/create"` did not require any parameters (*if we wrote those codes*), I can
        omit `param`.
@@ -85,7 +86,7 @@ public enum ModuleA: ModuleRouter {
 
 The above code defines a module `ModuleA`, which encapsulates the "**function**" it contains.
 
-Then you can also encapsulate the "operation":
+Then you can also encapsulate the "**operation**":
 
 ```swift
 public extension Router where Module == ModuleA {
@@ -145,7 +146,8 @@ Router<Global>.register(for: "your router") { (url, value) throws -> Void in
 
 - `getResult`
 
-The return value of the closure is specified as `Any?`, You can expand it to any type you need that is not `UIViewController` and` Void`, such as `CGRect`
+The return value of the closure is specified as `Any?`, You can expand it to any type you need that is not
+ `UIViewController` and `Void`, such as `CGRect`
 
 ```swift
 Router<Global>.register(for: "your router") { (url, value) throws -> CGRect in
