@@ -29,7 +29,7 @@
 		3AB55D092445852000E96098 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3AB55D0B2445852000E96098 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3AB56089244586E200E96098 /* Interface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interface.swift; sourceTree = "<group>"; };
-		3AB5609B244587DF00E96098 /* ExamplesRouter.podspec */ = {isa = PBXFileReference; lastKnownFileType = file; path = ExamplesRouter.podspec; sourceTree = SOURCE_ROOT; };
+		3AB5609B244587DF00E96098 /* ExamplesRouter.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = ExamplesRouter.podspec; sourceTree = SOURCE_ROOT; };
 		92CE0B632B5CC76E4C9833BB /* Pods-ExamplesRouter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExamplesRouter.release.xcconfig"; path = "Target Support Files/Pods-ExamplesRouter/Pods-ExamplesRouter.release.xcconfig"; sourceTree = "<group>"; };
 		A91A290BDFACF32B080C8400 /* Pods-ExamplesRouter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExamplesRouter.debug.xcconfig"; path = "Target Support Files/Pods-ExamplesRouter/Pods-ExamplesRouter.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
