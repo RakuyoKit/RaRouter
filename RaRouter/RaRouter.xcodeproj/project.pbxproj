@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		3A3747DD243C128500DA1651 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3747DC243C128500DA1651 /* AppDelegate.swift */; };
-		3A3747DF243C128500DA1651 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3747DE243C128500DA1651 /* SceneDelegate.swift */; };
 		3A3747E1243C128500DA1651 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3747E0243C128500DA1651 /* ViewController.swift */; };
 		3A3747E4243C128500DA1651 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A3747E2243C128500DA1651 /* Main.storyboard */; };
 		3A3747E6243C128700DA1651 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A3747E5243C128700DA1651 /* Assets.xcassets */; };
@@ -28,7 +27,6 @@
 /* Begin PBXFileReference section */
 		3A3747D9243C128500DA1651 /* RaRouter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RaRouter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A3747DC243C128500DA1651 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3A3747DE243C128500DA1651 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		3A3747E0243C128500DA1651 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3A3747E3243C128500DA1651 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3A3747E5243C128700DA1651 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -116,7 +114,6 @@
 			isa = PBXGroup;
 			children = (
 				3A3747DC243C128500DA1651 /* AppDelegate.swift */,
-				3A3747DE243C128500DA1651 /* SceneDelegate.swift */,
 				3A3747E0243C128500DA1651 /* ViewController.swift */,
 				3A3747E2243C128500DA1651 /* Main.storyboard */,
 				3A3747E5243C128700DA1651 /* Assets.xcassets */,
@@ -256,7 +253,6 @@
 				3A3747FF243C13E800DA1651 /* RouterProtocol.swift in Sources */,
 				3A3747DD243C128500DA1651 /* AppDelegate.swift in Sources */,
 				3A3747FE243C13E800DA1651 /* Router.swift in Sources */,
-				3A3747DF243C128500DA1651 /* SceneDelegate.swift in Sources */,
 				3A3747FC243C13E800DA1651 /* RouterError.swift in Sources */,
 				3A3747FB243C13E800DA1651 /* RouterFactory.swift in Sources */,
 				9176B49600BA9A625F6EEF8D /* README_CN.md in Sources */,
@@ -407,7 +403,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5Q8TLD2828;
-				INFOPLIST_FILE = RaRouter/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/RaRouter/Other/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -426,7 +422,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5Q8TLD2828;
-				INFOPLIST_FILE = RaRouter/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/RaRouter/Other/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
