@@ -3,12 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		3AB55CFE2445851E00E96098 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB55CFD2445851E00E96098 /* AppDelegate.swift */; };
-		3AB55D002445851E00E96098 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB55CFF2445851E00E96098 /* SceneDelegate.swift */; };
 		3AB55D022445851E00E96098 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB55D012445851E00E96098 /* ViewController.swift */; };
 		3AB55D052445851E00E96098 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AB55D032445851E00E96098 /* Main.storyboard */; };
 		3AB55D072445852000E96098 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AB55D062445852000E96098 /* Assets.xcassets */; };
@@ -22,14 +21,13 @@
 		11EA63867733B513300A478B /* Pods_ExamplesRouter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExamplesRouter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AB55CFA2445851E00E96098 /* ExamplesRouter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExamplesRouter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AB55CFD2445851E00E96098 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3AB55CFF2445851E00E96098 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		3AB55D012445851E00E96098 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3AB55D042445851E00E96098 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3AB55D062445852000E96098 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3AB55D092445852000E96098 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3AB55D0B2445852000E96098 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3AB56089244586E200E96098 /* Interface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interface.swift; sourceTree = "<group>"; };
-		3AB5609B244587DF00E96098 /* ExamplesRouter.podspec */ = {isa = PBXFileReference; lastKnownFileType = file; path = ExamplesRouter.podspec; sourceTree = SOURCE_ROOT; };
+		3AB5609B244587DF00E96098 /* ExamplesRouter.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = ExamplesRouter.podspec; sourceTree = SOURCE_ROOT; };
 		92CE0B632B5CC76E4C9833BB /* Pods-ExamplesRouter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExamplesRouter.release.xcconfig"; path = "Target Support Files/Pods-ExamplesRouter/Pods-ExamplesRouter.release.xcconfig"; sourceTree = "<group>"; };
 		A91A290BDFACF32B080C8400 /* Pods-ExamplesRouter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExamplesRouter.debug.xcconfig"; path = "Target Support Files/Pods-ExamplesRouter/Pods-ExamplesRouter.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -94,7 +92,6 @@
 			isa = PBXGroup;
 			children = (
 				3AB55CFD2445851E00E96098 /* AppDelegate.swift */,
-				3AB55CFF2445851E00E96098 /* SceneDelegate.swift */,
 				3AB55D012445851E00E96098 /* ViewController.swift */,
 				3AB55D032445851E00E96098 /* Main.storyboard */,
 				3AB55D062445852000E96098 /* Assets.xcassets */,
@@ -125,7 +122,6 @@
 				3AB55CF62445851E00E96098 /* Sources */,
 				3AB55CF72445851E00E96098 /* Frameworks */,
 				3AB55CF82445851E00E96098 /* Resources */,
-				2393DF3BEA8771442B02F5D5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -184,23 +180,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2393DF3BEA8771442B02F5D5 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ExamplesRouter/Pods-ExamplesRouter-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ExamplesRouter/Pods-ExamplesRouter-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ExamplesRouter/Pods-ExamplesRouter-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		2914DE9595C8D4C725CBBE65 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -232,7 +211,6 @@
 			files = (
 				3AB55D022445851E00E96098 /* ViewController.swift in Sources */,
 				3AB55CFE2445851E00E96098 /* AppDelegate.swift in Sources */,
-				3AB55D002445851E00E96098 /* SceneDelegate.swift in Sources */,
 				3AB5608A244586E200E96098 /* Interface.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -309,7 +287,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -363,7 +341,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
