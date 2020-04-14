@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
   
   s.author           = { 'Rakuyo' => 'rakuyo.mo@gmail.com' }
   
-  s.source           = { :git => 'https://github.com/rakuyoMo/RaRouter.git', :tag => s.version.to_s }
+  s.source           = { :git => '', :tag => s.version.to_s }
   
   s.requires_arc     = true
   
@@ -29,7 +29,7 @@ Pod::Spec.new do |s|
   
   s.module_name      = 'ExamplesRouter'
     
-  s.source_files     = 'ExamplesRouter/ExamplesRouter/Router/'
+  s.source_files     = 'ExamplesRouter/Router/*'
   
   s.dependency 'RaRouter'
   
