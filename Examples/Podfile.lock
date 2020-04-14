@@ -1,17 +1,14 @@
 PODS:
-  - AnyCodable (1.2.0)
   - ExamplesRouter (1.0.0-Router):
     - RaRouter
   - RaRouter (1.0.0)
 
 DEPENDENCIES:
-  - AnyCodable
   - ExamplesRouter (from `ExamplesRouter/`)
   - RaRouter
 
 SPEC REPOS:
   trunk:
-    - AnyCodable
     - RaRouter
 
 EXTERNAL SOURCES:
@@ -19,10 +16,9 @@ EXTERNAL SOURCES:
     :path: ExamplesRouter/
 
 SPEC CHECKSUMS:
-  AnyCodable: bb05e19c676899e0fd511652f2d83bfa044e2503
   ExamplesRouter: ceb304480d4540663ee4bb5977bb33369ece3101
   RaRouter: e6c161f6089b0afad5c4de705cb53da7c78ba4bb
 
-PODFILE CHECKSUM: d0705c994eb3ec37496a255d56c52b2bfebe8265
+PODFILE CHECKSUM: 0fc6e982ff2ee842b75879edba064efbda0b2865
 
 COCOAPODS: 1.9.1

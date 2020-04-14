@@ -18,7 +18,6 @@ target 'Examples' do
   
   project 'Examples/Examples.xcodeproj'
   
-  pod 'AnyCodable'
   pod 'ExamplesRouter', :path => 'ExamplesRouter/'
   
 end
@@ -28,6 +27,5 @@ target 'ExamplesRouter' do
   project 'ExamplesRouter/ExamplesRouter.xcodeproj'
 
   pod 'RaRouter'
-  pod 'AnyCodable'
   
 end
