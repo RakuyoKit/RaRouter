@@ -17,7 +17,7 @@
 
 ## Prerequisites
 
-- Apps using `RaRouter` can target: **iOS 10 or later**.
+- Apps using `RaRouter` can target: **iOS 9 or later**.
 - **Xcode 10.0 or later** required.
 - **Swift 5.0 or later** required.
 
