@@ -6,4 +6,26 @@
 //  Copyright © 2020 Rakuyo. All rights reserved.
 //
 
-import Foundation
+import RaRouter
+import ModuleARouter
+
+private class ModuleARegister: RouterRegister {
+    
+    static func register() {
+        
+        let router = Router<ModuleA>.self
+        
+        router.register(for: .dataSource) { (url, value) throws -> [SectionDataSource] in
+            
+            return [
+                
+                SectionDataSource(title: "do", dataSource: [
+                    DataSource(title: "Print Test") { _ in
+                        print("The first Test! 🤩")
+                        return nil
+                    }
+                ])
+            ]
+        }
+    }
+}

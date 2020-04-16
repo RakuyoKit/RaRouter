@@ -31,6 +31,7 @@ Pod::Spec.new do |s|
   
   s.source_files = 'RootController/Core/', 'RootController/Router/'
   
+  s.dependency 'ModuleARouter', '>= 1.0.0-Router'
   s.dependency 'RootControllerRouter', '>= 1.0.0-Router'
   
 end

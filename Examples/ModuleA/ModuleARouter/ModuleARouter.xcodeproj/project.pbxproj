@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A22B5052447FC96002831A7 /* Parameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A22B5042447FC96002831A7 /* Parameter.swift */; };
 		3A3BF0322446BA6D0014D47F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3BF0312446BA6D0014D47F /* AppDelegate.swift */; };
 		3A3BF0362446BA6D0014D47F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3BF0352446BA6D0014D47F /* ViewController.swift */; };
 		3A3BF03B2446BA6F0014D47F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A3BF03A2446BA6F0014D47F /* Assets.xcassets */; };
@@ -17,6 +18,7 @@
 
 /* Begin PBXFileReference section */
 		355F94F733E58A76A503DFBA /* Pods-ModuleARouter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ModuleARouter.release.xcconfig"; path = "Target Support Files/Pods-ModuleARouter/Pods-ModuleARouter.release.xcconfig"; sourceTree = "<group>"; };
+		3A22B5042447FC96002831A7 /* Parameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parameter.swift; sourceTree = "<group>"; };
 		3A3BF02E2446BA6D0014D47F /* ModuleARouter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ModuleARouter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A3BF0312446BA6D0014D47F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A3BF0352446BA6D0014D47F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				3A3BF0472446BB360014D47F /* Interface.swift */,
+				3A22B5042447FC96002831A7 /* Parameter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -204,6 +207,7 @@
 				3A3BF0362446BA6D0014D47F /* ViewController.swift in Sources */,
 				3A3BF0322446BA6D0014D47F /* AppDelegate.swift in Sources */,
 				3A3BF0482446BB360014D47F /* Interface.swift in Sources */,
+				3A22B5052447FC96002831A7 /* Parameter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

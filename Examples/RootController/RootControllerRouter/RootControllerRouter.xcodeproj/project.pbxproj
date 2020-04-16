@@ -350,7 +350,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5Q8TLD2828;
-				INFOPLIST_FILE = "$(SRCROOT)/ModuleARouter/Other/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/RootControllerRouter/Other/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -369,7 +369,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5Q8TLD2828;
-				INFOPLIST_FILE = "$(SRCROOT)/ModuleARouter/Other/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/RootControllerRouter/Other/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

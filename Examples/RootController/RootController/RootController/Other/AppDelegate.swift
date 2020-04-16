@@ -8,12 +8,32 @@
 
 import UIKit
 
+import RaRouter
+import RootControllerRouter
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow? = UIWindow(frame: UIScreen.main.bounds)
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        // Register route
+        Router<Modules>.initialize()
+        
+        let rootController: UIViewController = {
+            
+            do {
+                return try Router<RootController>.create()
+            } catch {
+                print("create RootController error: \(error)")
+                return UIViewController()
+            }
+        }()
+        
+        window?.rootViewController = UINavigationController(rootViewController: rootController)
+        
+        window?.makeKeyAndVisible()
         
         return true
     }

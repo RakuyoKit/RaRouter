@@ -10,6 +10,8 @@ import UIKit
 
 import RaRouter
 
+import RootControllerRouter
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -20,7 +22,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Register route
         Router<Modules>.initialize()
         
-        window?.rootViewController = UIViewController()
+        do {
+            window?.rootViewController = try Router<RootController>.create()
+        } catch {
+            print("create RootController error: \(error)")
+            window?.rootViewController = UIViewController()
+        }
         
         window?.makeKeyAndVisible()
         

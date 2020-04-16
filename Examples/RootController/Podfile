@@ -19,6 +19,10 @@ target 'RootController' do
   project 'RootController/RootController.xcodeproj'
   
   pod 'RootControllerRouter', :path => 'RootControllerRouter/'
+
+  # ModuleA
+  pod 'ModuleA', :path => '../ModuleA/ModuleA/'
+  pod 'ModuleARouter', :path => '../ModuleA/ModuleARouter/'
   
 end
 
