@@ -20,8 +20,8 @@ private class ModuleARegister: RouterRegister {
             return [
                 
                 SectionDataSource(title: "do", dataSource: [
-                    DataSource(title: "Print Test") { _ in
-                        print("The first Test! 🤩")
+                    DataSource(title: "Print clicked index in the console") {
+                        try? Router<ModuleA>.print("Clicked on row \($0.row) of section \($0.section) 🤔")
                         return (nil, false)
                     }
                 ]),
@@ -31,13 +31,17 @@ private class ModuleARegister: RouterRegister {
                         
                         let controller = try? Router<ModuleA>.alert(
                             title: "ViewController Router",
-                            message: "Hello ~"
+                            message: "Hello ~ 😜"
                         )
                         
                         return (controller, false)
                     }
                 ])
             ]
+        }
+        
+        router.register(for: .print) { (url, value) throws -> Void in
+            print(value ?? "nil")
         }
         
         router.register(for: .alert) { (url, value) throws -> UIViewController in
