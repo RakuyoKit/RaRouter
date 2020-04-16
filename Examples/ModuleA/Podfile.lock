@@ -1,0 +1,24 @@
+PODS:
+  - ModuleARouter (1.0.0-Router):
+    - RaRouter
+  - RaRouter (1.0.0)
+
+DEPENDENCIES:
+  - ModuleARouter (from `ModuleARouter/`)
+  - RaRouter
+
+SPEC REPOS:
+  trunk:
+    - RaRouter
+
+EXTERNAL SOURCES:
+  ModuleARouter:
+    :path: ModuleARouter/
+
+SPEC CHECKSUMS:
+  ModuleARouter: 15a75873f17b9bb4c4452b300cc0bcfd7a634da1
+  RaRouter: e6c161f6089b0afad5c4de705cb53da7c78ba4bb
+
+PODFILE CHECKSUM: 6ab1395cf3def2080bd5ab523980b90fa5b78187
+
+COCOAPODS: 1.9.1
