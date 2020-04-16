@@ -22,12 +22,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Register route
         Router<Modules>.initialize()
         
-        do {
-            window?.rootViewController = try Router<RootController>.create()
-        } catch {
-            print("create RootController error: \(error)")
-            window?.rootViewController = UIViewController()
-        }
+        let rootController: UIViewController = {
+            
+            do {
+                return try Router<RootController>.create()
+            } catch {
+                print("create RootController error: \(error)")
+                return UIViewController()
+            }
+        }()
+        
+        window?.rootViewController = UINavigationController(rootViewController: rootController)
         
         window?.makeKeyAndVisible()
         
