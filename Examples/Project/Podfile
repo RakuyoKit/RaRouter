@@ -14,7 +14,12 @@ install! 'cocoapods',
 
 target 'Project' do
 
+  # ModuleA
   pod 'ModuleA', :path => '../ModuleA/ModuleA/'
   pod 'ModuleARouter', :path => '../ModuleA/ModuleARouter/'
+
+  # RootController
+  pod 'RootController', :path => '../RootController/RootController/'
+  pod 'RootControllerRouter', :path => '../RootController/RootControllerRouter/'
   
 end
