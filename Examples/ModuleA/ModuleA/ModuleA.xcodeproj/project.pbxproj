@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3A22B4B12447F1BA002831A7 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A22B4B02447F1BA002831A7 /* Register.swift */; };
 		3A22B4B32447F1C7002831A7 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A22B4B22447F1C7002831A7 /* Manager.swift */; };
+		3A22B4BF2447F54F002831A7 /* ModuleA.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 3A22B4BE2447F54F002831A7 /* ModuleA.podspec */; };
 		3A3BF0122446BA310014D47F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3BF0112446BA310014D47F /* AppDelegate.swift */; };
 		3A3BF0162446BA310014D47F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3BF0152446BA310014D47F /* ViewController.swift */; };
 		3A3BF01B2446BA330014D47F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A3BF01A2446BA330014D47F /* Assets.xcassets */; };
@@ -20,6 +21,7 @@
 		1FAA36F699462EDCE7D3D596 /* Pods_ModuleA.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ModuleA.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A22B4B02447F1BA002831A7 /* Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
 		3A22B4B22447F1C7002831A7 /* Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
+		3A22B4BE2447F54F002831A7 /* ModuleA.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = ModuleA.podspec; sourceTree = SOURCE_ROOT; };
 		3A3BF00E2446BA310014D47F /* ModuleA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ModuleA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A3BF0112446BA310014D47F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A3BF0152446BA310014D47F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 		3A3BF0102446BA310014D47F /* ModuleA */ = {
 			isa = PBXGroup;
 			children = (
+				3A22B4BE2447F54F002831A7 /* ModuleA.podspec */,
 				3A3BF04A2446BB4C0014D47F /* Core */,
 				3A3BF0492446BB470014D47F /* Router */,
 				3A3BF04B2446BB500014D47F /* Other */,
@@ -176,6 +179,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A3BF01E2446BA330014D47F /* LaunchScreen.storyboard in Resources */,
+				3A22B4BF2447F54F002831A7 /* ModuleA.podspec in Resources */,
 				3A3BF01B2446BA330014D47F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
