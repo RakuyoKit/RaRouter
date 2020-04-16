@@ -1,0 +1,24 @@
+PODS:
+  - RaRouter (1.0.0)
+  - RootControllerRouter (1.0.0-Router):
+    - RaRouter
+
+DEPENDENCIES:
+  - RaRouter
+  - RootControllerRouter (from `RootControllerRouter/`)
+
+SPEC REPOS:
+  trunk:
+    - RaRouter
+
+EXTERNAL SOURCES:
+  RootControllerRouter:
+    :path: RootControllerRouter/
+
+SPEC CHECKSUMS:
+  RaRouter: e6c161f6089b0afad5c4de705cb53da7c78ba4bb
+  RootControllerRouter: 8dc5b9c9d090bc6f206fa92bd2136f3f65ba9872
+
+PODFILE CHECKSUM: b043b7d19ccbb195a67d50cbff572995bada33ac
+
+COCOAPODS: 1.9.1
