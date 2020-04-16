@@ -15,7 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3A3BEE882446B3B20014D47F /* RaRouter_Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RaRouter_Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A3BEE882446B3B20014D47F /* RaRouter Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RaRouter Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A3BEE8B2446B3B30014D47F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A3BEE8F2446B3B30014D47F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3A3BEE942446B3B60014D47F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -60,7 +60,7 @@
 		3A3BEE892446B3B20014D47F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3A3BEE882446B3B20014D47F /* RaRouter_Demo.app */,
+				3A3BEE882446B3B20014D47F /* RaRouter Demo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -103,7 +103,7 @@
 			);
 			name = Project;
 			productName = Project;
-			productReference = 3A3BEE882446B3B20014D47F /* RaRouter_Demo.app */;
+			productReference = 3A3BEE882446B3B20014D47F /* RaRouter Demo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -327,7 +327,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.rakuyo.Project;
-				PRODUCT_NAME = RaRouter_Demo;
+				PRODUCT_NAME = "RaRouter Demo";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -346,7 +346,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.rakuyo.Project;
-				PRODUCT_NAME = RaRouter_Demo;
+				PRODUCT_NAME = "RaRouter Demo";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
