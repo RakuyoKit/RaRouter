@@ -16,32 +16,15 @@ private class ModuleARegister: RouterRegister {
         let router = Router<ModuleA>.self
         
         router.register(for: .dataSource) { (url, value) throws -> [SectionDataSource] in
-            
-            return [
-                
-                SectionDataSource(title: "do", dataSource: [
-                    DataSource(title: "Print clicked index in the console") {
-                        try? Router<ModuleA>.print("Clicked on row \($0.row) of section \($0.section) 🤔")
-                        return (nil, false)
-                    }
-                ]),
-                
-                SectionDataSource(title: "View Controller", dataSource: [
-                    DataSource(title: "Show alert") { _ in
-                        
-                        let controller = try? Router<ModuleA>.alert(
-                            title: "ViewController Router",
-                            message: "Hello ~ 😜"
-                        )
-                        
-                        return (controller, false)
-                    }
-                ])
-            ]
+            return dataSource
         }
         
         router.register(for: .print) { (url, value) throws -> Void in
             print(value ?? "nil")
+        }
+        
+        router.register(for: .requestPush) { (url, value) throws -> Void in
+            UNUserNotificationCenter.current().requestAuthorization(options: [.badge, .sound, .alert]) { _, _ in }
         }
         
         router.register(for: .alert) { (url, value) throws -> UIViewController in
@@ -60,5 +43,36 @@ private class ModuleARegister: RouterRegister {
             
             return alert
         }
+    }
+}
+
+private extension ModuleARegister {
+    
+    static var dataSource: [SectionDataSource] {
+        [
+            SectionDataSource(title: "do", dataSource: [
+                DataSource(title: "Print clicked index in the console") {
+                    try? Router<ModuleA>.print("Clicked on row \($0.row) of section \($0.section) 🤔")
+                    return (nil, false)
+                },
+                
+                DataSource(title: "Request push permission") { _ in
+                    try? Router<ModuleA>.requestPushPermission()
+                    return (nil, false)
+                }
+            ]),
+            
+            SectionDataSource(title: "View Controller", dataSource: [
+                DataSource(title: "Show alert") { _ in
+                    
+                    let controller = try? Router<ModuleA>.alert(
+                        title: "ViewController Router",
+                        message: "Hello ~ 😜"
+                    )
+                    
+                    return (controller, false)
+                }
+            ])
+        ]
     }
 }

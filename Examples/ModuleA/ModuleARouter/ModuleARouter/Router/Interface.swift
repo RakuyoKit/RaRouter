@@ -16,9 +16,10 @@ public enum ModuleA: ModuleRouter {
         
         public var url: String { rawValue }
         
-        case dataSource = "demo://ModuleA/rootController/dataSource"
-        case print      = "demo://ModuleA/print"
-        case alert      = "demo://ModuleA/alert"
+        case dataSource  = "demo://ModuleA/rootController/dataSource"
+        case print       = "demo://ModuleA/print"
+        case requestPush = "demo://ModuleA/request/pushPermission"
+        case alert       = "demo://ModuleA/alert"
     }
 }
 
@@ -38,6 +39,13 @@ public extension Router where Module == ModuleA {
     /// - Throws: `RaRouter.RouterError`
     static func print(_ value: Any) throws {
         try Router.do(.print, param: value)
+    }
+    
+    /// Request push permission
+    ///
+    /// - Throws: `RaRouter.RouterError`
+    static func requestPushPermission() throws {
+        try Router.do(.requestPush)
     }
     
     /// show alert
