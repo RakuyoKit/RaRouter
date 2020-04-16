@@ -44,12 +44,20 @@ extension RootViewController {
         
         let dataSource = self.dataSource[indexPath.section].dataSource
         
-        guard let controller = dataSource[indexPath.row].action(indexPath) else {
+        let tuple = dataSource[indexPath.row].action(indexPath)
+         
+        guard let controller = tuple.0 else {
             tableView.deselectRow(at: indexPath, animated: true)
             return
         }
         
-        navigationController?.pushViewController(controller, animated: true)
+        if tuple.1 {
+            navigationController?.pushViewController(controller, animated: true)
+        } else {
+            present(controller, animated: true) {
+                tableView.deselectRow(at: indexPath, animated: true)
+            }
+        }
     }
 }
 

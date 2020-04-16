@@ -22,12 +22,15 @@ public struct SectionDataSource {
 
 public struct DataSource {
     
-    public init(title: String, action: @escaping (IndexPath) -> UIViewController?) {
+    public init(title: String, action: @escaping (IndexPath) -> (UIViewController?, Bool)) {
         self.title = title
         self.action = action
     }
     
     public let title: String
     
-    public let action: (IndexPath) -> UIViewController?
+    /// Execute on click
+    ///
+    /// Returns the controller to be displayed and whether it is displayed in `push` mode
+    public let action: (IndexPath) -> (UIViewController?, Bool)
 }

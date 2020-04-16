@@ -22,10 +22,39 @@ private class ModuleARegister: RouterRegister {
                 SectionDataSource(title: "do", dataSource: [
                     DataSource(title: "Print Test") { _ in
                         print("The first Test! 🤩")
-                        return nil
+                        return (nil, false)
+                    }
+                ]),
+                
+                SectionDataSource(title: "View Controller", dataSource: [
+                    DataSource(title: "Show alert") { _ in
+                        
+                        let controller = try? Router<ModuleA>.alert(
+                            title: "ViewController Router",
+                            message: "Hello ~"
+                        )
+                        
+                        return (controller, false)
                     }
                 ])
             ]
+        }
+        
+        router.register(for: .alert) { (url, value) throws -> UIViewController in
+            
+            guard let parma = value as? (title: String?, message: String?) else {
+                throw RouterError.parameterError(url: url, parameter: value)
+            }
+            
+            let alert = UIAlertController(
+                title: parma.title,
+                message: parma.message,
+                preferredStyle: .alert
+            )
+            
+            alert.addAction(UIAlertAction(title: "done", style: .default, handler: nil))
+            
+            return alert
         }
     }
 }
