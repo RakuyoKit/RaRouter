@@ -25,12 +25,12 @@ public extension RaRouter {
 
 public extension RaRouter {
     
-    static func register(for table: Module.Table, _ factory: @escaping ResultHandlerFactory) {
+    static func register(for table: Module.Table, _ factory: @escaping GetHandlerFactory) {
         register(for: table.url, factory)
     }
     
-    static func register(for url: String, _ factory: @escaping ResultHandlerFactory) {
-        RouterFactory.shared.resultHandlerFactories[url] = factory
+    static func register(for url: String, _ factory: @escaping GetHandlerFactory) {
+        RouterFactory.shared.getHandlerFactories[url] = factory
     }
 }
 
