@@ -15,22 +15,24 @@ private class ModuleARegister: RouterRegister {
         
         let router = Router<ModuleA>.self
         
-        router.register(for: .dataSource) { (url, value) throws -> [SectionDataSource] in
-            return dataSource
+        router.register(for: .dataSource) { (url, value) -> GetResult<[SectionDataSource]> in
+            return .success(dataSource)
         }
         
-        router.register(for: .print) { (url, value) throws -> Void in
+        router.register(for: .print) { (url, value) -> DoResult in
             print(value ?? "nil")
+            return .success(())
         }
         
-        router.register(for: .requestPush) { (url, value) throws -> Void in
+        router.register(for: .requestPush) { (url, value) -> DoResult in
             UNUserNotificationCenter.current().requestAuthorization(options: [.badge, .sound, .alert]) { _, _ in }
+            return .success(())
         }
         
-        router.register(for: .alert) { (url, value) throws -> UIViewController in
+        router.register(for: .alert) { (url, value) -> ViewControllerResult in
             
             guard let parma = value as? (title: String?, message: String?) else {
-                throw RouterError.parameterError(url: url, parameter: value)
+                return .failure(.parameterError(url: url, parameter: value))
             }
             
             let alert = UIAlertController(
@@ -41,7 +43,7 @@ private class ModuleARegister: RouterRegister {
             
             alert.addAction(UIAlertAction(title: "done", style: .default, handler: nil))
             
-            return alert
+            return .success(alert) 
         }
     }
 }
@@ -52,12 +54,12 @@ private extension ModuleARegister {
         [
             SectionDataSource(title: "do", dataSource: [
                 DataSource(title: "Print clicked index in the console") {
-                    try? Router<ModuleA>.print("Clicked on row \($0.row) of section \($0.section) 🤔")
+                    _ = Router<ModuleA>.print("Clicked on row \($0.row) of section \($0.section) 🤔")
                     return (nil, false)
                 },
                 
                 DataSource(title: "Request push permission") { _ in
-                    try? Router<ModuleA>.requestPushPermission()
+                    _ = Router<ModuleA>.requestPushPermission()
                     return (nil, false)
                 }
             ]),
@@ -68,7 +70,7 @@ private extension ModuleARegister {
                     let controller = try? Router<ModuleA>.alert(
                         title: "ViewController Router",
                         message: "Hello ~ 😜"
-                    )
+                    ).get()
                     
                     return (controller, false)
                 }

@@ -24,9 +24,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let rootController: UIViewController = {
             
-            do {
-                return try Router<RootController>.create()
-            } catch {
+            switch Router<RootController>.create() {
+            case .success(let controller): 
+                return controller
+                
+            case .failure(let error):
                 print("create RootController error: \(error)")
                 return UIViewController()
             }

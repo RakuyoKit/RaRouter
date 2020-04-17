@@ -24,9 +24,8 @@ public extension Router where Module == RootController {
     
     /// Create Root ViewController
     /// 
-    /// - Throws: `RaRouter.RouterError`
     /// - Returns: `RootViewController` without `UINavigationController`
-    static func create() throws -> UIViewController {
-        return try Router.viewController(.create)
+    static func create() -> ViewControllerResult {
+        return Router.viewController(from: .create)
     }
 }
