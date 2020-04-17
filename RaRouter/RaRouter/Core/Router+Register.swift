@@ -21,16 +21,16 @@ public extension RaRouter {
     }
 }
 
-// MARK: - GetResult
+// MARK: - Get
 
 public extension RaRouter {
     
-    static func register(for table: Module.Table, _ factory: @escaping GetHandlerFactory) {
+    static func register<T>(for table: Module.Table, _ factory: @escaping GetHandlerFactory<T>) {
         register(for: table.url, factory)
     }
     
-    static func register(for url: String, _ factory: @escaping GetHandlerFactory) {
-        RouterFactory.shared.getHandlerFactories[url] = factory
+    static func register<T>(for url: String, _ factory: @escaping GetHandlerFactory<T>) {
+        RouterFactory.shared.getHandlerFactories[url] = (factory as! GetHandlerFactory<Any>)
     }
 }
 

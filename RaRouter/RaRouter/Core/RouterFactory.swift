@@ -12,7 +12,7 @@ public typealias DoResult = Result<Void, RouterError>
 public typealias DoHandlerFactory = (_ url: String, _ values: Any?) -> DoResult
 
 public typealias GetResult<T> = Result<T, RouterError>
-public typealias GetHandlerFactory = (_ url: String, _ values: Any?) -> Result<Any, RouterError>
+public typealias GetHandlerFactory<T> = (_ url: String, _ values: Any?) -> GetResult<T>
 
 public typealias ViewControllerResult = Result<UIViewController, RouterError>
 public typealias ViewControllerHandlerFactory = (_ url: String, _ values: Any?) -> ViewControllerResult
@@ -29,7 +29,7 @@ public class RouterFactory {
     public lazy var doHandlerFactories: [String : DoHandlerFactory]  = [:]
     
     /// Used to store `get` router
-    public lazy var getHandlerFactories: [String : GetHandlerFactory]  = [:]
+    public lazy var getHandlerFactories: [String : (String, Any?) -> Result<Any, RouterError>]  = [:]
     
     /// Used to store `viewController` router
     public lazy var viewControllerHandlerFactories: [String : ViewControllerHandlerFactory]  = [:]
