@@ -14,11 +14,12 @@
 		3A3747E9243C128700DA1651 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A3747E7243C128700DA1651 /* LaunchScreen.storyboard */; };
 		3A3747FB243C13E800DA1651 /* RouterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3747F6243C13E800DA1651 /* RouterFactory.swift */; };
 		3A3747FC243C13E800DA1651 /* RouterError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3747F7243C13E800DA1651 /* RouterError.swift */; };
-		3A3747FD243C13E800DA1651 /* Router+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3747F8243C13E800DA1651 /* Router+Extension.swift */; };
+		3A3747FD243C13E800DA1651 /* Router+Execute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3747F8243C13E800DA1651 /* Router+Execute.swift */; };
 		3A3747FE243C13E800DA1651 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3747F9243C13E800DA1651 /* Router.swift */; };
 		3A3747FF243C13E800DA1651 /* RouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3747FA243C13E800DA1651 /* RouterProtocol.swift */; };
 		3A374802243C148700DA1651 /* RaRouter.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 3A374800243C148600DA1651 /* RaRouter.podspec */; };
 		3A374803243C148700DA1651 /* push.sh in Resources */ = {isa = PBXBuildFile; fileRef = 3A374801243C148600DA1651 /* push.sh */; };
+		3ABA02EB24493E1700BAFCB4 /* Router+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABA02EA24493E1700BAFCB4 /* Router+Register.swift */; };
 		483B9990DA510EAF0ED7E8F3 /* Pods_RaRouter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8FDD88AC1309928984D73F4 /* Pods_RaRouter.framework */; };
 		9176B49600BA9A625F6EEF8D /* README_CN.md in Sources */ = {isa = PBXBuildFile; fileRef = 9176B1A662ABCC16E0B85DA9 /* README_CN.md */; };
 		BF93EFAC64EDB273C4A1D55A /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = BF93EB0B44DE2DC136339056 /* README.md */; };
@@ -34,11 +35,12 @@
 		3A3747EA243C128700DA1651 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A3747F6243C13E800DA1651 /* RouterFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouterFactory.swift; sourceTree = "<group>"; };
 		3A3747F7243C13E800DA1651 /* RouterError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouterError.swift; sourceTree = "<group>"; };
-		3A3747F8243C13E800DA1651 /* Router+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Router+Extension.swift"; sourceTree = "<group>"; };
+		3A3747F8243C13E800DA1651 /* Router+Execute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Router+Execute.swift"; sourceTree = "<group>"; };
 		3A3747F9243C13E800DA1651 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		3A3747FA243C13E800DA1651 /* RouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouterProtocol.swift; sourceTree = "<group>"; };
 		3A374800243C148600DA1651 /* RaRouter.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = RaRouter.podspec; sourceTree = SOURCE_ROOT; };
 		3A374801243C148600DA1651 /* push.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = push.sh; sourceTree = SOURCE_ROOT; };
+		3ABA02EA24493E1700BAFCB4 /* Router+Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Router+Register.swift"; sourceTree = "<group>"; };
 		468A012BED050C741CBED866 /* Pods-RaRouter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RaRouter.debug.xcconfig"; path = "Target Support Files/Pods-RaRouter/Pods-RaRouter.debug.xcconfig"; sourceTree = "<group>"; };
 		6DBD8580A3305CE5331BFA3C /* Pods-RaRouter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RaRouter.release.xcconfig"; path = "Target Support Files/Pods-RaRouter/Pods-RaRouter.release.xcconfig"; sourceTree = "<group>"; };
 		9176B1A662ABCC16E0B85DA9 /* README_CN.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README_CN.md; path = ../../README_CN.md; sourceTree = "<group>"; };
@@ -103,7 +105,8 @@
 			children = (
 				3A3747F9243C13E800DA1651 /* Router.swift */,
 				3A3747FA243C13E800DA1651 /* RouterProtocol.swift */,
-				3A3747F8243C13E800DA1651 /* Router+Extension.swift */,
+				3A3747F8243C13E800DA1651 /* Router+Execute.swift */,
+				3ABA02EA24493E1700BAFCB4 /* Router+Register.swift */,
 				3A3747F7243C13E800DA1651 /* RouterError.swift */,
 				3A3747F6243C13E800DA1651 /* RouterFactory.swift */,
 			);
@@ -248,9 +251,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A3747FD243C13E800DA1651 /* Router+Extension.swift in Sources */,
+				3A3747FD243C13E800DA1651 /* Router+Execute.swift in Sources */,
 				3A3747E1243C128500DA1651 /* ViewController.swift in Sources */,
 				3A3747FF243C13E800DA1651 /* RouterProtocol.swift in Sources */,
+				3ABA02EB24493E1700BAFCB4 /* Router+Register.swift in Sources */,
 				3A3747DD243C128500DA1651 /* AppDelegate.swift in Sources */,
 				3A3747FE243C13E800DA1651 /* Router.swift in Sources */,
 				3A3747FC243C13E800DA1651 /* RouterError.swift in Sources */,

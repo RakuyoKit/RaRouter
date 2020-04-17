@@ -17,6 +17,9 @@ public enum RouterError: Error {
     /// 所传的参数错误
     case parameterError(url: String, parameter: Any?)
     
+    /// 使用 `getResult` 路由时，转换类型失败
+    case convertTypeFailed(url: String)
+    
     /// 所返回的控制器为空。
     /// 
     /// 一般情况下，控制器的创建结果不应该为空。
