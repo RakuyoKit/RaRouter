@@ -27,34 +27,32 @@ public extension Router where Module == ModuleA {
     
     /// Get data soucce for `RootController`
     ///
-    /// - Throws: `RaRouter.RouterError`
-    /// - Returns: data soucce of `RootController`
-    static func getDataSource() throws -> [SectionDataSource]? {
-        return try Router.getResult(.dataSource) as? [SectionDataSource]
+    /// - Returns: Data soucce of `RootController`
+    static func getDataSource() -> GetResult<[SectionDataSource]> {
+        return Router.get(of: [SectionDataSource].self, from: .dataSource)
     }
     
     /// `print(value)`
     ///
-    /// - Parameter value: What to print
-    /// - Throws: `RaRouter.RouterError`
-    static func print(_ value: Any) throws {
-        try Router.do(.print, param: value)
+    /// - Returns: Execute Result
+    static func print(_ value: Any) -> DoResult {
+        return Router.do(.print, param: value)
     }
     
     /// Request push permission
-    ///
-    /// - Throws: `RaRouter.RouterError`
-    static func requestPushPermission() throws {
-        try Router.do(.requestPush)
+    /// 
+    /// - Returns: Execute Result
+    static func requestPushPermission() -> DoResult {
+        return Router.do(.requestPush)
     }
     
-    /// show alert
+    /// Show alert
     ///
     /// - Parameters:
     ///   - title: title of alert
     ///   - message: message of alert
-    /// - Throws: `RaRouter.RouterError`
-    static func alert(title: String? = nil, message: String? = nil) throws -> UIViewController {
-        return try Router.viewController(.alert, param: (title, message))
+    /// - Returns: `UIAlertController`
+    static func alert(title: String? = nil, message: String? = nil) -> ViewControllerResult {
+        return Router.viewController(from: .alert, param: (title, message))
     }
 }

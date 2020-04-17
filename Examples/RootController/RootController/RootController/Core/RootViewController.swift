@@ -13,7 +13,7 @@ import ModuleARouter
 
 open class RootViewController: UITableViewController {
     
-    private lazy var dataSource = (try? Router<ModuleA>.getDataSource()) ?? []
+    private lazy var dataSource = (try? Router<ModuleA>.getDataSource().get()) ?? []
 }
 
 // MARK: - The life cycle

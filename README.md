@@ -86,7 +86,7 @@ Some explanations:
      `get` instance, I only passed in a `String`. When we arrived at `viewController`, because coding
      said `"rakuyo://moduleA/create"` did not require any parameters (*if we wrote those codes*), So you can omit `param`.
 
-2. For the `Global`, it will be introduced in [Advanced Tutorial] (https://github.com/rakuyoMo/RaRouter/wiki/进阶教程#global).
+2. For the `Global`, it will be introduced in [Advanced Tutorial](https://github.com/rakuyoMo/RaRouter/wiki/进阶教程#global).
 
 ### Encapsulation
 
