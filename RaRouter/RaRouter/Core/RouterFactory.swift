@@ -8,26 +8,29 @@
 
 import UIKit
 
-public typealias DoHandlerFactory = (_ url: String, _ values: Any?) throws -> Void
+public typealias DoResult = Result<Void, RouterError>
+public typealias DoHandlerFactory = (_ url: String, _ values: Any?) -> DoResult
 
-public typealias ResultHandlerFactory = (_ url: String, _ values: Any?) throws -> Any?
+public typealias GetResult<T> = Result<T, RouterError>
+public typealias GetHandlerFactory<T> = (_ url: String, _ values: Any?) -> GetResult<T>
 
-public typealias ViewControllerHandlerFactory = (_ url: String, _ values: Any?) throws -> UIViewController
+public typealias ViewControllerResult = Result<UIViewController, RouterError>
+public typealias ViewControllerHandlerFactory = (_ url: String, _ values: Any?) -> ViewControllerResult
 
-/// 用以存储注册过的路由
+/// Used to store registered routers
 public class RouterFactory {
     
-    /// 单例
+    /// Singleton
     public static let shared = RouterFactory()
     
     private init() {}
     
-    /// 用以存储 **执行操作** 类型的路由
+    /// Used to store `do` router
     public lazy var doHandlerFactories: [String : DoHandlerFactory]  = [:]
     
-    /// 用以存储 **执行操作后，获取操作的返回值** 类型的路由
-    public lazy var resultHandlerFactories: [String : ResultHandlerFactory]  = [:]
+    /// Used to store `get` router
+    public lazy var getHandlerFactories: [String : (String, Any?) -> Result<Any, RouterError>]  = [:]
     
-    /// 用以存储 **执行操作后，获取控制器** 类型的路由
+    /// Used to store `viewController` router
     public lazy var viewControllerHandlerFactories: [String : ViewControllerHandlerFactory]  = [:]
 }

@@ -8,23 +8,29 @@
 
 import Foundation
 
-/// 可能会出现的错误类型
+/// Possible errors
 public enum RouterError: Error {
     
-    /// 路由地址没有匹配的内容，即该路由地址没有注册
+    /// The `url` does not match, that is, the `url` is not registered.
     case notHandler(url: String)
     
-    /// 所传的参数错误
+    /// Parameter is wrong, please check if `parameter` is the parameter required by `url`.
     case parameterError(url: String, parameter: Any?)
     
-    /// 所返回的控制器为空。
+    /// Failed to convert result to `type` when execute `get(of:from:param:)` router.
+    case convertTypeFailed(url: String)
+    
+    /// The returned controller is nil.
+    ///
+    /// In general, the creation result of the controller should not be nil.
+    /// So the return value of `ViewControllerHandlerFactory` is` UIViewController` instead of `UIViewController?`
+    ///
+    /// But just in case:
+    ///
+    /// For example, in some cases, some necessary data must be obtained through the network before creating a controller. If these data collections fail, the target controller cannot be created.
+    ///
+    /// So we provide this error type, you can throw this error when the target controller cannot be created.
     /// 
-    /// 一般情况下，控制器的创建结果不应该为空。
-    /// 所以 `ViewControllerHandlerFactory` 设计为返回 `UIViewController`
-    /// 
-    /// 但是为了以防万一，例如通过接口获取某些数据失败，那么就无法创建目标控制器。
-    /// 所以组件提供了该错误。当控制器为空时可抛出该错误给外界使用。
-    /// 
-    /// 目前仅额外提供 `message` 表明错误原因
+    /// Currently only additional `message` is provided to indicate the cause of the error
     case controllerNil(url: String, parameter: Any?, message: String)
 }

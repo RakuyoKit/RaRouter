@@ -26,10 +26,9 @@
 pod 'RaRouter'
 ```
 
-## 使用
+## 快速入门
 
-> 下面的内容将告诉您如何使用该库，但基本不会说 "**为什么**"。更多内容见 [wiki](https://github.com/rakuyoMo/RaRouter/wiki)。完整的代码示例可以参考 demo
-> 中的内容
+> 下面的内容将告诉您如何使用该库，但基本不会说 "**为什么**"。更多内容见 [wiki](https://github.com/rakuyoMo/RaRouter/wiki/快速入门)。完整的代码示例可以参考 demo 中的内容
 
 ### 执行路由
 
@@ -40,15 +39,23 @@ pod 'RaRouter'
 ```swift
 let router = "rakuyo://moduleA/do/something"
 
-try? Router<Global>.do(router, param: ("参数1", 2))
+_ = Router<Global>.do(router, param: ("参数1", 2))
 ```
 
-- `getResult`：执行某些操作，并获得其返回值：
+- `get`：执行某些操作，并获得其返回值：
 
 ```swift
 let router = "rakuyo://moduleA/calculate/frame"
 
-let result = try? Router<Global>.getResult(router, param: "参数")
+let result = Router<Global>.get(of: String.self, from: router, param: "参数")
+
+switch result {
+case .success(let string):
+    print(string)
+    
+case .failure(let error):
+    print(error)
+}
 ```
 
 - `viewController`：执行某些操作，并获得其返回的 `UIViewController` 子类：
@@ -56,19 +63,25 @@ let result = try? Router<Global>.getResult(router, param: "参数")
 ```swift
 let router = "rakuyo://moduleA/create"
 
-let controller = try? Router<Global>.viewController(router)
+let result = Router<Global>.viewController(from: router)
+
+switch result {
+case .success(let controller):
+    print(controller)
+    
+case .failure(let error):
+    print(error)
+}
 ```
 
 一些解释：
 
-1. 在执行路由的过程中，如果出现错误，`RaRouter` 内部将会抛出异常（`RouterError`）。所以在执行路由时，需要添加 `try`。
+1. 对于 `param` 参数，其为 `Any?` 类型，默认为 `nil`。这意味着您可以传递任何您想要的参数，并且不受任何的限制。
 
-2. 对于 `param` 参数，其为 `Any?` 类型，默认为 `nil`。这意味着您可以传递任何您想要的参数，并且不受任何的限制。
+    例如上面的 `do` 示例中，传入了一个 `(String, Int)` 类型的元组作为参数，而 `get` 实例中只传入了一个 `String`。到了 `viewController
+`，因为从编码上来说 `"rakuyo://moduleA/create"` 不需要任何参数（假如编写了那些代码），所以可以省略 `param`。
 
-    例如上面的 `do` 示例中，我传入了一个 `(String, Int)` 类型的元组，而 `getResult` 实例中，我只传入了一个 `String`。到了 `viewController
-`，因为从编码上来说 `"rakuyo://moduleA/create"` 不需要任何参数（假如我们编写了那些代码），所以我可以省略 `param`。
-
-3. 对于 `Global` 泛型，将在后面的小节中将详细介绍。
+2. 对于 `Global` 泛型，将在 [进阶教程](https://github.com/rakuyoMo/RaRouter/wiki/进阶教程#global) 中介绍。
 
 ### 封装
 
@@ -92,21 +105,21 @@ public enum ModuleA: ModuleRouter {
 
 上面的代码定义了一个模块 `ModuleA`，其中封装了它所包含的 "**功能**"。
 
-接着还可以再封装一下 "操作"：
+接着还可以再封装一下 "**操作**"：
 
 ```swift
 public extension Router where Module == ModuleA {
     
-    static func create() throws -> UIViewController {
-        return try Router.viewController(.create)
+    static func doSomething(start: Date, end: Date) -> DoResult {
+        return Router.do(.doSomething, param: (start, end))
     }
 
-    static func doSomething(start: Date, end: Date) throws {
-        try Router.do(.doSomething, param: (start, end))
+    static func calculateFrame(with screenWidth: CGFloat) -> GetResult<CGRect> {
+        return Router.get(of: CGRect.self, from: .calculateFrame, param: screenWidth)
     }
-
-    static func calculateFrame(with screenWidth: CGFloat) throws -> CGRect {
-        return try Router.getResult(.calculateFrame, param: screenWidth)
+    
+    static func create() -> ViewControllerResult {
+        return Router.viewController(from: .create)
     }
 }
 ```
@@ -114,14 +127,14 @@ public extension Router where Module == ModuleA {
 现在，当我们再执行 [执行路由](#执行路由) 一节的测试代码时，我们可以这么写：
 
 ```swift
-// for `viewController`
-let controller = try? Router<ModuleA>.create()
-
 // for `do`
-try? Router<ModuleA>.doSomething(start: Date(), end: Date())
+_ = Router<ModuleA>.doSomething(start: Date(), end: Date())
 
-// for `getResult`
-let frame = try? Router<ModuleA>.calculateFrame(with: 375)
+// for `get`
+if case let .success(frame) = Router<ModuleA>.calculateFrame(with: 375) { }
+
+// for `viewController`
+if case let .success(controller) = Router<ModuleA>.create() { }
 ```
 
 ### 注册
@@ -130,33 +143,36 @@ let frame = try? Router<ModuleA>.calculateFrame(with: 375)
 
 对于默认提供的三种操作，每种操作都有不同的注册方法。而它们的区别在于闭包的返回值不同：
 
-- `viewController`
-
-其闭包的返回值规定为 `UIViewController` 或其子类：
-
-```swift
-Router<Global>.register(for: "your router") { (url, value) throws -> UIViewController in
-    return // your controller
-}
-```
-
 - `do`
 
-其闭包的返回值规定为 `Void`（注意该 `Void` 不可省略）：
+其闭包的返回值规定为 `DoResult`（`Result<Void, RouterError>`）：
 
 ```swift
-Router<Global>.register(for: "your router") { (url, value) throws -> Void in
+Router<Global>.register(for: "your router") { (url, value) -> DoResult in
     // do something
+    return .success(())
 }
 ```
 
-- `getResult`
+- `get`
+ 
+其闭包的返回值规定为 `GetResult<T>`（`Result<T, RouterError>`）：
 
-其闭包的返回值规定为 `Any?`，您可以扩展为任意您需要的非 `UIViewController` 以及 `Void` 类型，例如 `CGRect`
+您可以扩展为任意您需要的非 `UIViewController` 以及 `Void` 类型，例如 `CGRect`:
 
 ```swift
-Router<Global>.register(for: "your router") { (url, value) throws -> CGRect in
-    return .zero // Anything you need
+Router<Global>.register(for: "your router") { (url, value) -> GetResult<CGRect> in
+    return .success(.zero)  // Anything you need
+}
+```
+
+- `viewController`
+
+其闭包的返回值规定为 `ViewControllerResult`（`Result<UIViewController, RouterError>`）：
+
+```swift
+Router<Global>.register(for: "your router") { (url, value) -> ViewControllerResult in
+    return .success(UIViewController()) // your controller
 }
 ```
 
@@ -170,26 +186,27 @@ private class ModuleARegister: RouterRegister {
         
         let router = Router<ModuleA>.self
         
-        router.register(for: .create) { (url, value) throws -> UIViewController in
-            return UIViewController()
-        }
-        
-        router.register(for: .doSomething) { (url, value) throws -> Void in
+        router.register(for: .doSomething) { (url, value) -> DoResult in
             
             guard let param = value as? (start: Date, end: Date) else {
-                throw RouterError.parameterError(url: url, parameter: value)
+                return .failure(.parameterError(url: url, parameter: value))
             }
             
             print("We are doing these things from \(param.start) to \(param.end)")
+            return .success(())
         }
         
-        router.register(for: .calculateFrame) { (url, value) throws -> CGRect in
+        router.register(for: .calculateFrame) { (url, value) -> GetResult<CGRect> in
             
             guard let screenWidth = value as? CGFloat else {
-                throw RouterError.parameterError(url: url, parameter: value)
+                return .failure(.parameterError(url: url, parameter: value))
             }
             
-            return CGRect(x: 0, y: 0, width: screenWidth * 0.25, height: screenWidth)
+            return .success(CGRect(x: 0, y: 0, width: screenWidth * 0.25, height: screenWidth))
+        }
+        
+        router.register(for: .create) { (url, value) -> ViewControllerResult in
+            return .success(UIViewController())
         }
     }
 }
@@ -211,4 +228,4 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 
 --------
 
-更多内容请参考 [wiki](https://github.com/rakuyoMo/RaRouter/wiki)
+更多内容请参考 [wiki](https://github.com/rakuyoMo/RaRouter/wiki/快速入门)
