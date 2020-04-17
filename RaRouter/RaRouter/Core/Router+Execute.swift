@@ -49,11 +49,12 @@ public extension RaRouter {
     ///   - table: 所要执行的路由
     ///   - param: 该路由所需要的参数
     /// - Returns: 执行结果，详见 `GetResult` 类型
-    static func getResult<T>(of type: T.Type, from table: Module.Table, param: Any? = nil) -> GetResult<T> {
-        return getResult(of: type, from: table.url, param: param)
+    static func get<T>(of type: T.Type, from table: Module.Table, param: Any? = nil) -> GetResult<T> {
+        return get(of: type, from: table.url, param: param)
     }
     
     static func getResult<T>(of type: T.Type, from url: String, param: Any? = nil) -> GetResult<T> {
+    static func get<T>(of type: T.Type, from url: String, param: Any? = nil) -> GetResult<T> {
         
         guard let factory = RouterFactory.shared.resultHandlerFactories[url] else {
             return .failure(.notHandler(url: url))
