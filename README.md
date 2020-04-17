@@ -17,7 +17,7 @@
 
 ## Prerequisites
 
-- Apps using `RaRouter` can target: **iOS 9 or later**.
+- **iOS 9 or later**.
 - **Xcode 10.0 or later** required.
 - **Swift 5.0 or later** required.
 
@@ -29,7 +29,7 @@
 pod 'RaRouter'
 ```
 
-## Feature
+## Quick start
 
 > The following content will tell you how to use, but basically will not explain "**why**". See [wiki](https://github.com/rakuyoMo/RaRouter/wiki) for more content. The complete code example can refer to the content in the demo
 
@@ -42,15 +42,23 @@ pod 'RaRouter'
 ```swift
 let router = "rakuyo://moduleA/do/something"
 
-try? Router<Global>.do(router, param: ("parameter", 1))
+_ = Router<Global>.do(router, param: ("parameter", 1))
 ```
 
-- `getResult`: execute some operation and get its return value:
+- `get`: execute some operation and get its return value:
 
 ```swift
 let router = "rakuyo://moduleA/calculate/frame"
 
-let result = try? Router<Global>.getResult(router, param: "parameter")
+let result = Router<Global>.get(of: String.self, from: router, param: "parameter")
+
+switch result {
+case .success(let string):
+    print(string)
+    
+case .failure(let error):
+    print(error)
+}
 ```
 
 - `viewController`: execute certain operations and get the returned`UIViewController` subclass:
@@ -58,22 +66,27 @@ let result = try? Router<Global>.getResult(router, param: "parameter")
 ```swift
 let router = "rakuyo://moduleA/create"
 
-let controller = try? Router<Global>.viewController(router)
+let result = Router<Global>.viewController(from: router)
+
+switch result {
+case .success(let controller):
+    print(controller)
+    
+case .failure(let error):
+    print(error)
+}
 ```
 
 Some explanations:
 
-1. During the execution of routing, if an error occurs, an exception will be thrown inside `RaRouter` (`RouterError`). So when performing routing, you need to add `try`.
-
-2. For the `param` parameter, it is of type` Any? `, And the default is `nil`. This means that you can pass
+1. For the `param` parameter, it is of type` Any? `, And the default is `nil`. This means that you can pass
  any parameters you want without any restrictions.
 
     For example, in the `do` example above, I passed in a tuple of type`(String, Int)`, while in the
-     `getResult` instance, I only passed in a `String`. When we arrived at `viewController`, because coding
-      said `"rakuyo://moduleA/create"` did not require any parameters (*if we wrote those codes*), I can
-       omit `param`.
+     `get` instance, I only passed in a `String`. When we arrived at `viewController`, because coding
+     said `"rakuyo://moduleA/create"` did not require any parameters (*if we wrote those codes*), So you can omit `param`.
 
-3. For the `Global` generic, it will be described in detail in a later section.
+2. For the `Global`, it will be introduced in [Advanced Tutorial] (https://github.com/rakuyoMo/RaRouter/wiki/进阶教程#global).
 
 ### Encapsulation
 
@@ -102,16 +115,16 @@ Then you can also encapsulate the "**operation**":
 ```swift
 public extension Router where Module == ModuleA {
     
-    static func create() throws -> UIViewController {
-        return try Router.viewController(.create)
+    static func doSomething(start: Date, end: Date) -> DoResult {
+        return Router.do(.doSomething, param: (start, end))
     }
 
-    static func doSomething(start: Date, end: Date) throws {
-        try Router.do(.doSomething, param: (start, end))
+    static func calculateFrame(with screenWidth: CGFloat) -> GetResult<CGRect> {
+        return Router.get(of: CGRect.self, from: .calculateFrame, param: screenWidth)
     }
-
-    static func calculateFrame(with screenWidth: CGFloat) throws -> CGRect {
-        return try Router.getResult(.calculateFrame, param: screenWidth)
+    
+    static func create() -> ViewControllerResult {
+        return Router.viewController(from: .create)
     }
 }
 ```
@@ -119,14 +132,14 @@ public extension Router where Module == ModuleA {
 Now, when we execute the test code in the [Execute route](#execute-route) section, we can write:
 
 ```swift
-// for `viewController`
-let controller = try? Router<ModuleA>.create()
-
 // for `do`
-try? Router<ModuleA>.doSomething(start: Date(), end: Date())
+_ = Router<ModuleA>.doSomething(start: Date(), end: Date())
 
-// for `getResult`
-let frame = try? Router<ModuleA>.calculateFrame(with: 375)
+// for `get`
+if case let .success(frame) = Router<ModuleA>.calculateFrame(with: 375) { }
+
+// for `viewController`
+if case let .success(controller) = Router<ModuleA>.create() { }
 ```
 
 ### Request
@@ -135,34 +148,36 @@ Finally, we need to register the route we just defined.
 
 For the three operations provided by default, each operation has a different registration method. The difference between them lies in the return value of the closure:
 
-- `viewController`
-
-The return value of its closure is specified as `UIViewController` or its subclasses:
-
-```swift
-Router<Global>.register(for: "your router") { (url, value) throws -> UIViewController in
-    return // your controller
-}
-```
-
 - `do`
 
-The return value of its closure is specified as `Void` (`Void` cannot be omitted):
+The return value of its closure is specified as `DoResult` (` Result<Void, RouterError>`):
 
 ```swift
-Router<Global>.register(for: "your router") { (url, value) throws -> Void in
+Router<Global>.register(for: "your router") { (url, value) -> DoResult in
     // do something
+    return .success(())
 }
 ```
 
-- `getResult`
+- `get`
 
-The return value of the closure is specified as `Any?`, You can expand it to any type you need that is not
- `UIViewController` and `Void`, such as `CGRect`
+The return value of its closure is specified as `GetResult<T>` (`Result<T, RouterError>`):
+
+You can expand it to any type you need that is not `UIViewController` and `Void`, such as `CGRect`:
 
 ```swift
-Router<Global>.register(for: "your router") { (url, value) throws -> CGRect in
-    return .zero // Anything you need
+Router<Global>.register(for: "your router") { (url, value) -> GetResult<CGRect> in
+    return .success(.zero)  // Anything you need
+}
+```
+
+- `viewController`
+
+The return value of its closure is specified as `ViewControllerResult` (` Result<UIViewController, RouterError>`):
+
+```swift
+Router<Global>.register(for: "your router") { (url, value) -> ViewControllerResult in
+    return .success(UIViewController()) // your controller
 }
 ```
 
@@ -177,26 +192,27 @@ private class ModuleARegister: RouterRegister {
         
         let router = Router<ModuleA>.self
         
-        router.register(for: .create) { (url, value) throws -> UIViewController in
-            return UIViewController()
-        }
-        
-        router.register(for: .doSomething) { (url, value) throws -> Void in
+        router.register(for: .doSomething) { (url, value) -> DoResult in
             
             guard let param = value as? (start: Date, end: Date) else {
-                throw RouterError.parameterError(url: url, parameter: value)
+                return .failure(.parameterError(url: url, parameter: value))
             }
             
             print("We are doing these things from \(param.start) to \(param.end)")
+            return .success(())
         }
         
-        router.register(for: .calculateFrame) { (url, value) throws -> CGRect in
+        router.register(for: .calculateFrame) { (url, value) -> GetResult<CGRect> in
             
             guard let screenWidth = value as? CGFloat else {
-                throw RouterError.parameterError(url: url, parameter: value)
+                return .failure(.parameterError(url: url, parameter: value))
             }
             
-            return CGRect(x: 0, y: 0, width: screenWidth * 0.25, height: screenWidth)
+            return .success(CGRect(x: 0, y: 0, width: screenWidth * 0.25, height: screenWidth))
+        }
+        
+        router.register(for: .create) { (url, value) -> ViewControllerResult in
+            return .success(UIViewController())
         }
     }
 }

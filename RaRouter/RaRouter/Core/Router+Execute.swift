@@ -38,7 +38,7 @@ public extension RaRouter {
     }
 }
 
-// MARK: - GetResult
+// MARK: - Get
 
 public extension RaRouter {
     
