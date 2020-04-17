@@ -49,11 +49,12 @@ public extension RaRouter {
 
 // MARK: - Register Module
 
+// make easier to understand
 public typealias Modules = Global
 
 public extension RaRouter where Module == Modules {
     
-    /// 调用该方法以初始化组件
+    /// Call this method to initialize the components
     static func initialize() { _initialize }
 }
 

@@ -8,10 +8,14 @@
 
 import Foundation
 
-/// 默认提供的路由
+/// The default implementation of `RaRouter`
 public enum Router<Module: ModuleRouter>: RaRouter { }
 
-/// 默认的全局路由组件，可通过该组件为 `Router` 提供泛型，执行 `Router` 的一些默认方法
+/// A global component.
+///
+/// Can be used to provide a default generic type for `Router`.
+///
+/// If there is a better choice, please **never** use this.
 public enum Global: ModuleRouter {
     
     public typealias Table = RouterTable

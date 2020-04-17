@@ -17,20 +17,20 @@ public typealias GetHandlerFactory = (_ url: String, _ values: Any?) -> Result<A
 public typealias ViewControllerResult = Result<UIViewController, RouterError>
 public typealias ViewControllerHandlerFactory = (_ url: String, _ values: Any?) -> ViewControllerResult
 
-/// 用以存储注册过的路由
+/// Used to store registered routers
 public class RouterFactory {
     
-    /// 单例
+    /// Singleton
     public static let shared = RouterFactory()
     
     private init() {}
     
-    /// 用以存储 **执行操作** 类型的路由
+    /// Used to store `do` router
     public lazy var doHandlerFactories: [String : DoHandlerFactory]  = [:]
     
-    /// 用以存储 **执行操作后，获取操作的返回值** 类型的路由
+    /// Used to store `get` router
     public lazy var getHandlerFactories: [String : GetHandlerFactory]  = [:]
     
-    /// 用以存储 **执行操作后，获取控制器** 类型的路由
+    /// Used to store `viewController` router
     public lazy var viewControllerHandlerFactories: [String : ViewControllerHandlerFactory]  = [:]
 }

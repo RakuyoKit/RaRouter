@@ -8,32 +8,33 @@
 
 import Foundation
 
-/// 路由
+/// Router.
 public protocol RaRouter {
     
-    /// 模块泛型
+    /// refers to the module.
     associatedtype Module: ModuleRouter
 }
 
-/// 用来表明，遵守该协议的类型，是某个模块的路由组件
+/// Used to indicate that the type of compliance with the protocol is a router component of a module.
 public protocol ModuleRouter {
     
-    /// 用来表示该路由的路由表
+    /// refers to the router table.
     associatedtype Table: RouterTableProtocol
 }
 
-/// 用来表明，遵守该协议的类型，是某个模块的路由的路由表
+/// Used to indicate that the type of compliance with the protocol is a router table of a module.
 public protocol RouterTableProtocol: Codable {
     
-    /// 路由表需要实现该属性，在其中 `return rawValue`
+    /// If you use `enum` to comply with the protocol,
+    /// then you should return `rawValue` in this method.
     ///
-    /// eg: `var url: String { rawValue }`
+    /// e.g. `var url: String { rawValue }`
     var url: String { get }
 }
 
-/// 各个路由组件的注册类应该实现该协议，用以注册组件路由
+/// The registration class of each router component should implement this protocol to register component router
 public protocol RouterRegister: class {
     
-    /// 组件需要实现该方法以注册路由
+    /// Implement this method and register the route in this method
     static func register()
 }

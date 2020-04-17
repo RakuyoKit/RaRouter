@@ -103,8 +103,8 @@
 		3A3747F0243C128F00DA1651 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				3A3747F9243C13E800DA1651 /* Router.swift */,
 				3A3747FA243C13E800DA1651 /* RouterProtocol.swift */,
+				3A3747F9243C13E800DA1651 /* Router.swift */,
 				3A3747F8243C13E800DA1651 /* Router+Execute.swift */,
 				3ABA02EA24493E1700BAFCB4 /* Router+Register.swift */,
 				3A3747F7243C13E800DA1651 /* RouterError.swift */,

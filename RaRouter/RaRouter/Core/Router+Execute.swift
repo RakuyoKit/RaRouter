@@ -6,28 +6,28 @@
 //  Copyright © 2020 Rakuyo. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 // MARK: - Do
 
 public extension RaRouter {
     
-    /// 根据 `table` 执行某一个路由。
+    /// Execute router by `Module.Table`.
     ///
     /// - Parameters:
-    ///   - table: 所要执行的路由
-    ///   - param: 该路由所需要的参数
-    /// - Returns: 执行结果，详见 `DoResult` 类型
+    ///   - table: Router to be executed.
+    ///   - param: Parameters required for this router.
+    /// - Returns: Execution result, see `DoResult`.
     static func `do`(_ table: Module.Table, param: Any? = nil) -> DoResult {
         return `do`(table.url, param: param)
     }
     
-    /// 根据 `url` 执行某一个路由。
+    /// Execute router by `String`.
     ///
     /// - Parameters:
-    ///   - url: 所要执行的路由的地址
-    ///   - param: 该路由所需要的参数
-    /// - Returns: 执行结果，详见 `DoResult` 类型
+    ///   - url: Router url to be executed.
+    ///   - param: Parameters required for this router.
+    /// - Returns: Execution result, see `DoResult`.
     static func `do`(_ url: String, param: Any? = nil) -> DoResult {
         
         guard let factory = RouterFactory.shared.doHandlerFactories[url] else {
@@ -42,21 +42,27 @@ public extension RaRouter {
 
 public extension RaRouter {
     
-    /// 根据 `table` 执行某一个路由，并获得其返回的结果
+    /// Execute router by `Module.Table`, And get the result it returns.
     ///
     /// - Parameters:
-    ///   - type: 返回的结果的类型
-    ///   - table: 所要执行的路由
-    ///   - param: 该路由所需要的参数
-    /// - Returns: 执行结果，详见 `GetResult` 类型
+    ///   - type: Type of result.
+    ///   - table: Router to be executed.
+    ///   - param: Parameters required for this router.
+    /// - Returns: Execution result, see `GetResult`.
     static func get<T>(of type: T.Type, from table: Module.Table, param: Any? = nil) -> GetResult<T> {
         return get(of: type, from: table.url, param: param)
     }
     
-    static func getResult<T>(of type: T.Type, from url: String, param: Any? = nil) -> GetResult<T> {
+    /// Execute router by `String`, And get the result it returns.
+    ///
+    /// - Parameters:
+    ///   - type: Type of result.
+    ///   - url: Router url to be executed.
+    ///   - param: Parameters required for this router.
+    /// - Returns: Execution result, see `GetResult`.
     static func get<T>(of type: T.Type, from url: String, param: Any? = nil) -> GetResult<T> {
         
-        guard let factory = RouterFactory.shared.resultHandlerFactories[url] else {
+        guard let factory = RouterFactory.shared.getHandlerFactories[url] else {
             return .failure(.notHandler(url: url))
         }
         
@@ -71,10 +77,22 @@ public extension RaRouter {
 
 public extension RaRouter {
     
+    /// Execute router by `Module.Table`, And get the returned `UIViewController` subclass.
+    ///
+    /// - Parameters:
+    ///   - table: Router to be executed.
+    ///   - param: Parameters required for this router.
+    /// - Returns: Execution result, see `ViewControllerResult`.
     static func viewController(from table: Module.Table, param: Any? = nil) -> ViewControllerResult {
         return viewController(from: table.url, param: param)
     }
     
+    /// Execute router by `String`, And get the returned `UIViewController` subclass.
+    ///
+    /// - Parameters:
+    ///   - url: Router url to be executed.
+    ///   - param: Parameters required for this router.
+    /// - Returns: Execution result, see `ViewControllerResult`.
     static func viewController(from url: String, param: Any? = nil) -> ViewControllerResult {
         
         guard let factory = RouterFactory.shared.viewControllerHandlerFactories[url] else {
