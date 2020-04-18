@@ -22,7 +22,7 @@
 - **Xcode 10.0 or later** required.
 - **Swift 5.0 or later** required.
 
-## Installation
+## Install
 
 ### CocoaPods
 
@@ -30,6 +30,92 @@
 pod 'RaRouter'
 ```
 
-## Quick start
+## Usage
 
-For related content, please refer to [wiki_Quick Start](https://github.com/rakuyoMo/RaRouter/wiki/Quick-start).
+For related content, please refer to wiki: [Quick Start](https://github.com/rakuyoMo/RaRouter/wiki/Quick-start).
+
+## Preview
+
+The following code shows the module encapsulated with `RaRouter`: `ModuleA`. 
+
+With this code, you can have a preliminary impression of `RaRouter`:
+
+> For more functions and complete sample code, please refer to the demo provided with the warehouse (under the `Examples` directory).
+
+```swift
+// In the `Interface.swift` file of the router project
+public enum ModuleA: ModuleRouter {
+    
+    public typealias Table = RouterTable
+    
+    public enum RouterTable: String, RouterTableProtocol {
+        
+        public var url: String { rawValue }
+        
+        case create         = "rakuyo://moduleA/create"
+        case doSomething    = "rakuyo://moduleA/do/something"
+        case calculateFrame = "rakuyo://moduleA/calculate/frame" 
+    }
+}
+
+public extension Router where Module == ModuleA {
+    
+    static func doSomething(start: Date, end: Date) -> DoResult {
+        return Router.do(.doSomething, param: (start, end))
+    }
+
+    static func calculateFrame(with screenWidth: CGFloat) -> GetResult<CGRect> {
+        return Router.get(of: CGRect.self, from: .calculateFrame, param: screenWidth)
+    }
+    
+    static func create() -> ViewControllerResult {
+        return Router.viewController(from: .create)
+    }
+}
+
+// In the `Register.swift` file of the core project
+private class ModuleARegister: RouterRegister {
+    
+    static func register() {
+        
+        let router = Router<ModuleA>.self
+        
+        router.register(for: .doSomething) { (url, value) -> DoResult in
+            
+            guard let param = value as? (start: Date, end: Date) else {
+                return .failure(.parameterError(url: url, parameter: value))
+            }
+            
+            print("We are doing these things from \(param.start) to \(param.end)")
+            return .success(())
+        }
+        
+        router.register(for: .calculateFrame) { (url, value) -> GetResult<CGRect> in
+            
+            guard let screenWidth = value as? CGFloat else {
+                return .failure(.parameterError(url: url, parameter: value))
+            }
+            
+            return .success(CGRect(x: 0, y: 0, width: screenWidth * 0.25, height: screenWidth))
+        }
+        
+        router.register(for: .create) { (url, value) -> ViewControllerResult in
+            return .success(UIViewController())
+        }
+    }
+}
+
+// In the `AppDelegate.swift` file of the core project
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+
+    // some codes with higher priority than registered routes
+
+    // initialize modules
+    Router<Modules>.initialize()
+
+    // some other code ..
+}
+```
+## License
+
+`RaRouter` is available under the **MIT** license. See the [LICENSE](https://github.com/rakuyoMo/RaRouter/blob/master/LICENSE) file for more info.
