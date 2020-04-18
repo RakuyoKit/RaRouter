@@ -73,6 +73,17 @@ public extension RaRouter {
     }
 }
 
+public extension GetResult {
+    
+    /// When an error occurs, it will return `default`
+    func get(default: Success) -> Success {
+        switch self {
+        case .success(let success): return success
+        case .failure(_): return `default`
+        }
+    }
+}
+
 // MARK: - ViewController
 
 public extension RaRouter {
