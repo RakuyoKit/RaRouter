@@ -10,7 +10,9 @@
 <a href="https://github.com/rakuyoMo/RaRouter/blob/master/LICENSE"><img src="https://img.shields.io/cocoapods/l/RaRouter.svg?style=flat"></a>
 </p>
 
-`RaRouter` 是一个面向协议的轻量级路由 ，通过使用默认提供的类型，或自定义 Router，您可以快速搭建自己的路由组件，进而解耦自己的项目。
+`RaRouter` 是一个面向协议的轻量级路由框架。
+
+通过使用框架提供默认的类型，或者自定义路由，您可以快速搭建自己的路由组件，进而解耦自己的项目。
 
 ## 基本要求
 
@@ -26,68 +28,26 @@
 pod 'RaRouter'
 ```
 
-## 快速入门
+## 功能
 
-> 下面的内容将告诉您如何使用该库，但基本不会说 "**为什么**"。更多内容见 [wiki](https://github.com/rakuyoMo/RaRouter/wiki/快速入门)。完整的代码示例可以参考 demo 中的内容
+- 支持根据路由字符串执行对应的内容，或获得某些返回值。
+- 可以通过封装，集中定义、**隐藏路由字符串**，减少硬编码带来的风险。
+- 可以通过封装，在执行路由时保持**类型严格**。
+- 新增/移除路由组件时，**无需**增加/减少任何注册相关的代码。
+- **面向协议**，提供非常高的自由度，供您自定义路由操作。
 
-### 执行路由
+## 使用
 
-`RaRouter` 默认提供以下三种路由操作：
+相关内容请参考 wiki: [快速入门](https://github.com/rakuyoMo/RaRouter/wiki/快速入门)。
 
-- `do`： 执行某些操作：
+## 预览
 
-```swift
-let router = "rakuyo://moduleA/do/something"
+下面的代码展示了使用 `RaRouter` 封装的模块：`ModuleA`。借助这段代码，您可以对 `RaRouter` 有一个初步的印象：
 
-_ = Router<Global>.do(router, param: ("参数1", 2))
-```
-
-- `get`：执行某些操作，并获得其返回值：
-
-```swift
-let router = "rakuyo://moduleA/calculate/frame"
-
-let result = Router<Global>.get(of: String.self, from: router, param: "参数")
-
-switch result {
-case .success(let string):
-    print(string)
-    
-case .failure(let error):
-    print(error)
-}
-```
-
-- `viewController`：执行某些操作，并获得其返回的 `UIViewController` 子类：
+> 更多功能，以及完整的示例代码可以参考随仓库配套提供的 demo（在 `Examples` 目录下）。
 
 ```swift
-let router = "rakuyo://moduleA/create"
-
-let result = Router<Global>.viewController(from: router)
-
-switch result {
-case .success(let controller):
-    print(controller)
-    
-case .failure(let error):
-    print(error)
-}
-```
-
-一些解释：
-
-1. 对于 `param` 参数，其为 `Any?` 类型，默认为 `nil`。这意味着您可以传递任何您想要的参数，并且不受任何的限制。
-
-    例如上面的 `do` 示例中，传入了一个 `(String, Int)` 类型的元组作为参数，而 `get` 实例中只传入了一个 `String`。到了 `viewController
-`，因为从编码上来说 `"rakuyo://moduleA/create"` 不需要任何参数（假如编写了那些代码），所以可以省略 `param`。
-
-2. 对于 `Global` 泛型，将在 [进阶教程](https://github.com/rakuyoMo/RaRouter/wiki/进阶教程#global) 中介绍。
-
-### 封装
-
-我们还可以再优化一下上面的代码，例如封装一下 `router`：
-
-```swift
+// In the `Interface.swift` file of the router project
 public enum ModuleA: ModuleRouter {
     
     public typealias Table = RouterTable
@@ -101,13 +61,7 @@ public enum ModuleA: ModuleRouter {
         case calculateFrame = "rakuyo://moduleA/calculate/frame" 
     }
 }
-```
 
-上面的代码定义了一个模块 `ModuleA`，其中封装了它所包含的 "**功能**"。
-
-接着还可以再封装一下 "**操作**"：
-
-```swift
 public extension Router where Module == ModuleA {
     
     static func doSomething(start: Date, end: Date) -> DoResult {
@@ -122,64 +76,8 @@ public extension Router where Module == ModuleA {
         return Router.viewController(from: .create)
     }
 }
-```
 
-现在，当我们再执行 [执行路由](#执行路由) 一节的测试代码时，我们可以这么写：
-
-```swift
-// for `do`
-_ = Router<ModuleA>.doSomething(start: Date(), end: Date())
-
-// for `get`
-if case let .success(frame) = Router<ModuleA>.calculateFrame(with: 375) { }
-
-// for `viewController`
-if case let .success(controller) = Router<ModuleA>.create() { }
-```
-
-### 注册
-
-最后，我们需要注册刚刚定义的路由。
-
-对于默认提供的三种操作，每种操作都有不同的注册方法。而它们的区别在于闭包的返回值不同：
-
-- `do`
-
-其闭包的返回值规定为 `DoResult`（`Result<Void, RouterError>`）：
-
-```swift
-Router<Global>.register(for: "your router") { (url, value) -> DoResult in
-    // do something
-    return .success(())
-}
-```
-
-- `get`
- 
-其闭包的返回值规定为 `GetResult<T>`（`Result<T, RouterError>`）：
-
-您可以扩展为任意您需要的非 `UIViewController` 以及 `Void` 类型，例如 `CGRect`:
-
-```swift
-Router<Global>.register(for: "your router") { (url, value) -> GetResult<CGRect> in
-    return .success(.zero)  // Anything you need
-}
-```
-
-- `viewController`
-
-其闭包的返回值规定为 `ViewControllerResult`（`Result<UIViewController, RouterError>`）：
-
-```swift
-Router<Global>.register(for: "your router") { (url, value) -> ViewControllerResult in
-    return .success(UIViewController()) // your controller
-}
-```
-
-对于[封装](#封装)一节中的示例，我们应该如下编写 `ModuleA` 对应的注册代码：
-
-```swift
-// Following the `RouterRegister` protocol is the key
+// In the `Register.swift` file of the core project
 private class ModuleARegister: RouterRegister {
     
     static func register() {
@@ -210,11 +108,8 @@ private class ModuleARegister: RouterRegister {
         }
     }
 }
-```
 
-最后的最后，在 `AppDelegate.swift` 的 `application(_:, didFinishLaunchingWithOptions:)` 方法中执行注册代码：
-
-```swift
+// In the `AppDelegate.swift` file of the core project
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
     // some codes with higher priority than registered routes
@@ -225,7 +120,6 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
     // some other code ..
 }
 ```
+## License
 
---------
-
-更多内容请参考 [wiki](https://github.com/rakuyoMo/RaRouter/wiki/快速入门)
+`RaRouter` 在 **MIT** 许可下可用。 有关更多信息，请参见 [LICENSE](https://github.com/rakuyoMo/RaRouter/blob/master/LICENSE) 文件。
