@@ -5,11 +5,11 @@ Pod::Spec.new do |s|
   
   s.name          = 'RaRouter'
   
-  s.version       = '1.1.0'
+  s.version       = '1.2.0'
   
-  s.summary       = 'A simple routing component.'
+  s.summary       = 'A simple router component.'
   
-  s.description   = 'A simple, lightweight, high-freedom protocol-oriented routing component.'
+  s.description   = 'A simple, lightweight, high-freedom protocol-oriented router component.'
   
   s.homepage      = 'https://github.com/rakuyoMo/RaRouter.git'
   
