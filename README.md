@@ -127,6 +127,11 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
     // some other code ..
 }
 ```
+
+## Reference
+
+During the development process I referred to [URLNavigator](https://github.com/devxoul/URLNavigator), a great open source component. Feel the author's contribution!
+
 ## License
 
 `RaRouter` is available under the **MIT** license. See the [LICENSE](https://github.com/rakuyoMo/RaRouter/blob/master/LICENSE) file for more info.
