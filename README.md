@@ -30,6 +30,17 @@
 pod 'RaRouter'
 ```
 
+## Features
+
+- [x] Support to execute the corresponding content according to **router string**, or get some return
+ value.
+- [x] **Protocol-oriented**, providing a very high degree of freedom for you to customize router
+ operations.
+- [x] When adding/removing router components, **no need to** add/remove any registration related codes.
+- [x] Through encapsulation, **collectively define and hide** router strings to reduce the risk of hard
+ coding.
+- [x] You can keep the **type strict** when performing router through encapsulation.
+
 ## Usage
 
 For related content, please refer to wiki: [Quick Start](https://github.com/rakuyoMo/RaRouter/wiki/Quick-start).
