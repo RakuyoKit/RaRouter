@@ -94,7 +94,7 @@ private class ModuleARegister: RouterRegister {
             return .success(())
         }
         
-        router.register(for: .calculateFrame) { (url, value) -> GetResult<CGRect> in
+        router.register(for: .calculateFrame) { (url, value) -> GetResult<AnyResult> in
             
             guard let screenWidth = value as? CGFloat else {
                 return .failure(.parameterError(url: url, parameter: value))
