@@ -154,3 +154,16 @@ extension RaRouterTests {
         XCTAssert(value == ToolSingleton.shared.defaultValue, "\(value)")
     }
 }
+
+// MARK: - Test For Error
+
+extension RaRouterTests {
+    
+    func testErrorEqual() {
+        XCTAssertFalse(RouterError.notHandler(url: "")  == RouterError.convertTypeFailed(url: ""))
+        XCTAssertFalse(RouterError.notHandler(url: "a") == RouterError.notHandler(url: "b"))
+        XCTAssertFalse(RouterError.notHandler(url: "b") == RouterError.parameterError(url: "c", parameter: nil))
+        XCTAssertFalse(RouterError.controllerNil(url: "d", parameter: nil, message: "ms") ==
+                       RouterError.controllerNil(url: "d", parameter: nil, message: "msg"))
+    }
+}
