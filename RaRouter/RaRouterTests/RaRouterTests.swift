@@ -167,3 +167,12 @@ extension RaRouterTests {
                        RouterError.controllerNil(url: "d", parameter: nil, message: "msg"))
     }
 }
+
+// MARK: - Test For Global
+
+extension RaRouterTests {
+    
+    func testGlobal() {
+        XCTAssertNotNil(Global.RouterTable.none.url, "url should not be nil")
+    }
+}
