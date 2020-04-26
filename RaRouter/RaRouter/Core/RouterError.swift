@@ -34,3 +34,28 @@ public enum RouterError: Error {
     /// Currently only additional `message` is provided to indicate the cause of the error
     case controllerNil(url: String, parameter: Any?, message: String)
 }
+
+// MARK: - Equatable
+
+extension RouterError: Equatable {
+    
+    public static func == (lhs: RouterError, rhs: RouterError) -> Bool {
+        
+        switch (lhs, rhs) {
+            
+        case (.notHandler(let lhsURL), .notHandler(let rhsURL)):
+            return lhsURL == rhsURL
+            
+        case (.parameterError(let lhsURL, _), .parameterError(let rhsURL, _)):
+            return lhsURL == rhsURL
+            
+        case (.convertTypeFailed(let lhsURL), .convertTypeFailed(let rhsURL)):
+            return lhsURL == rhsURL
+            
+        case (.controllerNil(let lhsURL, _, let lhsmessage), .controllerNil(let rhsURL, _, let rhsmessage)):
+            return (lhsURL == rhsURL) && (lhsmessage == rhsmessage)
+            
+        case (_, _): return false
+        }
+    }
+}
