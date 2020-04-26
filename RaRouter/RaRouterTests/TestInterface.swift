@@ -18,10 +18,18 @@ enum Test: ModuleRouter {
         
         var url: String { rawValue }
         
-        case setTestStringToToolSingleton = "raRouter://test/do/ToolSingleton"
-        case getTestStringFromToolSingleton = "raRouter://test/get/ToolSingleton"
+        case setTestStringToToolSingleton   = "RaRouter://test/do/ToolSingleton/set"
+        case clearTestStringToToolSingleton = "RaRouter://test/do/ToolSingleton/clear"
+        
+        case getTestStringFromToolSingleton = "RaRouter://test/get/ToolSingleton"
+        case getErrorTypeValue              = "RaRouter://test/get/errorType"
+        case getSomeValue                   = "RaRouter://test/get/some"
+        case getDefaultValue                = "RaRouter://test/get/default"
+        case getDefaultValueWithSuccess     = "RaRouter://test/get/default/success"
     }
 }
+
+// MARK: - Router For Do
 
 extension Router where Module == Test {
     
@@ -29,7 +37,32 @@ extension Router where Module == Test {
         return Router.do(.setTestStringToToolSingleton, param: value)
     }
     
+    static func testDoByClearToolSingleton() -> DoResult {
+        return Router.do(.clearTestStringToToolSingleton)
+    }
+}
+
+// MARK: - Router For Get
+
+extension Router where Module == Test {
+    
     static func getStringFromToolSingleton() -> GetResult<String> {
         return Router.get(of: String.self, from: .getTestStringFromToolSingleton)
+    }
+    
+    static func getErrorTypeValue() -> GetResult<String> {
+        return Router.get(of: String.self, from: .getErrorTypeValue)
+    }
+    
+    static func getSomeValue(from singleton: ToolSingleto) -> GetResult<String> {
+        return Router.get(of: String.self, from: .getSomeValue, param: singleton)
+    }
+    
+    static func getDefaultValue() -> GetResult<String> {
+        return Router.get(of: String.self, from: .getDefaultValue)
+    }
+    
+    static func getDefaultValueWithSuccess() -> GetResult<String> {
+        return Router.get(of: String.self, from: .getDefaultValueWithSuccess)
     }
 }

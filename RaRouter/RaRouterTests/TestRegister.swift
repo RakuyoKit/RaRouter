@@ -11,10 +11,21 @@ import Foundation
 @testable import RaRouter
 
 private class TestRegister: RouterRegister {
-
+    
+    static let router = Router<Test>.self
+    
     static func register() {
         
-        let router = Router<Test>.self
+        registerDoRouter()
+        registerGetRouter()
+    }
+}
+
+// MARK: - Register For Do
+
+extension TestRegister {
+    
+    static func registerDoRouter() {
         
         router.register(for: .setTestStringToToolSingleton) { (url, value) -> DoResult in
 
@@ -27,8 +38,38 @@ private class TestRegister: RouterRegister {
             return .success(())
         }
         
-        router.register(for: .getTestStringFromToolSingleton) { (url, value) -> GetResult<Any> in
+        router.register(for: .clearTestStringToToolSingleton) { (url, value) -> DoResult in
+            ToolSingleton.shared.clearedValue = nil
+            return .success(())
+        }
+    }
+}
+
+// MARK: - Register For Get
+
+extension TestRegister {
+    
+    static func registerGetRouter() {
+        
+        router.register(for: .getTestStringFromToolSingleton) { (url, value) -> GetResult<AnyResult> in
             return .success(ToolSingleton.shared.value as Any)
+        }
+        
+        router.register(for: .getErrorTypeValue) { (url, value) -> GetResult<AnyResult> in
+            return .success(ToolSingleton.shared.numberForGetErrorTypeValue)
+        }
+        
+        router.register(for: .getSomeValue) { (url, value) -> GetResult<AnyResult> in
+            
+            guard let param = value as? ToolSingleton else {
+                return .failure(.parameterError(url: url, parameter: value))
+            }
+            
+            return .success(param.realValue)
+        }
+        
+        router.register(for: .getDefaultValueWithSuccess) { (url, value) -> GetResult<AnyResult> in
+            return .success(ToolSingleton.shared.defaultValue)
         }
     }
 }
