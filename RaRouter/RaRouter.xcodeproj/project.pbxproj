@@ -21,6 +21,9 @@
 		3A374803243C148700DA1651 /* push.sh in Resources */ = {isa = PBXBuildFile; fileRef = 3A374801243C148600DA1651 /* push.sh */; };
 		3ABA02EB24493E1700BAFCB4 /* Router+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABA02EA24493E1700BAFCB4 /* Router+Register.swift */; };
 		3AF2107F2455277900C1AED2 /* RaRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF2107E2455277900C1AED2 /* RaRouterTests.swift */; };
+		3AF21089245530B400C1AED2 /* TestInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF21088245530B400C1AED2 /* TestInterface.swift */; };
+		3AF21091245538C600C1AED2 /* TestRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF21090245538C600C1AED2 /* TestRegister.swift */; };
+		3AF2109924553CE300C1AED2 /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF2109824553CE300C1AED2 /* Tools.swift */; };
 		483B9990DA510EAF0ED7E8F3 /* Pods_RaRouter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8FDD88AC1309928984D73F4 /* Pods_RaRouter.framework */; };
 		9176B49600BA9A625F6EEF8D /* README_CN.md in Sources */ = {isa = PBXBuildFile; fileRef = 9176B1A662ABCC16E0B85DA9 /* README_CN.md */; };
 		BF93EFAC64EDB273C4A1D55A /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = BF93EB0B44DE2DC136339056 /* README.md */; };
@@ -55,6 +58,9 @@
 		3AF2107C2455277900C1AED2 /* RaRouterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RaRouterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AF2107E2455277900C1AED2 /* RaRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaRouterTests.swift; sourceTree = "<group>"; };
 		3AF210802455277900C1AED2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3AF21088245530B400C1AED2 /* TestInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestInterface.swift; sourceTree = "<group>"; };
+		3AF21090245538C600C1AED2 /* TestRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestRegister.swift; sourceTree = "<group>"; };
+		3AF2109824553CE300C1AED2 /* Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
 		468A012BED050C741CBED866 /* Pods-RaRouter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RaRouter.debug.xcconfig"; path = "Target Support Files/Pods-RaRouter/Pods-RaRouter.debug.xcconfig"; sourceTree = "<group>"; };
 		6DBD8580A3305CE5331BFA3C /* Pods-RaRouter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RaRouter.release.xcconfig"; path = "Target Support Files/Pods-RaRouter/Pods-RaRouter.release.xcconfig"; sourceTree = "<group>"; };
 		9176B1A662ABCC16E0B85DA9 /* README_CN.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README_CN.md; path = ../../README_CN.md; sourceTree = "<group>"; };
@@ -153,6 +159,9 @@
 			isa = PBXGroup;
 			children = (
 				3AF2107E2455277900C1AED2 /* RaRouterTests.swift */,
+				3AF21088245530B400C1AED2 /* TestInterface.swift */,
+				3AF21090245538C600C1AED2 /* TestRegister.swift */,
+				3AF2109824553CE300C1AED2 /* Tools.swift */,
 				3AF210802455277900C1AED2 /* Info.plist */,
 			);
 			path = RaRouterTests;
@@ -331,6 +340,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3AF2107F2455277900C1AED2 /* RaRouterTests.swift in Sources */,
+				3AF21089245530B400C1AED2 /* TestInterface.swift in Sources */,
+				3AF21091245538C600C1AED2 /* TestRegister.swift in Sources */,
+				3AF2109924553CE300C1AED2 /* Tools.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -523,7 +535,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5Q8TLD2828;
 				INFOPLIST_FILE = RaRouterTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -544,7 +556,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5Q8TLD2828;
 				INFOPLIST_FILE = RaRouterTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

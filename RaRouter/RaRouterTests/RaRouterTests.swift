@@ -8,26 +8,45 @@
 
 import XCTest
 
+@testable import RaRouter
+
 class RaRouterTests: XCTestCase {
-
+    
     override func setUpWithError() throws {
+        
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        
+        Router<Modules>.initialize()
     }
-
+    
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
+}
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        measure {
-            // Put the code you want to measure the time of here.
+extension RaRouterTests {
+    
+    func testDoAndGet() throws {
+        
+        let value = "Result"
+        
+        let result = Router<Test>.testDoByToolSingleton(value: value)
+        
+        switch result {
+        case .success(()):
+            
+            let getResult = Router<Test>.getStringFromToolSingleton()
+            
+            switch getResult {
+            case .success(let resultValue):
+                XCTAssert(resultValue == value, "failure, Singleton value is: \(String(describing: resultValue))")
+                
+            case .failure(let error):
+                XCTFail("get failure: \(error)")
+            }
+            
+        case .failure(let error):
+            XCTFail("do failure: \(error)")
         }
     }
-
 }
