@@ -20,10 +20,21 @@
 		3A374802243C148700DA1651 /* RaRouter.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 3A374800243C148600DA1651 /* RaRouter.podspec */; };
 		3A374803243C148700DA1651 /* push.sh in Resources */ = {isa = PBXBuildFile; fileRef = 3A374801243C148600DA1651 /* push.sh */; };
 		3ABA02EB24493E1700BAFCB4 /* Router+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABA02EA24493E1700BAFCB4 /* Router+Register.swift */; };
+		3AF2107F2455277900C1AED2 /* RaRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF2107E2455277900C1AED2 /* RaRouterTests.swift */; };
 		483B9990DA510EAF0ED7E8F3 /* Pods_RaRouter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8FDD88AC1309928984D73F4 /* Pods_RaRouter.framework */; };
 		9176B49600BA9A625F6EEF8D /* README_CN.md in Sources */ = {isa = PBXBuildFile; fileRef = 9176B1A662ABCC16E0B85DA9 /* README_CN.md */; };
 		BF93EFAC64EDB273C4A1D55A /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = BF93EB0B44DE2DC136339056 /* README.md */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3AF210812455277900C1AED2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3A3747D1243C128500DA1651 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3A3747D8243C128500DA1651;
+			remoteInfo = RaRouter;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		3A3747D9243C128500DA1651 /* RaRouter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RaRouter.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -41,6 +52,9 @@
 		3A374800243C148600DA1651 /* RaRouter.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = RaRouter.podspec; sourceTree = SOURCE_ROOT; };
 		3A374801243C148600DA1651 /* push.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = push.sh; sourceTree = SOURCE_ROOT; };
 		3ABA02EA24493E1700BAFCB4 /* Router+Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Router+Register.swift"; sourceTree = "<group>"; };
+		3AF2107C2455277900C1AED2 /* RaRouterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RaRouterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3AF2107E2455277900C1AED2 /* RaRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaRouterTests.swift; sourceTree = "<group>"; };
+		3AF210802455277900C1AED2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		468A012BED050C741CBED866 /* Pods-RaRouter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RaRouter.debug.xcconfig"; path = "Target Support Files/Pods-RaRouter/Pods-RaRouter.debug.xcconfig"; sourceTree = "<group>"; };
 		6DBD8580A3305CE5331BFA3C /* Pods-RaRouter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RaRouter.release.xcconfig"; path = "Target Support Files/Pods-RaRouter/Pods-RaRouter.release.xcconfig"; sourceTree = "<group>"; };
 		9176B1A662ABCC16E0B85DA9 /* README_CN.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README_CN.md; path = ../../README_CN.md; sourceTree = "<group>"; };
@@ -54,6 +68,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				483B9990DA510EAF0ED7E8F3 /* Pods_RaRouter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3AF210792455277900C1AED2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				3A3747DB243C128500DA1651 /* RaRouter */,
+				3AF2107D2455277900C1AED2 /* RaRouterTests */,
 				3A3747DA243C128500DA1651 /* Products */,
 				1E6956189F253306E6372BAB /* Pods */,
 				7D4110123DC259F1B9B30372 /* Frameworks */,
@@ -83,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				3A3747D9243C128500DA1651 /* RaRouter.app */,
+				3AF2107C2455277900C1AED2 /* RaRouterTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -126,6 +149,15 @@
 			path = Other;
 			sourceTree = "<group>";
 		};
+		3AF2107D2455277900C1AED2 /* RaRouterTests */ = {
+			isa = PBXGroup;
+			children = (
+				3AF2107E2455277900C1AED2 /* RaRouterTests.swift */,
+				3AF210802455277900C1AED2 /* Info.plist */,
+			);
+			path = RaRouterTests;
+			sourceTree = "<group>";
+		};
 		7D4110123DC259F1B9B30372 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,6 +188,24 @@
 			productReference = 3A3747D9243C128500DA1651 /* RaRouter.app */;
 			productType = "com.apple.product-type.application";
 		};
+		3AF2107B2455277900C1AED2 /* RaRouterTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3AF210852455277A00C1AED2 /* Build configuration list for PBXNativeTarget "RaRouterTests" */;
+			buildPhases = (
+				3AF210782455277900C1AED2 /* Sources */,
+				3AF210792455277900C1AED2 /* Frameworks */,
+				3AF2107A2455277900C1AED2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3AF210822455277900C1AED2 /* PBXTargetDependency */,
+			);
+			name = RaRouterTests;
+			productName = RaRouterTests;
+			productReference = 3AF2107C2455277900C1AED2 /* RaRouterTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -168,6 +218,10 @@
 				TargetAttributes = {
 					3A3747D8243C128500DA1651 = {
 						CreatedOnToolsVersion = 11.4;
+					};
+					3AF2107B2455277900C1AED2 = {
+						CreatedOnToolsVersion = 11.4.1;
+						TestTargetID = 3A3747D8243C128500DA1651;
 					};
 				};
 			};
@@ -185,6 +239,7 @@
 			projectRoot = "";
 			targets = (
 				3A3747D8243C128500DA1651 /* RaRouter */,
+				3AF2107B2455277900C1AED2 /* RaRouterTests */,
 			);
 		};
 /* End PBXProject section */
@@ -199,6 +254,13 @@
 				3A3747E6243C128700DA1651 /* Assets.xcassets in Resources */,
 				3A374803243C148700DA1651 /* push.sh in Resources */,
 				3A3747E4243C128500DA1651 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3AF2107A2455277900C1AED2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,7 +326,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3AF210782455277900C1AED2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3AF2107F2455277900C1AED2 /* RaRouterTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3AF210822455277900C1AED2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3A3747D8243C128500DA1651 /* RaRouter */;
+			targetProxy = 3AF210812455277900C1AED2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		3A3747E2243C128500DA1651 /* Main.storyboard */ = {
@@ -438,6 +516,48 @@
 			};
 			name = Release;
 		};
+		3AF210832455277A00C1AED2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5Q8TLD2828;
+				INFOPLIST_FILE = RaRouterTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.rakuyo.RaRouterTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RaRouter.app/RaRouter";
+			};
+			name = Debug;
+		};
+		3AF210842455277A00C1AED2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5Q8TLD2828;
+				INFOPLIST_FILE = RaRouterTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.rakuyo.RaRouterTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RaRouter.app/RaRouter";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -455,6 +575,15 @@
 			buildConfigurations = (
 				3A3747EE243C128700DA1651 /* Debug */,
 				3A3747EF243C128700DA1651 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3AF210852455277A00C1AED2 /* Build configuration list for PBXNativeTarget "RaRouterTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3AF210832455277A00C1AED2 /* Debug */,
+				3AF210842455277A00C1AED2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
