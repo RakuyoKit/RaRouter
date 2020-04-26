@@ -3,7 +3,7 @@ PODS:
     - ModuleARouter (>= 1.0.0-Router)
   - ModuleARouter (1.0.0-Router):
     - RaRouter
-  - RaRouter (1.1.0)
+  - RaRouter (1.2.1)
   - RootController (1.0.0):
     - ModuleARouter (>= 1.0.0-Router)
     - RootControllerRouter (>= 1.0.0-Router)
@@ -33,7 +33,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   ModuleA: 860697a2d7090502044fe41472c4106fb3cd2fd4
   ModuleARouter: 15a75873f17b9bb4c4452b300cc0bcfd7a634da1
-  RaRouter: 08ce8f718d2fd93c94d91911285df6e2fc8d6f0d
+  RaRouter: 84652c8e66543b5b747e6445edca42d4e92b4580
   RootController: 827caf27e7a3b80cd2f08799574a37e385c81eeb
   RootControllerRouter: 8dc5b9c9d090bc6f206fa92bd2136f3f65ba9872
 

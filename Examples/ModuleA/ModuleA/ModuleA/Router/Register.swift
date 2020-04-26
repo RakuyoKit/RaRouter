@@ -15,7 +15,7 @@ private class ModuleARegister: RouterRegister {
         
         let router = Router<ModuleA>.self
         
-        router.register(for: .dataSource) { (url, value) -> GetResult<[SectionDataSource]> in
+        router.register(for: .dataSource) { (url, value) -> GetResult<AnyResult> in
             return .success(dataSource)
         }
         
