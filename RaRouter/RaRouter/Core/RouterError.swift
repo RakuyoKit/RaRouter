@@ -33,6 +33,12 @@ public enum RouterError: Error {
     /// 
     /// Currently only additional `message` is provided to indicate the cause of the error
     case controllerNil(url: String, parameter: Any?, message: String)
+    
+    /// Other types of errors
+    ///
+    /// When you encounter certain situations, you have to use "return" to terminate the routing execution,
+    /// and the termination reason does not meet all the above error reasons, you can try to return the error
+    case other(url: String, parameter: Any?, error: Error?)
 }
 
 // MARK: - Equatable
@@ -54,6 +60,9 @@ extension RouterError: Equatable {
             
         case (.controllerNil(let lhsURL, _, let lhsmessage), .controllerNil(let rhsURL, _, let rhsmessage)):
             return (lhsURL == rhsURL) && (lhsmessage == rhsmessage)
+            
+        case (.other(let lhsURL, _, _), .other(let rhsURL, _, _)):
+            return lhsURL == rhsURL
             
         case (_, _): return false
         }
