@@ -20,10 +20,20 @@ public enum RouterError: Error {
     /// Failed to convert result to `type` when execute `get(of:from:param:)` router.
     case convertTypeFailed(url: String)
     
+    /// The returned result is nil.
+    ///
+    /// If you want the `get` type routing operation to return a non-nil result,
+    /// but the actual execution of the route may be `nil`, you have to use `return` to terminate the routing execution,
+    /// you can try to return this error
+    case resultNil(url: String, parameter: Any?, message: String)
+    
     /// The returned controller is nil.
     ///
+    /// Just as we provide `viewController` routing operations separately based on `get`,
+    /// we provide `controllerNil` errors separately based on the `resultNil` errors
+    ///
     /// In general, the creation result of the controller should not be nil.
-    /// So the return value of `ViewControllerHandlerFactory` is` UIViewController` instead of `UIViewController?`
+    /// So the return value of `ViewControllerHandlerFactory` is` Result<UIViewController, RouterError>` instead of `Result<UIViewController?, RouterError>?`
     ///
     /// But just in case:
     ///
@@ -33,6 +43,12 @@ public enum RouterError: Error {
     /// 
     /// Currently only additional `message` is provided to indicate the cause of the error
     case controllerNil(url: String, parameter: Any?, message: String)
+    
+    /// Other types of errors
+    ///
+    /// When you encounter certain situations, you have to use "return" to terminate the routing execution,
+    /// and the termination reason does not meet all the above error reasons, you can try to return the error
+    case other(url: String, parameter: Any?, error: Error?)
 }
 
 // MARK: - Equatable
@@ -52,8 +68,14 @@ extension RouterError: Equatable {
         case (.convertTypeFailed(let lhsURL), .convertTypeFailed(let rhsURL)):
             return lhsURL == rhsURL
             
-        case (.controllerNil(let lhsURL, _, let lhsmessage), .controllerNil(let rhsURL, _, let rhsmessage)):
-            return (lhsURL == rhsURL) && (lhsmessage == rhsmessage)
+        case (.resultNil(let lhsURL, _, let lhsMessage), .resultNil(let rhsURL, _, let rhsMessage)):
+            return (lhsURL == rhsURL) && (lhsMessage == rhsMessage)
+            
+        case (.controllerNil(let lhsURL, _, let lhsMessage), .controllerNil(let rhsURL, _, let rhsMessage)):
+            return (lhsURL == rhsURL) && (lhsMessage == rhsMessage)
+            
+        case (.other(let lhsURL, _, _), .other(let rhsURL, _, _)):
+            return lhsURL == rhsURL
             
         case (_, _): return false
         }
