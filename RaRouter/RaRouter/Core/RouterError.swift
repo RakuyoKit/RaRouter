@@ -20,6 +20,13 @@ public enum RouterError: Error {
     /// Failed to convert result to `type` when execute `get(of:from:param:)` router.
     case convertTypeFailed(url: String)
     
+    /// The returned result is nil.
+    ///
+    /// If you want the `get` type routing operation to return a non-nil result,
+    /// but the actual execution of the route may be `nil`, you have to use `return` to terminate the routing execution,
+    /// you can try to return this error
+    case resultNil(url: String, parameter: Any?, message: String)
+    
     /// The returned controller is nil.
     ///
     /// In general, the creation result of the controller should not be nil.
@@ -57,6 +64,9 @@ extension RouterError: Equatable {
             
         case (.convertTypeFailed(let lhsURL), .convertTypeFailed(let rhsURL)):
             return lhsURL == rhsURL
+            
+        case (.resultNil(let lhsURL, _, let lhsMessage), .resultNil(let rhsURL, _, let rhsMessage)):
+            return (lhsURL == rhsURL) && (lhsMessage == rhsMessage)
             
         case (.controllerNil(let lhsURL, _, let lhsMessage), .controllerNil(let rhsURL, _, let rhsMessage)):
             return (lhsURL == rhsURL) && (lhsMessage == rhsMessage)
