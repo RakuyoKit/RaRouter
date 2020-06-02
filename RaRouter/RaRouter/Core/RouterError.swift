@@ -58,8 +58,8 @@ extension RouterError: Equatable {
         case (.convertTypeFailed(let lhsURL), .convertTypeFailed(let rhsURL)):
             return lhsURL == rhsURL
             
-        case (.controllerNil(let lhsURL, _, let lhsmessage), .controllerNil(let rhsURL, _, let rhsmessage)):
-            return (lhsURL == rhsURL) && (lhsmessage == rhsmessage)
+        case (.controllerNil(let lhsURL, _, let lhsMessage), .controllerNil(let rhsURL, _, let rhsMessage)):
+            return (lhsURL == rhsURL) && (lhsMessage == rhsMessage)
             
         case (.other(let lhsURL, _, _), .other(let rhsURL, _, _)):
             return lhsURL == rhsURL
