@@ -23,7 +23,7 @@ public enum RouterError: Error {
     /// The returned controller is nil.
     ///
     /// In general, the creation result of the controller should not be nil.
-    /// So the return value of `ViewControllerHandlerFactory` is` UIViewController` instead of `UIViewController?`
+    /// So the return value of `ViewControllerHandlerFactory` is` Result<UIViewController, RouterError>` instead of `Result<UIViewController?, RouterError>?`
     ///
     /// But just in case:
     ///
