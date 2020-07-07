@@ -57,6 +57,24 @@ extension RaRouterTests {
         }
     }
     
+    func testDoWithAsyn() throws {
+        
+        Router<Test>.testDoByDelayedClearTestString { (result) in
+            
+            switch result {
+                
+                case .success(()):
+                    
+                    let clearedValue = ToolSingleton.shared.clearedValue
+                    
+                    XCTAssertNil(clearedValue, "failure, Singleton value is: \(String(describing: clearedValue))")
+                    
+                case .failure(let error):
+                    XCTFail("do failure: \(error)")
+            }
+        }
+    }
+    
     func testDoWithNotHandler() throws {
         
         let url = "not register router url"
@@ -152,6 +170,21 @@ extension RaRouterTests {
         let value = Router<Test>.getDefaultValueWithSuccess().get(default: defaultValue)
         
         XCTAssert(value == ToolSingleton.shared.defaultValue, "\(value)")
+    }
+    
+    func testGetWithAsyn() throws {
+        
+        Router<Test>.delayedGetSomeValue(from: ToolSingleton.shared) { (result) in
+            
+            switch result {
+                
+            case .success(let value):
+                XCTAssert(value == ToolSingleton.shared.realValue, "\(value)")
+                
+            case .failure(let error):
+                XCTFail("Should not execute errors, Error: \(error)")
+            }
+        }
     }
 }
 
