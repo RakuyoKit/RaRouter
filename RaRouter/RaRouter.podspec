@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
   
   s.name          = 'RaRouter'
   
-  s.version       = '1.3.0'
+  s.version       = '1.4.0'
   
   s.summary       = 'A simple router component.'
   
