@@ -20,12 +20,14 @@ enum Test: ModuleRouter {
         
         case setTestStringToToolSingleton   = "RaRouter://test/do/ToolSingleton/set"
         case clearTestStringToToolSingleton = "RaRouter://test/do/ToolSingleton/clear"
+        case delayedClearTestString         = "RaRouter://test/do/delayedClearTestString"
         
         case getTestStringFromToolSingleton = "RaRouter://test/get/ToolSingleton"
         case getErrorTypeValue              = "RaRouter://test/get/errorType"
         case getSomeValue                   = "RaRouter://test/get/some"
         case getDefaultValue                = "RaRouter://test/get/default"
         case getDefaultValueWithSuccess     = "RaRouter://test/get/default/success"
+        case asyncGetSomeValue              = "RaRouter://test/asyncGet/some"
     }
 }
 
@@ -39,6 +41,10 @@ extension Router where Module == Test {
     
     static func testDoByClearToolSingleton() -> DoResult {
         return Router.do(.clearTestStringToToolSingleton)
+    }
+    
+    static func testDoByDelayedClearTestString(callback: @escaping DoResultCallback) {
+        Router.do(.delayedClearTestString, callback: callback)
     }
 }
 
@@ -64,5 +70,9 @@ extension Router where Module == Test {
     
     static func getDefaultValueWithSuccess() -> GetResult<String> {
         return Router.get(of: String.self, from: .getDefaultValueWithSuccess)
+    }
+    
+    static func delayedGetSomeValue(from singleton: ToolSingleton, callback: @escaping (GetResult<String>) -> Void) {
+        Router.get(of: String.self, from: .asyncGetSomeValue, param: singleton, callback: callback)
     }
 }

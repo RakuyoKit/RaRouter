@@ -42,6 +42,14 @@ extension TestRegister {
             ToolSingleton.shared.clearedValue = nil
             return .success(())
         }
+        
+        router.register(for: .delayedClearTestString) { (url, value, callback: @escaping DoResultCallback) in
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                ToolSingleton.shared.clearedValue = nil
+                callback(.success(()))
+            }
+        }
     }
 }
 
@@ -70,6 +78,18 @@ extension TestRegister {
         
         router.register(for: .getDefaultValueWithSuccess) { (url, value) -> GetResult<AnyResult> in
             return .success(ToolSingleton.shared.defaultValue)
+        }
+        
+        router.register(for: .asyncGetSomeValue) { (url, value, callback: @escaping GetResultCallback) in
+            
+            guard let param = value as? ToolSingleton else {
+                callback(.failure(.parameterError(url: url, parameter: value)))
+                return
+            }
+            
+            DispatchQueue.main.async {
+                callback(.success(param.realValue))
+            }
         }
     }
 }
