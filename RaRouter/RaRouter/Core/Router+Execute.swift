@@ -36,6 +36,32 @@ public extension RaRouter {
         
         return factory(url, param)
     }
+    
+    /// Execute router by `Module.Table`.
+    ///
+    /// - Parameters:
+    ///   - table: Router to be executed.
+    ///   - param: Parameters required for this router.
+    ///   - callback: Used for callback route execution result. You need to manage the thread yourself. see `DoResultCallback`.
+    static func `do`(_ table: Module.Table, param: Any? = nil, callback: @escaping DoResultCallback) {
+        `do`(table.url, param: param, callback: callback)
+    }
+    
+    /// Execute router by `String`.
+    ///
+    /// - Parameters:
+    ///   - url: Router url to be executed.
+    ///   - param: Parameters required for this router.
+    ///   - callback: Used for callback route execution result. You need to manage the thread yourself. see `DoResultCallback`.
+    static func `do`(_ url: String, param: Any? = nil, callback: @escaping DoResultCallback) {
+        
+        guard let factory = RouterFactory.shared.asynDoHandlerFactories[url] else {
+            callback(.failure(.notHandler(url: url)))
+            return
+        }
+        
+        factory(url, param, callback)
+    }
 }
 
 // MARK: - Get
@@ -70,6 +96,38 @@ public extension RaRouter {
             if let result = $0 as? T { return result }
             throw RouterError.convertTypeFailed(url: url)
         }
+    }
+    
+    /// Execute router by `Module.Table`, And get the result it returns.
+    ///
+    /// - Parameters:
+    ///   - type: Type of result.
+    ///   - table: Router to be executed.
+    ///   - param: Parameters required for this router.
+    ///   - callback: Used for callback route execution result. You need to manage the thread yourself.
+    static func get<T>(of type: T.Type, from table: Module.Table, param: Any? = nil, callback: @escaping (GetResult<T>) -> Void) {
+        get(of: type, from: table.url, param: param, callback: callback)
+    }
+    
+    /// Execute router by `String`, And get the result it returns.
+    ///
+    /// - Parameters:
+    ///   - type: Type of result.
+    ///   - url: Router url to be executed.
+    ///   - param: Parameters required for this router.
+    ///   - callback: Used for callback route execution result. You need to manage the thread yourself.
+    static func get<T>(of type: T.Type, from url: String, param: Any? = nil, callback: @escaping (GetResult<T>) -> Void) {
+        
+        guard let factory = RouterFactory.shared.asynGetHandlerFactories[url] else {
+            callback(.failure(.notHandler(url: url)))
+            return
+        }
+        
+        factory(url, param, {
+            
+            if let result = $0 as? T { callback(.success(result)) }
+            callback(.failure(.convertTypeFailed(url: url)))
+        })
     }
 }
 
@@ -111,6 +169,32 @@ public extension RaRouter {
         }
         
         return factory(url, param)
+    }
+    
+    /// Execute router by `Module.Table`, And get the returned `UIViewController` subclass.
+    ///
+    /// - Parameters:
+    ///   - table: Router to be executed.
+    ///   - param: Parameters required for this router.
+    ///   - callback: Used for callback route execution result. You need to manage the thread yourself. see `ViewControllerResultCallback`.
+    static func viewController(from table: Module.Table, param: Any? = nil, callback: @escaping ViewControllerResultCallback) {
+        viewController(from: table.url, param: param, callback: callback)
+    }
+    
+    /// Execute router by `String`, And get the returned `UIViewController` subclass.
+    ///
+    /// - Parameters:
+    ///   - url: Router url to be executed.
+    ///   - param: Parameters required for this router.
+    ///   - callback: Used for callback route execution result. You need to manage the thread yourself. see `ViewControllerResultCallback`.
+    static func viewController(from url: String, param: Any? = nil, callback: @escaping ViewControllerResultCallback) {
+        
+        guard let factory = RouterFactory.shared.asynViewControllerHandlerFactories[url] else {
+            callback(.failure(.notHandler(url: url)))
+            return
+        }
+        
+        factory(url, param, callback)
     }
 }
 
