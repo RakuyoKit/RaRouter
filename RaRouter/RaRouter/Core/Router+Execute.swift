@@ -125,8 +125,10 @@ public extension RaRouter {
         
         factory(url, param, {
             
-            if let result = $0 as? T { callback(.success(result)) }
-            callback(.failure(.convertTypeFailed(url: url)))
+            callback($0.map {
+                if let result = $0 as? T { return result }
+                throw RouterError.convertTypeFailed(url: url)
+            })
         })
     }
 }
