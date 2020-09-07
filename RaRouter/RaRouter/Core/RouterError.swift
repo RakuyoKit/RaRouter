@@ -62,6 +62,9 @@ extension RouterError: Equatable {
         
         switch (lhs, rhs) {
             
+        case (.factoryNil(let lhsURL), .factoryNil(let rhsURL)):
+            return lhsURL == rhsURL
+            
         case (.notHandler(let lhsURL), .notHandler(let rhsURL)):
             return lhsURL == rhsURL
             
