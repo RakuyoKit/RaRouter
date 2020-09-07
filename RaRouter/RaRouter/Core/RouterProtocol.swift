@@ -18,23 +18,70 @@ public protocol RaRouter {
 /// Used to indicate that the type of compliance with the protocol is a router component of a module.
 public protocol ModuleRouter {
     
+    /// Used to store the route to be executed
+    associatedtype Factory: FactoryProtocol
+    
     /// refers to the router table.
-    associatedtype Table: RouterTableProtocol
+    associatedtype Table: RawRepresentable where Table.RawValue == String
 }
 
-/// Used to indicate that the type of compliance with the protocol is a router table of a module.
-public protocol RouterTableProtocol: Codable {
+/// The middleman between the stored object and the caller
+public protocol FactoryMediatorProtocol {
     
-    /// If you use `enum` to comply with the protocol,
-    /// then you should return `rawValue` in this method.
-    ///
-    /// e.g. `var url: String { rawValue }`
-    var url: String { get }
+    /// Data source. The real storage object will be obtained through this attribute
+    var source: FactoryProtocol { get }
 }
 
-/// The registration class of each router component should implement this protocol to register component router
-public protocol RouterRegister: class {
+/// Used to store the content of the route to be executed and provide an accessible interface to the caller
+public protocol FactoryProtocol {
     
-    /// Implement this method and register the route in this method
-    static func register()
+    /// Require initialization method
+    init()
+    
+    /// Used to store `do` router
+    var doHandlerFactories: [String : DoHandlerFactory]? { mutating get }
+    var asynDoHandlerFactories: [String : AsynDoHandlerFactory]? { mutating get }
+    
+    /// Used to store `get` router
+    var getHandlerFactories: [String : GetHandlerFactory]? { mutating get }
+    var asynGetHandlerFactories: [String : AsynGetHandlerFactory]? { mutating get }
+    
+    /// Used to store `viewController` router
+    var viewControllerHandlerFactories: [String : ViewControllerHandlerFactory]? { mutating get }
+    var asynViewControllerHandlerFactories: [String : AsynViewControllerHandlerFactory]? { mutating get }
+}
+
+public extension FactoryProtocol {
+    
+    private var mediator: FactoryMediatorProtocol? { self as? FactoryMediatorProtocol }
+    
+    var doHandlerFactories: [String : DoHandlerFactory]? {
+        var source = mediator?.source
+        return source?.doHandlerFactories
+    }
+    
+    var asynDoHandlerFactories: [String : AsynDoHandlerFactory]? {
+        var source = mediator?.source
+        return source?.asynDoHandlerFactories
+    }
+    
+    var getHandlerFactories: [String : GetHandlerFactory]? {
+        var source = mediator?.source
+        return source?.getHandlerFactories
+    }
+    
+    var asynGetHandlerFactories: [String : AsynGetHandlerFactory]? {
+        var source = mediator?.source
+        return source?.asynGetHandlerFactories
+    }
+    
+    var viewControllerHandlerFactories: [String : ViewControllerHandlerFactory]? {
+        var source = mediator?.source
+        return source?.viewControllerHandlerFactories
+    }
+    
+    var asynViewControllerHandlerFactories: [String : AsynViewControllerHandlerFactory]? {
+        var source = mediator?.source
+        return source?.asynViewControllerHandlerFactories
+    }
 }

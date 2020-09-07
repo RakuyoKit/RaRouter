@@ -16,14 +16,21 @@ public enum Router<Module: ModuleRouter>: RaRouter { }
 /// Can be used to provide a default generic type for `Router`.
 ///
 /// If there is a better choice, please **never** use this.
-public enum Global: ModuleRouter {
+public struct Global: ModuleRouter {
     
-    public typealias Table = RouterTable
+    public struct Factory: FactoryProtocol {
+        public init() {}
+    }
     
-    public enum RouterTable: String, RouterTableProtocol {
-        
-        public var url: String { rawValue }
+    public enum Table: String {
         
         case none = "mbc://global/none"
     }
+}
+
+extension Global.Factory: FactoryMediatorProtocol {
+    
+    public var source: FactoryProtocol { RealFactory() }
+    
+    private struct RealFactory: FactoryProtocol {}
 }

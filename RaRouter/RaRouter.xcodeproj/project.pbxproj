@@ -12,7 +12,7 @@
 		3A3747E4243C128500DA1651 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A3747E2243C128500DA1651 /* Main.storyboard */; };
 		3A3747E6243C128700DA1651 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A3747E5243C128700DA1651 /* Assets.xcassets */; };
 		3A3747E9243C128700DA1651 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A3747E7243C128700DA1651 /* LaunchScreen.storyboard */; };
-		3A3747FB243C13E800DA1651 /* RouterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3747F6243C13E800DA1651 /* RouterFactory.swift */; };
+		3A3747FB243C13E800DA1651 /* Typealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3747F6243C13E800DA1651 /* Typealias.swift */; };
 		3A3747FC243C13E800DA1651 /* RouterError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3747F7243C13E800DA1651 /* RouterError.swift */; };
 		3A3747FD243C13E800DA1651 /* Router+Execute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3747F8243C13E800DA1651 /* Router+Execute.swift */; };
 		3A3747FE243C13E800DA1651 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3747F9243C13E800DA1651 /* Router.swift */; };
@@ -47,7 +47,7 @@
 		3A3747E5243C128700DA1651 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A3747E8243C128700DA1651 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3A3747EA243C128700DA1651 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3A3747F6243C13E800DA1651 /* RouterFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouterFactory.swift; sourceTree = "<group>"; };
+		3A3747F6243C13E800DA1651 /* Typealias.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Typealias.swift; sourceTree = "<group>"; };
 		3A3747F7243C13E800DA1651 /* RouterError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouterError.swift; sourceTree = "<group>"; };
 		3A3747F8243C13E800DA1651 /* Router+Execute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Router+Execute.swift"; sourceTree = "<group>"; };
 		3A3747F9243C13E800DA1651 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
@@ -133,11 +133,11 @@
 			isa = PBXGroup;
 			children = (
 				3A3747FA243C13E800DA1651 /* RouterProtocol.swift */,
-				3A3747F9243C13E800DA1651 /* Router.swift */,
 				3A3747F8243C13E800DA1651 /* Router+Execute.swift */,
+				3A3747F9243C13E800DA1651 /* Router.swift */,
 				3ABA02EA24493E1700BAFCB4 /* Router+Register.swift */,
 				3A3747F7243C13E800DA1651 /* RouterError.swift */,
-				3A3747F6243C13E800DA1651 /* RouterFactory.swift */,
+				3A3747F6243C13E800DA1651 /* Typealias.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -329,7 +329,7 @@
 				3A3747DD243C128500DA1651 /* AppDelegate.swift in Sources */,
 				3A3747FE243C13E800DA1651 /* Router.swift in Sources */,
 				3A3747FC243C13E800DA1651 /* RouterError.swift in Sources */,
-				3A3747FB243C13E800DA1651 /* RouterFactory.swift in Sources */,
+				3A3747FB243C13E800DA1651 /* Typealias.swift in Sources */,
 				9176B49600BA9A625F6EEF8D /* README_CN.md in Sources */,
 				BF93EFAC64EDB273C4A1D55A /* README.md in Sources */,
 			);
