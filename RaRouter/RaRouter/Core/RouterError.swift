@@ -11,6 +11,9 @@ import Foundation
 /// Possible errors
 public enum RouterError: Error {
     
+    /// When executing routing, the factory used to obtain the closure corresponding to the url is `nil`
+    case factoryNil(url: String)
+    
     /// The `url` does not match, that is, the `url` is not registered.
     case notHandler(url: String)
     
