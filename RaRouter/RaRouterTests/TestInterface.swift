@@ -10,13 +10,13 @@ import Foundation
 
 @testable import RaRouter
 
-enum Test: ModuleRouter {
+public struct Test: ModuleRouter {
     
-    typealias Table = RouterTable
+    public struct Factory: FactoryProtocol {
+        public init() {}
+    }
     
-    enum RouterTable: String, RouterTableProtocol {
-        
-        var url: String { rawValue }
+    public enum Table: String {
         
         case setTestStringToToolSingleton   = "RaRouter://test/do/ToolSingleton/set"
         case clearTestStringToToolSingleton = "RaRouter://test/do/ToolSingleton/clear"

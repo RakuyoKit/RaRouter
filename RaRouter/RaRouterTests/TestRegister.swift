@@ -10,86 +10,79 @@ import Foundation
 
 @testable import RaRouter
 
-private class TestRegister: RouterRegister {
+extension Test.Factory: FactoryMediatorProtocol {
     
-    static let router = Router<Test>.self
+    public var source: FactoryProtocol { RealFactory() }
     
-    static func register() {
+    private struct RealFactory: FactoryProtocol {
         
-        registerDoRouter()
-        registerGetRouter()
-    }
-}
-
-// MARK: - Register For Do
-
-extension TestRegister {
-    
-    static func registerDoRouter() {
-        
-        router.register(for: .setTestStringToToolSingleton) { (url, value) -> DoResult in
-
-            guard let param = value as? String else {
-                return .failure(.notHandler(url: url))
-            }
-
-            ToolSingleton.shared.value = param
-
-            return .success(())
-        }
-        
-        router.register(for: .clearTestStringToToolSingleton) { (url, value) -> DoResult in
-            ToolSingleton.shared.clearedValue = nil
-            return .success(())
-        }
-        
-        router.register(for: .delayedClearTestString) { (url, value, callback: @escaping DoResultCallback) in
+        lazy var doHandlerFactories: [String : DoHandlerFactory]? = [
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            Test.Table.setTestStringToToolSingleton.rawValue : { (url, value) -> DoResult in
+                
+                guard let param = value as? String else {
+                    return .failure(.notHandler(url: url))
+                }
+                
+                ToolSingleton.shared.value = param
+                
+                return .success(())
+            },
+            
+            Test.Table.clearTestStringToToolSingleton.rawValue : { (url, value) -> DoResult in
                 ToolSingleton.shared.clearedValue = nil
-                callback(.success(()))
+                return .success(())
             }
-        }
-    }
-}
-
-// MARK: - Register For Get
-
-extension TestRegister {
-    
-    static func registerGetRouter() {
+        ]
         
-        router.register(for: .getTestStringFromToolSingleton) { (url, value) -> GetResult<AnyResult> in
-            return .success(ToolSingleton.shared.value as Any)
-        }
-        
-        router.register(for: .getErrorTypeValue) { (url, value) -> GetResult<AnyResult> in
-            return .success(ToolSingleton.shared.numberForGetErrorTypeValue)
-        }
-        
-        router.register(for: .getSomeValue) { (url, value) -> GetResult<AnyResult> in
+        lazy var asynDoHandlerFactories: [String : AsynDoHandlerFactory]? = [
             
-            guard let param = value as? ToolSingleton else {
-                return .failure(.parameterError(url: url, parameter: value))
+            Test.Table.delayedClearTestString.rawValue : { (url, value, callback: @escaping DoResultCallback) in
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                    ToolSingleton.shared.clearedValue = nil
+                    callback(.success(()))
+                }
             }
-            
-            return .success(param.realValue)
-        }
+        ]
         
-        router.register(for: .getDefaultValueWithSuccess) { (url, value) -> GetResult<AnyResult> in
-            return .success(ToolSingleton.shared.defaultValue)
-        }
+        lazy var getHandlerFactories: [String : GetHandlerFactory]? = [
+            
+            Test.Table.getTestStringFromToolSingleton.rawValue : { (url, value) -> GetResult<AnyResult> in
+                return .success(ToolSingleton.shared.value as Any)
+            },
+            
+            Test.Table.getErrorTypeValue.rawValue : { (url, value) -> GetResult<AnyResult> in
+                return .success(ToolSingleton.shared.numberForGetErrorTypeValue)
+            },
+            
+            Test.Table.getSomeValue.rawValue : { (url, value) -> GetResult<AnyResult> in
+                
+                guard let param = value as? ToolSingleton else {
+                    return .failure(.parameterError(url: url, parameter: value))
+                }
+                
+                return .success(param.realValue)
+            },
+            
+            Test.Table.getDefaultValueWithSuccess.rawValue : { (url, value) -> GetResult<AnyResult> in
+                return .success(ToolSingleton.shared.defaultValue)
+            }
+        ]
         
-        router.register(for: .asyncGetSomeValue) { (url, value, callback: @escaping GetResultCallback) in
+        lazy var asynGetHandlerFactories: [String : AsynGetHandlerFactory]? = [
             
-            guard let param = value as? ToolSingleton else {
-                callback(.failure(.parameterError(url: url, parameter: value)))
-                return
+            Test.Table.asyncGetSomeValue.rawValue : { (url, value, callback: @escaping GetResultCallback) in
+                
+                guard let param = value as? ToolSingleton else {
+                    callback(.failure(.parameterError(url: url, parameter: value)))
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    callback(.success(param.realValue))
+                }
             }
-            
-            DispatchQueue.main.async {
-                callback(.success(param.realValue))
-            }
-        }
+        ]
     }
 }
