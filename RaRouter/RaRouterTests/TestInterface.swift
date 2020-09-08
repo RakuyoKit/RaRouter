@@ -10,7 +10,7 @@ import Foundation
 
 @testable import RaRouter
 
-public struct Test: ModuleRouter {
+public enum Test: ModuleRouter {
     
     public struct Factory: FactoryProtocol {
         public init() {}
