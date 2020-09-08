@@ -78,13 +78,13 @@ extension RaRouterTests {
         
         let url = "not register router url"
         
-        switch Router<Test>.do(url) {
+        switch Router<Test>.do(Test.Table(url)) {
             
         case .success(()):
             XCTFail("failure, Should not succeed")
             
         case .failure(let error):
-            XCTAssert(error == .notHandler(url: url), "Other errors: \(error)")
+            XCTAssert(error == .tableNil, "Other errors: \(error)")
         }
     }
 }
@@ -110,13 +110,13 @@ extension RaRouterTests {
         
         let url = "not register router url"
         
-        switch Router<Test>.get(of: Any.self, from: url) {
+        switch Router<Test>.get(of: Any.self, from: Test.Table(url)) {
             
         case .success(let value):
             XCTFail("failure, Should not succeed, value: \(value)")
             
         case .failure(let error):
-            XCTAssert(error == .notHandler(url: url), "Other errors: \(error)")
+            XCTAssert(error == .tableNil, "Other errors: \(error)")
         }
     }
     

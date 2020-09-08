@@ -15,5 +15,5 @@ public protocol ModuleRouter {
     associatedtype Factory: RouterFactory
     
     /// refers to the router table.
-    associatedtype Table: RawRepresentable where Table.RawValue == String
+    associatedtype Table: RouterTable
 }

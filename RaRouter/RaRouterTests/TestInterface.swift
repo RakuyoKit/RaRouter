@@ -16,7 +16,7 @@ public enum Test: ModuleRouter {
         public init() {}
     }
     
-    public enum Table: String {
+    public enum Table: String, RouterTable {
         
         case setTestStringToToolSingleton   = "RaRouter://test/do/ToolSingleton/set"
         case clearTestStringToToolSingleton = "RaRouter://test/do/ToolSingleton/clear"

@@ -22,7 +22,7 @@ public struct Global: ModuleRouter {
         public init() {}
     }
     
-    public enum Table: String {
+    public enum Table: String, RouterTable {
         
         case none = "RaRouter://Global/none"
     }

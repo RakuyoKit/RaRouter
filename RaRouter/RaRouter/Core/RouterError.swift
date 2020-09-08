@@ -11,6 +11,9 @@ import Foundation
 /// Possible errors
 public enum RouterError: Error {
     
+    /// Failed to convert the string into a known routing table when performing routing via string
+    case tableNil
+    
     /// When executing routing, the factory used to obtain the closure corresponding to the url is `nil`
     case factoryNil(url: String)
     
@@ -61,6 +64,9 @@ extension RouterError: Equatable {
     public static func == (lhs: RouterError, rhs: RouterError) -> Bool {
         
         switch (lhs, rhs) {
+            
+        case (.tableNil, .tableNil):
+            return true
             
         case (.factoryNil(let lhsURL), .factoryNil(let rhsURL)):
             return lhsURL == rhsURL
