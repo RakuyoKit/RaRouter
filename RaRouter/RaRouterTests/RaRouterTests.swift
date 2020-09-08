@@ -59,7 +59,7 @@ extension RaRouterTests {
     
     func testDoWithAsyn() throws {
         
-        Router<Test>.testDoByDelayedClearTestString { (result) in
+        Router<Test>.testDoByAsyncClearTestString { (result) in
             
             switch result {
                 

@@ -37,9 +37,9 @@ extension Test.Factory: FactoryMediatorProtocol {
         
         lazy var asynDoHandlerFactories: [String : AsynDoHandlerFactory]? = [
             
-            Test.Table.delayedClearTestString.rawValue : { (url, value, callback: @escaping DoResultCallback) in
+            Test.Table.asyncClearTestString.rawValue : { (url, value, callback: @escaping DoResultCallback) in
                 
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                DispatchQueue.main.asyncAfter(deadline: .now()) {
                     ToolSingleton.shared.clearedValue = nil
                     callback(.success(()))
                 }

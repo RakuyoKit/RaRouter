@@ -20,7 +20,7 @@ public struct Test: ModuleRouter {
         
         case setTestStringToToolSingleton   = "RaRouter://test/do/ToolSingleton/set"
         case clearTestStringToToolSingleton = "RaRouter://test/do/ToolSingleton/clear"
-        case delayedClearTestString         = "RaRouter://test/do/delayedClearTestString"
+        case asyncClearTestString           = "RaRouter://test/do/asyncClearTestString"
         
         case getTestStringFromToolSingleton = "RaRouter://test/get/ToolSingleton"
         case getErrorTypeValue              = "RaRouter://test/get/errorType"
@@ -43,8 +43,8 @@ extension Router where Module == Test {
         return Router.do(.clearTestStringToToolSingleton)
     }
     
-    static func testDoByDelayedClearTestString(callback: @escaping DoResultCallback) {
-        Router.do(.delayedClearTestString, callback: callback)
+    static func testDoByAsyncClearTestString(callback: @escaping DoResultCallback) {
+        Router.do(.asyncClearTestString, callback: callback)
     }
 }
 
