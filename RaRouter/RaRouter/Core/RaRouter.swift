@@ -1,14 +1,23 @@
 //
-//  Router+Execute.swift
+//  RaRouter.swift
 //  RaRouter
 //
-//  Created by Rakuyo on 2020/4/17.
+//  Created by Rakuyo on 2020/9/8.
 //  Copyright © 2020 Rakuyo. All rights reserved.
 //
 
 import Foundation
 
-// MARK: - Do
+/// Router.
+public protocol RaRouter {
+    
+    /// refers to the module.
+    associatedtype Module: ModuleRouter
+}
+
+// MARK: - Execute Router
+
+// MARK: Do
 
 public extension RaRouter {
     
@@ -73,7 +82,7 @@ public extension RaRouter {
     }
 }
 
-// MARK: - Get
+// MARK: Get
 
 public extension RaRouter {
     
@@ -162,7 +171,7 @@ public extension GetResult {
     }
 }
 
-// MARK: - ViewController
+// MARK: ViewController
 
 public extension RaRouter {
     
@@ -227,7 +236,7 @@ public extension RaRouter {
     }
 }
 
-// MARK: - Private Tools
+// MARK: Private Tools
 
 fileprivate extension Result where Failure == RouterError {
     

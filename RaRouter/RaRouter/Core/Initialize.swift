@@ -1,5 +1,5 @@
 //
-//  Router+Initialize.swift
+//  Initialize.swift
 //  RaRouter
 //
 //  Created by Rakuyo on 2020/4/17.
@@ -13,7 +13,7 @@ import Foundation
 ///
 /// Then you can follow the protocol and write related code in the `initialize()` method.
 ///
-/// - Note: The execution of the `initialize()` method actually depends on the execution timing of the `RaRouter<Modules>.initialize()` method. For details, please refer to: `Router+Initialize.swift` Other content in the file
+/// - Note: The execution of the `initialize()` method actually depends on the execution timing of the `RaRouter<Global>.initialize()` method. For details, please refer to: `Router+Initialize.swift` Other content in the file
 public protocol NeedInitialized {
      
     static func initialize()
