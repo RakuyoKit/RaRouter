@@ -10,11 +10,11 @@ import Foundation
 
 @testable import RaRouter
 
-extension Test.Factory: FactoryMediatorProtocol {
+extension Test.Factory: FactoryMediator {
     
-    public var source: FactoryProtocol { RealFactory() }
+    public var source: RouterFactory { RealFactory() }
     
-    private struct RealFactory: FactoryProtocol {
+    private struct RealFactory: RouterFactory {
         
         lazy var doHandlerFactories: [String : DoHandlerFactory]? = [
             

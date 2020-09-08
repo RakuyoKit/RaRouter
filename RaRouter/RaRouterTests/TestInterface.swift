@@ -12,7 +12,7 @@ import Foundation
 
 public enum Test: ModuleRouter {
     
-    public struct Factory: FactoryProtocol {
+    public struct Factory: RouterFactory {
         public init() {}
     }
     

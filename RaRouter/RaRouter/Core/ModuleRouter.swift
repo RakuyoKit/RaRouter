@@ -12,7 +12,7 @@ import Foundation
 public protocol ModuleRouter {
     
     /// Used to store the route to be executed
-    associatedtype Factory: FactoryProtocol
+    associatedtype Factory: RouterFactory
     
     /// refers to the router table.
     associatedtype Table: RawRepresentable where Table.RawValue == String

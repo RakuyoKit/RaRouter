@@ -1,5 +1,5 @@
 //
-//  FactoryProtocol.swift
+//  RouterFactory.swift
 //  RaRouter
 //
 //  Created by Rakuyo on 2020/9/8.
@@ -9,14 +9,14 @@
 import Foundation
 
 /// The middleman between the stored object and the caller
-public protocol FactoryMediatorProtocol {
+public protocol FactoryMediator {
     
     /// Data source. The real storage object will be obtained through this attribute
-    var source: FactoryProtocol { get }
+    var source: RouterFactory { get }
 }
 
 /// Used to store the content of the route to be executed and provide an accessible interface to the caller
-public protocol FactoryProtocol {
+public protocol RouterFactory {
     
     /// Require initialization method
     init()
@@ -34,9 +34,9 @@ public protocol FactoryProtocol {
     var asynViewControllerHandlerFactories: [String : AsynViewControllerHandlerFactory]? { mutating get }
 }
 
-public extension FactoryProtocol {
+public extension RouterFactory {
     
-    private var mediator: FactoryMediatorProtocol? { self as? FactoryMediatorProtocol }
+    private var mediator: FactoryMediator? { self as? FactoryMediator }
     
     var doHandlerFactories: [String : DoHandlerFactory]? {
         var source = mediator?.source

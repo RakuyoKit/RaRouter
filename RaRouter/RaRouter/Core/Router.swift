@@ -18,7 +18,7 @@ public enum Router<Module: ModuleRouter>: RaRouter { }
 /// If there is a better choice, please **never** use this.
 public struct Global: ModuleRouter {
     
-    public struct Factory: FactoryProtocol {
+    public struct Factory: RouterFactory {
         public init() {}
     }
     
@@ -28,9 +28,9 @@ public struct Global: ModuleRouter {
     }
 }
 
-extension Global.Factory: FactoryMediatorProtocol {
+extension Global.Factory: FactoryMediator {
     
-    public var source: FactoryProtocol { RealFactory() }
+    public var source: RouterFactory { RealFactory() }
     
-    private struct RealFactory: FactoryProtocol {}
+    private struct RealFactory: RouterFactory {}
 }
