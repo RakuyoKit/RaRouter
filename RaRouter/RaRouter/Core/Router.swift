@@ -24,7 +24,7 @@ public struct Global: ModuleRouter {
     
     public enum Table: String {
         
-        case none = "mbc://global/none"
+        case none = "RaRouter://Global/none"
     }
 }
 
