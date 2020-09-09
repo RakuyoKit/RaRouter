@@ -8,13 +8,13 @@
 
 import Foundation
 
-/// Possible errors
+/// Possible errors.
 public enum RouterError: Error {
     
-    /// Failed to convert the string into a known routing table when performing routing via string
+    /// Failed to convert the string into a known routing table when performing routing via string.
     case tableNil
     
-    /// When executing routing, the factory used to obtain the closure corresponding to the url is `nil`
+    /// When executing routing, the factory used to obtain the closure corresponding to the url is `nil`.
     case factoryNil(url: String)
     
     /// The `url` does not match, that is, the `url` is not registered.
@@ -30,16 +30,16 @@ public enum RouterError: Error {
     ///
     /// If you want the `get` type routing operation to return a non-nil result,
     /// but the actual execution of the route may be `nil`, you have to use `return` to terminate the routing execution,
-    /// you can try to return this error
+    /// you can try to return this error.
     case resultNil(url: String, parameter: Any?, message: String)
     
     /// The returned controller is nil.
     ///
     /// Just as we provide `viewController` routing operations separately based on `get`,
-    /// we provide `controllerNil` errors separately based on the `resultNil` errors
+    /// we provide `controllerNil` errors separately based on the `resultNil` errors.
     ///
     /// In general, the creation result of the controller should not be nil.
-    /// So the return value of `ViewControllerHandlerFactory` is` Result<UIViewController, RouterError>` instead of `Result<UIViewController?, RouterError>?`
+    /// So the return value of `ViewControllerHandlerFactory` is` Result<UIViewController, RouterError>` instead of `Result<UIViewController?, RouterError>?`.
     ///
     /// But just in case:
     ///
@@ -47,13 +47,13 @@ public enum RouterError: Error {
     ///
     /// So we provide this error type, you can throw this error when the target controller cannot be created.
     /// 
-    /// Currently only additional `message` is provided to indicate the cause of the error
+    /// Currently only additional `message` is provided to indicate the cause of the error.
     case controllerNil(url: String, parameter: Any?, message: String)
     
-    /// Other types of errors
+    /// Other types of errors.
     ///
     /// When you encounter certain situations, you have to use "return" to terminate the routing execution,
-    /// and the termination reason does not meet all the above error reasons, you can try to return the error
+    /// and the termination reason does not meet all the above error reasons, you can try to return the error.
     case other(url: String, parameter: Any?, error: Error?)
 }
 

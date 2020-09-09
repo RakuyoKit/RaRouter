@@ -8,28 +8,28 @@
 
 import Foundation
 
-/// The middleman between the stored object and the caller
+/// The middleman between the stored object and the caller.
 public protocol FactoryMediator {
     
-    /// Data source. The real storage object will be obtained through this attribute
+    /// Data source. The real storage object will be obtained through this attribute.
     var source: RouterFactory { get }
 }
 
-/// Used to store the content of the route to be executed and provide an accessible interface to the caller
+/// Used to store the content of the route to be executed and provide an accessible interface to the caller.
 public protocol RouterFactory {
     
-    /// Require initialization method
+    /// Require initialization method.
     init()
     
-    /// Used to store `do` router
+    /// Used to store `do` router.
     var doHandlerFactories: [String : DoHandlerFactory]? { mutating get }
     var asynDoHandlerFactories: [String : AsynDoHandlerFactory]? { mutating get }
     
-    /// Used to store `get` router
+    /// Used to store `get` router.
     var getHandlerFactories: [String : GetHandlerFactory]? { mutating get }
     var asynGetHandlerFactories: [String : AsynGetHandlerFactory]? { mutating get }
     
-    /// Used to store `viewController` router
+    /// Used to store `viewController` router.
     var viewControllerHandlerFactories: [String : ViewControllerHandlerFactory]? { mutating get }
     var asynViewControllerHandlerFactories: [String : AsynViewControllerHandlerFactory]? { mutating get }
 }

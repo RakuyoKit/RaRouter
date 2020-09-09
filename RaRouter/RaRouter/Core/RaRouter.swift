@@ -21,7 +21,7 @@ public protocol RaRouter {
 
 public extension RaRouter {
     
-    /// Execute router by `Module.Table`.
+    /// Perform certain operations through routing.
     ///
     /// - Parameters:
     ///   - table: Router to be executed.
@@ -44,7 +44,8 @@ public extension RaRouter {
         return factory(url, param)
     }
     
-    /// Execute router by `Module.Table`.
+    /// Perform certain operations through routing.
+    /// And obtain the results of the routing in an asynchronous manner.
     ///
     /// - Parameters:
     ///   - table: Router to be executed.
@@ -75,7 +76,7 @@ public extension RaRouter {
 
 public extension RaRouter {
     
-    /// Execute router by `Module.Table`, And get the result it returns.
+    /// Get certain data through routing.
     ///
     /// - Parameters:
     ///   - type: Type of result.
@@ -102,7 +103,8 @@ public extension RaRouter {
         }
     }
     
-    /// Execute router by `Module.Table`, And get the result it returns.
+    /// Get certain data through routing.
+    /// And obtain the results of the routing in an asynchronous manner.
     ///
     /// - Parameters:
     ///   - type: Type of result.
@@ -151,7 +153,7 @@ public extension GetResult {
 
 public extension RaRouter {
     
-    /// Execute router by `Module.Table`, And get the returned `UIViewController` subclass.
+    /// Get a controller through routing.
     ///
     /// - Parameters:
     ///   - table: Router to be executed.
@@ -174,7 +176,8 @@ public extension RaRouter {
         return factory(url, param)
     }
     
-    /// Execute router by `Module.Table`, And get the returned `UIViewController` subclass.
+    /// Get a controller through routing.
+    /// And obtain the results of the routing in an asynchronous manner.
     ///
     /// - Parameters:
     ///   - table: Router to be executed.
