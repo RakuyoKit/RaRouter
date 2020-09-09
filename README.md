@@ -18,7 +18,7 @@
 
 ## Prerequisites
 
-- **iOS 9 or later**.
+- **iOS 10 or later**.
 - **Xcode 10.0 or later** required.
 - **Swift 5.0 or later** required.
 
