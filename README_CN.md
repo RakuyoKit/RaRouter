@@ -81,6 +81,7 @@ public extension Router where Module == ModuleA {
 
 // In the `Register.swift` file of the core project
 extension Test.Factory: FactoryMediator {
+    
     public var source: RouterFactory { RealFactory() }
 
     private struct RealFactory: RouterFactory {
@@ -117,6 +118,16 @@ extension Test.Factory: FactoryMediator {
             }
         ]
     }
+}
+
+// Execute
+
+_ = Router<ModuleA>.doSomething(start: Date(), end: Date())
+
+let frame = Router<ModuleA>.calculateFrame(with: UIScreen.main.bounds.width).get(default: .zero)
+
+if case .success(let controller) = Router<ModuleA>.create() {
+    navigationController?.pushViewController(controller, animated: true)
 }
 ```
 
