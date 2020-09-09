@@ -10,7 +10,7 @@
 <a href="https://github.com/rakuyoMo/RaRouter/blob/master/LICENSE"><img src="https://img.shields.io/cocoapods/l/RaRouter.svg?style=flat"></a>
 </p>
 
-> *The following content is based on the `2.0.0-beta.1` version, and its content may be changed at any time. *
+> *The following content is based on the `2.0.0-beta.1` version, and its content may be changed at any time.*
 
 > [中文](https://github.com/rakuyoMo/RaRouter/blob/master/README_CN.md)
  
@@ -88,6 +88,7 @@ public extension Router where Module == ModuleA {
 
 // In the `Register.swift` file of the core project
 extension Test.Factory: FactoryMediator {
+    
     public var source: RouterFactory { RealFactory() }
 
     private struct RealFactory: RouterFactory {
