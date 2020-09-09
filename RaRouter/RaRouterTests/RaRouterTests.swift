@@ -18,7 +18,6 @@ class RaRouterTests: XCTestCase {
         
         // Put setup code here. This method is called before the invocation of each test method in the class.
         
-        Router<Modules>.initialize()
     }
     
     override func tearDownWithError() throws {
@@ -59,7 +58,7 @@ extension RaRouterTests {
     
     func testDoWithAsyn() throws {
         
-        Router<Test>.testDoByDelayedClearTestString { (result) in
+        Router<Test>.testDoByAsyncClearTestString { (result) in
             
             switch result {
                 
@@ -79,13 +78,13 @@ extension RaRouterTests {
         
         let url = "not register router url"
         
-        switch Router<Test>.do(url) {
+        switch Router<Test>.do(Test.Table(url)) {
             
         case .success(()):
             XCTFail("failure, Should not succeed")
             
         case .failure(let error):
-            XCTAssert(error == .notHandler(url: url), "Other errors: \(error)")
+            XCTAssert(error == .tableNil, "Other errors: \(error)")
         }
     }
 }
@@ -111,13 +110,13 @@ extension RaRouterTests {
         
         let url = "not register router url"
         
-        switch Router<Test>.get(of: Any.self, from: url) {
+        switch Router<Test>.get(of: Any.self, from: Test.Table(url)) {
             
         case .success(let value):
             XCTFail("failure, Should not succeed, value: \(value)")
             
         case .failure(let error):
-            XCTAssert(error == .notHandler(url: url), "Other errors: \(error)")
+            XCTAssert(error == .tableNil, "Other errors: \(error)")
         }
     }
     
@@ -206,6 +205,6 @@ extension RaRouterTests {
 extension RaRouterTests {
     
     func testGlobal() {
-        XCTAssertNotNil(Global.RouterTable.none.url, "url should not be nil")
+        XCTAssertNotNil(Global.Table.none.rawValue, "url should not be nil")
     }
 }

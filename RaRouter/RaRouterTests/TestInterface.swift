@@ -10,24 +10,24 @@ import Foundation
 
 @testable import RaRouter
 
-enum Test: ModuleRouter {
+public enum Test: ModuleRouter {
     
-    typealias Table = RouterTable
+    public struct Factory: RouterFactory {
+        public init() {}
+    }
     
-    enum RouterTable: String, RouterTableProtocol {
+    public enum Table: String, RouterTable {
         
-        var url: String { rawValue }
+        case setTestStringToToolSingleton   = "RaRouter://Test/do/ToolSingleton/set"
+        case clearTestStringToToolSingleton = "RaRouter://Test/do/ToolSingleton/clear"
+        case asyncClearTestString           = "RaRouter://Test/do/asyncClearTestString"
         
-        case setTestStringToToolSingleton   = "RaRouter://test/do/ToolSingleton/set"
-        case clearTestStringToToolSingleton = "RaRouter://test/do/ToolSingleton/clear"
-        case delayedClearTestString         = "RaRouter://test/do/delayedClearTestString"
-        
-        case getTestStringFromToolSingleton = "RaRouter://test/get/ToolSingleton"
-        case getErrorTypeValue              = "RaRouter://test/get/errorType"
-        case getSomeValue                   = "RaRouter://test/get/some"
-        case getDefaultValue                = "RaRouter://test/get/default"
-        case getDefaultValueWithSuccess     = "RaRouter://test/get/default/success"
-        case asyncGetSomeValue              = "RaRouter://test/asyncGet/some"
+        case getTestStringFromToolSingleton = "RaRouter://Test/get/ToolSingleton"
+        case getErrorTypeValue              = "RaRouter://Test/get/errorType"
+        case getSomeValue                   = "RaRouter://Test/get/some"
+        case getDefaultValue                = "RaRouter://Test/get/default"
+        case getDefaultValueWithSuccess     = "RaRouter://Test/get/default/success"
+        case asyncGetSomeValue              = "RaRouter://Test/asyncGet/some"
     }
 }
 
@@ -43,8 +43,8 @@ extension Router where Module == Test {
         return Router.do(.clearTestStringToToolSingleton)
     }
     
-    static func testDoByDelayedClearTestString(callback: @escaping DoResultCallback) {
-        Router.do(.delayedClearTestString, callback: callback)
+    static func testDoByAsyncClearTestString(callback: @escaping DoResultCallback) {
+        Router.do(.asyncClearTestString, callback: callback)
     }
 }
 
