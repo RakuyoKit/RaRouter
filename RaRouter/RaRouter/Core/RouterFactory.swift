@@ -2,45 +2,69 @@
 //  RouterFactory.swift
 //  RaRouter
 //
-//  Created by Rakuyo on 2020/4/7.
+//  Created by Rakuyo on 2020/9/8.
 //  Copyright © 2020 Rakuyo. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
-public typealias DoResult = Result<Void, RouterError>
-public typealias DoResultCallback = (DoResult) -> Void
-public typealias DoHandlerFactory = (_ url: String, _ values: Any?) -> DoResult
-public typealias AsynDoHandlerFactory = (_ url: String, _ values: Any?, _ callback: @escaping DoResultCallback) -> Void
+/// The middleman between the stored object and the caller.
+public protocol FactoryMediator {
+    
+    /// Data source. The real storage object will be obtained through this attribute.
+    var source: RouterFactory { get }
+}
 
-public typealias GetResult<T> = Result<T, RouterError>
-public typealias AnyResult = Any?
-public typealias GetResultCallback = (GetResult<AnyResult>) -> Void
-public typealias GetHandlerFactory = (_ url: String, _ values: Any?) -> GetResult<AnyResult>
-public typealias AsynGetHandlerFactory = (_ url: String, _ values: Any?, _ callback: @escaping GetResultCallback) -> Void
+/// Used to store the content of the route to be executed and provide an accessible interface to the caller.
+public protocol RouterFactory {
+    
+    /// Require initialization method.
+    init()
+    
+    /// Used to store `do` router.
+    var doHandlerFactories: [String : DoHandlerFactory]? { mutating get }
+    var asynDoHandlerFactories: [String : AsynDoHandlerFactory]? { mutating get }
+    
+    /// Used to store `get` router.
+    var getHandlerFactories: [String : GetHandlerFactory]? { mutating get }
+    var asynGetHandlerFactories: [String : AsynGetHandlerFactory]? { mutating get }
+    
+    /// Used to store `viewController` router.
+    var viewControllerHandlerFactories: [String : ViewControllerHandlerFactory]? { mutating get }
+    var asynViewControllerHandlerFactories: [String : AsynViewControllerHandlerFactory]? { mutating get }
+}
 
-public typealias ViewControllerResult = Result<UIViewController, RouterError>
-public typealias ViewControllerResultCallback = (ViewControllerResult) -> Void
-public typealias ViewControllerHandlerFactory = (_ url: String, _ values: Any?) -> ViewControllerResult
-public typealias AsynViewControllerHandlerFactory = (_ url: String, _ values: Any?, _ callback: @escaping ViewControllerResultCallback) -> Void
-
-/// Used to store registered routers
-public class RouterFactory {
+public extension RouterFactory {
     
-    /// Singleton
-    public static let shared = RouterFactory()
+    private var mediator: FactoryMediator? { self as? FactoryMediator }
     
-    private init() {}
+    var doHandlerFactories: [String : DoHandlerFactory]? {
+        var source = mediator?.source
+        return source?.doHandlerFactories
+    }
     
-    /// Used to store `do` router
-    public lazy var doHandlerFactories: [String : DoHandlerFactory]  = [:]
-    public lazy var asynDoHandlerFactories: [String : AsynDoHandlerFactory]  = [:]
+    var asynDoHandlerFactories: [String : AsynDoHandlerFactory]? {
+        var source = mediator?.source
+        return source?.asynDoHandlerFactories
+    }
     
-    /// Used to store `get` router
-    public lazy var getHandlerFactories: [String : GetHandlerFactory]  = [:]
-    public lazy var asynGetHandlerFactories: [String : AsynGetHandlerFactory]  = [:]
+    var getHandlerFactories: [String : GetHandlerFactory]? {
+        var source = mediator?.source
+        return source?.getHandlerFactories
+    }
     
-    /// Used to store `viewController` router
-    public lazy var viewControllerHandlerFactories: [String : ViewControllerHandlerFactory]  = [:]
-    public lazy var asynViewControllerHandlerFactories: [String : AsynViewControllerHandlerFactory]  = [:]
+    var asynGetHandlerFactories: [String : AsynGetHandlerFactory]? {
+        var source = mediator?.source
+        return source?.asynGetHandlerFactories
+    }
+    
+    var viewControllerHandlerFactories: [String : ViewControllerHandlerFactory]? {
+        var source = mediator?.source
+        return source?.viewControllerHandlerFactories
+    }
+    
+    var asynViewControllerHandlerFactories: [String : AsynViewControllerHandlerFactory]? {
+        var source = mediator?.source
+        return source?.asynViewControllerHandlerFactories
+    }
 }

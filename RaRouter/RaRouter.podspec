@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
   
   s.name          = 'RaRouter'
   
-  s.version       = '1.4.0'
+  s.version       = '2.0.0-beta.1'
   
   s.summary       = 'A simple router component.'
   
@@ -21,7 +21,7 @@ Pod::Spec.new do |s|
   
   s.requires_arc  = true
   
-  s.platform      = :ios, '9.0'
+  s.platform      = :ios, '10.0'
   
   s.swift_version = '5.0'
   

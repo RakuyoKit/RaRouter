@@ -13,17 +13,27 @@ public enum Router<Module: ModuleRouter>: RaRouter { }
 
 /// A global component.
 ///
-/// Can be used to provide a default generic type for `Router`.
+/// Can be used to provide a default generic type for `RaRouter`.
 ///
 /// If there is a better choice, please **never** use this.
-public enum Global: ModuleRouter {
+public struct Global: ModuleRouter {
     
-    public typealias Table = RouterTable
+    public struct Factory: RouterFactory {
+        public init() {}
+    }
     
-    public enum RouterTable: String, RouterTableProtocol {
+    public enum Table: String, RouterTable {
         
-        public var url: String { rawValue }
-        
-        case none = "mbc://global/none"
+        /// Nothing here. Perhaps it can be used to represent some kind of placeholder?
+        case none = "RaRouter://Global/none"
+    }
+}
+
+extension Global.Factory: FactoryMediator {
+    
+    public var source: RouterFactory { RealFactory() }
+    
+    private struct RealFactory: RouterFactory {
+        // The Global module does not contain any executable routing. So its factory should be empty
     }
 }

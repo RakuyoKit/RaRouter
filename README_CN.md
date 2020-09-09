@@ -10,13 +10,15 @@
 <a href="https://github.com/rakuyoMo/RaRouter/blob/master/LICENSE"><img src="https://img.shields.io/cocoapods/l/RaRouter.svg?style=flat"></a>
 </p>
 
+> *以下内容基于 `2.0.0-beta.1` 版本所编写，其内容可能随时发生更改。*
+
 `RaRouter` 是一个面向协议的轻量级路由框架。
 
 通过使用框架提供默认的类型，或者自定义路由，您可以快速搭建自己的路由组件，进而解耦自己的项目。
 
 ## 基本要求
 
-- 运行 **iOS 9** 及以上版本的设备。
+- 运行 **iOS 10** 及以上版本的设备。
 - 使用 **Xcode 10** 及以上版本编译。
 - **Swift 5.0** 以及以上版本。
 
@@ -50,15 +52,15 @@ pod 'RaRouter'
 // In the `Interface.swift` file of the router project
 public enum ModuleA: ModuleRouter {
     
-    public typealias Table = RouterTable
+    public struct Factory: RouterFactory {
+        public init() {}
+    }
     
-    public enum RouterTable: String, RouterTableProtocol {
+    public enum Table: String, RouterTable {
         
-        public var url: String { rawValue }
-        
-        case create         = "rakuyo://moduleA/create"
-        case doSomething    = "rakuyo://moduleA/do/something"
-        case calculateFrame = "rakuyo://moduleA/calculate/frame" 
+        case create         = "RaRouter://ModuleA/create"
+        case doSomething    = "RaRouter://ModuleA/do/something"
+        case calculateFrame = "RaRouter://ModuleA/calculate/frame" 
     }
 }
 
@@ -78,46 +80,43 @@ public extension Router where Module == ModuleA {
 }
 
 // In the `Register.swift` file of the core project
-private class ModuleARegister: RouterRegister {
-    
-    static func register() {
+extension Test.Factory: FactoryMediator {
+    public var source: RouterFactory { RealFactory() }
+
+    private struct RealFactory: RouterFactory {
         
-        let router = Router<ModuleA>.self
-        
-        router.register(for: .doSomething) { (url, value) -> DoResult in
+        lazy var doHandlerFactories: [String : DoHandlerFactory]? = [
             
-            guard let param = value as? (start: Date, end: Date) else {
-                return .failure(.parameterError(url: url, parameter: value))
+            ModuleA.Table.doSomething.rawValue : { (url, value) -> DoResult in
+                
+                guard let param = value as? (start: Date, end: Date) else {
+                    return .failure(.parameterError(url: url, parameter: value))
+                }
+                
+                print("We are doing these things from \(param.start) to \(param.end)")
+                return .success(())
             }
-            
-            print("We are doing these things from \(param.start) to \(param.end)")
-            return .success(())
-        }
+        ]
         
-        router.register(for: .calculateFrame) { (url, value) -> GetResult<AnyResult> in
+        lazy var getHandlerFactories: [String : GetHandlerFactory]? = [
             
-            guard let screenWidth = value as? CGFloat else {
-                return .failure(.parameterError(url: url, parameter: value))
+            ModuleA.Table.calculateFrame.rawValue : { (url, value) -> GetResult<AnyResult> in
+                
+                guard let screenWidth = value as? CGFloat else {
+                    return .failure(.parameterError(url: url, parameter: value))
+                }
+                
+                return .success(CGRect(x: 0, y: 0, width: screenWidth * 0.25, height: screenWidth))
             }
-            
-            return .success(CGRect(x: 0, y: 0, width: screenWidth * 0.25, height: screenWidth))
-        }
+        ]
         
-        router.register(for: .create) { (url, value) -> ViewControllerResult in
-            return .success(UIViewController())
-        }
+        lazy var viewControllerHandlerFactories: [String : ViewControllerHandlerFactory]? = [
+            
+            ModuleA.Table.create.rawValue : { (url, value) -> ViewControllerResult in
+                return .success(UIViewController())
+            }
+        ]
     }
-}
-
-// In the `AppDelegate.swift` file of the core project
-func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-
-    // some codes with higher priority than registered routes
-
-    // initialize modules
-    Router<Modules>.initialize()
-
-    // some other code ..
 }
 ```
 
