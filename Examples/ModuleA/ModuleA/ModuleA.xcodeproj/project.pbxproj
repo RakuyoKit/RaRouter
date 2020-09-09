@@ -8,19 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		3A22B4B12447F1BA002831A7 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A22B4B02447F1BA002831A7 /* Register.swift */; };
-		3A22B4B32447F1C7002831A7 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A22B4B22447F1C7002831A7 /* Manager.swift */; };
 		3A22B4BF2447F54F002831A7 /* ModuleA.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 3A22B4BE2447F54F002831A7 /* ModuleA.podspec */; };
 		3A3BF0122446BA310014D47F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3BF0112446BA310014D47F /* AppDelegate.swift */; };
 		3A3BF0162446BA310014D47F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3BF0152446BA310014D47F /* ViewController.swift */; };
 		3A3BF01B2446BA330014D47F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A3BF01A2446BA330014D47F /* Assets.xcassets */; };
 		3A3BF01E2446BA330014D47F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A3BF01C2446BA330014D47F /* LaunchScreen.storyboard */; };
+		3A5F220D2508B333007A9D06 /* DetectMemoryLeaksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5F220C2508B333007A9D06 /* DetectMemoryLeaksViewController.swift */; };
 		67503DEF6914509B750653A6 /* Pods_ModuleA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FAA36F699462EDCE7D3D596 /* Pods_ModuleA.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1FAA36F699462EDCE7D3D596 /* Pods_ModuleA.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ModuleA.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A22B4B02447F1BA002831A7 /* Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
-		3A22B4B22447F1C7002831A7 /* Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
 		3A22B4BE2447F54F002831A7 /* ModuleA.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = ModuleA.podspec; sourceTree = SOURCE_ROOT; };
 		3A3BF00E2446BA310014D47F /* ModuleA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ModuleA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A3BF0112446BA310014D47F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -28,6 +27,7 @@
 		3A3BF01A2446BA330014D47F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A3BF01D2446BA330014D47F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3A3BF01F2446BA330014D47F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3A5F220C2508B333007A9D06 /* DetectMemoryLeaksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectMemoryLeaksViewController.swift; sourceTree = "<group>"; };
 		68F7A6B8335EE9F48E96DFC5 /* Pods-ModuleA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ModuleA.release.xcconfig"; path = "Target Support Files/Pods-ModuleA/Pods-ModuleA.release.xcconfig"; sourceTree = "<group>"; };
 		9C33A51847B16543EFC910DF /* Pods-ModuleA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ModuleA.debug.xcconfig"; path = "Target Support Files/Pods-ModuleA/Pods-ModuleA.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -84,7 +84,7 @@
 		3A3BF04A2446BB4C0014D47F /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				3A22B4B22447F1C7002831A7 /* Manager.swift */,
+				3A5F220C2508B333007A9D06 /* DetectMemoryLeaksViewController.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -216,10 +216,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A5F220D2508B333007A9D06 /* DetectMemoryLeaksViewController.swift in Sources */,
 				3A22B4B12447F1BA002831A7 /* Register.swift in Sources */,
 				3A3BF0162446BA310014D47F /* ViewController.swift in Sources */,
 				3A3BF0122446BA310014D47F /* AppDelegate.swift in Sources */,
-				3A22B4B32447F1C7002831A7 /* Manager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

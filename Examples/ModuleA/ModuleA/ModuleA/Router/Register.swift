@@ -9,46 +9,62 @@
 import RaRouter
 import ModuleARouter
 
-private class ModuleARegister: RouterRegister {
-    
-    static func register() {
+extension ModuleA.Factory: FactoryMediator {
+
+    public var source: RouterFactory { RealFactory() }
+
+    fileprivate struct RealFactory: RouterFactory {
         
-        let router = Router<ModuleA>.self
-        
-        router.register(for: .dataSource) { (url, value) -> GetResult<AnyResult> in
-            return .success(dataSource)
-        }
-        
-        router.register(for: .print) { (url, value) -> DoResult in
-            print(value ?? "nil")
-            return .success(())
-        }
-        
-        router.register(for: .requestPush) { (url, value) -> DoResult in
-            UNUserNotificationCenter.current().requestAuthorization(options: [.badge, .sound, .alert]) { _, _ in }
-            return .success(())
-        }
-        
-        router.register(for: .alert) { (url, value) -> ViewControllerResult in
+        lazy var doHandlerFactories: [String : DoHandlerFactory]? = [
             
-            guard let parma = value as? (title: String?, message: String?) else {
-                return .failure(.parameterError(url: url, parameter: value))
+            ModuleA.Table.print.rawValue : { (url, value) in
+                print(value ?? "nil")
+                return .success(())
+            },
+            
+            ModuleA.Table.requestPush.rawValue : { (url, value) in
+                UNUserNotificationCenter.current().requestAuthorization(options: [.badge, .sound, .alert]) { _, _ in }
+                return .success(())
             }
+        ]
+        
+        lazy var getHandlerFactories: [String : GetHandlerFactory]? = [
             
-            let alert = UIAlertController(
-                title: parma.title,
-                message: parma.message,
-                preferredStyle: .alert
-            )
+            ModuleA.Table.dataSource.rawValue : { (url, value) in
+                return .success(ModuleA.Factory.RealFactory.dataSource)
+            }
+        ]
+        
+        var viewControllerHandlerFactories: [String : ViewControllerHandlerFactory]? = [
             
-            alert.addAction(UIAlertAction(title: "done", style: .default, handler: nil))
+            ModuleA.Table.alert.rawValue : { (url, value) in
+                
+                guard let parma = value as? (title: String?, message: String?) else {
+                    return .failure(.parameterError(url: url, parameter: value))
+                }
+                
+                let alert = UIAlertController(
+                    title: parma.title,
+                    message: parma.message,
+                    preferredStyle: .alert
+                )
+                
+                alert.addAction(UIAlertAction(title: "done", style: .default, handler: nil))
+                
+                return .success(alert)
+            },
             
-            return .success(alert) 
-        }
+            ModuleA.Table.detectMemoryLeaks.rawValue : { (url, value) in
+                
+                let controller = DetectMemoryLeaksViewController()
+                
+                return .success(controller)
+            }
+        ]
     }
 }
 
-private extension ModuleARegister {
+private extension ModuleA.Factory.RealFactory {
     
     static var dataSource: [SectionDataSource] {
         [
@@ -73,6 +89,13 @@ private extension ModuleARegister {
                     ).get()
                     
                     return (controller, false)
+                },
+                
+                DataSource(title: "Detect memory leaks") { _ in
+                    
+                    let controller = try? Router<ModuleA>.createDetectMemoryLeaks().get()
+                    
+                    return (controller, true)
                 }
             ])
         ]

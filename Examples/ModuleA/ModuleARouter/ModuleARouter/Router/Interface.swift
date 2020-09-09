@@ -10,16 +10,17 @@ import RaRouter
 
 public enum ModuleA: ModuleRouter {
     
-    public typealias Table = RouterTable
+    public struct Factory: RouterFactory {
+        public init() {}
+    }
     
-    public enum RouterTable: String, RouterTableProtocol {
+    public enum Table: String, RouterTable {
         
-        public var url: String { rawValue }
-        
-        case dataSource  = "demo://ModuleA/rootController/dataSource"
-        case print       = "demo://ModuleA/print"
-        case requestPush = "demo://ModuleA/request/pushPermission"
-        case alert       = "demo://ModuleA/alert"
+        case dataSource        = "Demo://ModuleA/rootController/dataSource"
+        case print             = "Demo://ModuleA/print"
+        case requestPush       = "Demo://ModuleA/request/pushPermission"
+        case alert             = "Demo://ModuleA/controller/alert"
+        case detectMemoryLeaks = "Demo://ModuleA/controller/detectMemoryLeaks"
     }
 }
 
@@ -54,5 +55,12 @@ public extension Router where Module == ModuleA {
     /// - Returns: `UIAlertController`
     static func alert(title: String? = nil, message: String? = nil) -> ViewControllerResult {
         return Router.viewController(from: .alert, param: (title, message))
+    }
+    
+    /// Create a controller for detecting memory leaks
+    ///
+    /// - Returns: Controller
+    static func createDetectMemoryLeaks() -> ViewControllerResult {
+        return Router.viewController(from: .detectMemoryLeaks)
     }
 }

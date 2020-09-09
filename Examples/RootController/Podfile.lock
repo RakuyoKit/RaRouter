@@ -2,15 +2,15 @@ PODS:
   - ModuleA (1.0.0):
     - ModuleARouter (>= 1.0.0-Router)
   - ModuleARouter (1.0.0-Router):
-    - RaRouter
-  - RaRouter (1.0.0)
+    - RaRouter (>= 2.0.0-beta.1)
+  - RaRouter (2.0.0-beta.1)
   - RootControllerRouter (1.0.0-Router):
-    - RaRouter
+    - RaRouter (>= 2.0.0-beta.1)
 
 DEPENDENCIES:
   - ModuleA (from `../ModuleA/ModuleA/`)
   - ModuleARouter (from `../ModuleA/ModuleARouter/`)
-  - RaRouter
+  - RaRouter (>= 2.0.0-beta.1)
   - RootControllerRouter (from `RootControllerRouter/`)
 
 SPEC REPOS:
@@ -27,10 +27,10 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   ModuleA: 860697a2d7090502044fe41472c4106fb3cd2fd4
-  ModuleARouter: 15a75873f17b9bb4c4452b300cc0bcfd7a634da1
-  RaRouter: e6c161f6089b0afad5c4de705cb53da7c78ba4bb
-  RootControllerRouter: 8dc5b9c9d090bc6f206fa92bd2136f3f65ba9872
+  ModuleARouter: e564491bd206e540c8c886dc2e7cb67a061af95c
+  RaRouter: 1951dcc1736f12610ddd7be972eeec314dfa8fd4
+  RootControllerRouter: c128d05d18a9040a286ef74cb373348b2f821502
 
-PODFILE CHECKSUM: 8634a4b741d6517f66e610ccd7c7e181edef5d32
+PODFILE CHECKSUM: 005c936811e136d2716a3b5ec5057db633313a13
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.9.3

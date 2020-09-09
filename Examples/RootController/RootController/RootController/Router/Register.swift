@@ -9,14 +9,20 @@
 import RaRouter
 import RootControllerRouter
 
-private class RootControllerRegister: RouterRegister {
-    
-    static func register() {
+extension RootController.Factory: FactoryMediator {
+
+    public var source: RouterFactory { RealFactory() }
+
+    private struct RealFactory: RouterFactory {
         
-        let router = Router<RootController>.self
-        
-        router.register(for: .create) { (url, value) -> ViewControllerResult in
-            return .success(RootViewController(style: .grouped))
-        }
+        lazy var viewControllerHandlerFactories: [String : ViewControllerHandlerFactory]? = [
+            
+            RootController.Table.create.rawValue : { (url, value) in
+                
+                let controller = RootViewController(style: .grouped)
+                
+                return .success(controller)
+            }
+        ]
     }
 }

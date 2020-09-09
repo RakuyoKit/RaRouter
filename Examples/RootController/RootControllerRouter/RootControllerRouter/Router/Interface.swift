@@ -10,13 +10,13 @@ import RaRouter
 
 public enum RootController: ModuleRouter {
     
-    public typealias Table = RouterTable
+    public struct Factory: RouterFactory {
+        public init() {}
+    }
     
-    public enum RouterTable: String, RouterTableProtocol {
+    public enum Table: String, RouterTable {
         
-        public var url: String { rawValue }
-        
-        case create = "demo://RootController/create"
+        case create = "Demo://RootController/create"
     }
 }
 

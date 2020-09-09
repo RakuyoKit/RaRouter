@@ -26,6 +26,6 @@ target 'ModuleARouter' do
   
   project 'ModuleARouter/ModuleARouter.xcodeproj'
 
-  pod 'RaRouter'
+  pod 'RaRouter', '>= 2.0.0-beta.1'
   
 end

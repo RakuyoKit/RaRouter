@@ -18,7 +18,7 @@
 
 /* Begin PBXFileReference section */
 		355F94F733E58A76A503DFBA /* Pods-ModuleARouter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ModuleARouter.release.xcconfig"; path = "Target Support Files/Pods-ModuleARouter/Pods-ModuleARouter.release.xcconfig"; sourceTree = "<group>"; };
-		3A22B4D22447F71D002831A7 /* RootControllerRouter.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = RootControllerRouter.podspec; sourceTree = SOURCE_ROOT; };
+		3A22B4D22447F71D002831A7 /* RootControllerRouter.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = RootControllerRouter.podspec; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		3A3BF02E2446BA6D0014D47F /* RootControllerRouter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RootControllerRouter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A3BF0312446BA6D0014D47F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A3BF0352446BA6D0014D47F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };

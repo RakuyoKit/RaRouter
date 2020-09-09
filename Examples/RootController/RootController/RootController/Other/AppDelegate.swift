@@ -18,14 +18,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        // Register route
-        Router<Modules>.initialize()
-        
         let rootController: UIViewController = {
             
-            do {
-                return try Router<RootController>.create()
-            } catch {
+            switch Router<RootController>.create() {
+                
+            case .success(let controller):
+                return controller
+                
+            case .failure(let error):
                 print("create RootController error: \(error)")
                 return UIViewController()
             }
