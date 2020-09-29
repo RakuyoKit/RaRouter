@@ -82,7 +82,9 @@ public extension RaRouter {
     /// - Returns: Execution result, see `DoResult`.
     static func`do`(_ table: RouterTable?, param: Any? = nil) -> DoResult {
         
-        guard let url = table?.url else { return .failure(.tableNil) }
+        guard let url = table?.url else {
+            return .failure(.tableNil)
+        }
         
         guard let factories = Module.Factory.init().doHandlerFactories else {
             return .failure(.factoryNil(url: url))
