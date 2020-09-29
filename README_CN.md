@@ -10,8 +10,6 @@
 <a href="https://github.com/rakuyoMo/RaRouter/blob/master/LICENSE"><img src="https://img.shields.io/cocoapods/l/RaRouter.svg?style=flat"></a>
 </p>
 
-> *以下内容基于 `2.0.0-beta.1` 版本所编写，其内容可能随时发生更改。*
-
 `RaRouter` 是一个面向协议的轻量级路由框架。
 
 通过使用框架提供默认的类型，或者自定义路由，您可以快速搭建自己的路由组件，进而解耦自己的项目。
