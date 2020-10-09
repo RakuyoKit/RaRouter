@@ -1,0 +1,24 @@
+PODS:
+  - GlobalDemoRouter (1.0.0-Router):
+    - RaRouter
+  - RaRouter (2.2.0)
+
+DEPENDENCIES:
+  - GlobalDemoRouter (from `GlobalRouter/`)
+  - RaRouter
+
+SPEC REPOS:
+  trunk:
+    - RaRouter
+
+EXTERNAL SOURCES:
+  GlobalDemoRouter:
+    :path: GlobalRouter/
+
+SPEC CHECKSUMS:
+  GlobalDemoRouter: 0a030debff5af2f12e21f4ca24e2a118ef8b3160
+  RaRouter: 09fbbb2850e9bf764c2b23ca0fb8fbeec1ac8559
+
+PODFILE CHECKSUM: 21fb8b22a3cc7ef148479ed7d9067567d21ec73e
+
+COCOAPODS: 1.9.3
