@@ -335,7 +335,7 @@ public extension RaRouter {
 
 // MARK: Private Tools
 
-private extension Result where Failure == RouterError {
+extension Result where Failure == RouterError {
     
     func map<NewSuccess>(_ transform: (Success) throws -> NewSuccess) -> Result<NewSuccess, Failure> {
         
