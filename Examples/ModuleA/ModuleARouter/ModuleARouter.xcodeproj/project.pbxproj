@@ -27,7 +27,7 @@
 		3A3BF03D2446BA6F0014D47F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3A3BF03F2446BA6F0014D47F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A3BF0472446BB360014D47F /* Interface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interface.swift; sourceTree = "<group>"; };
-		3A5F21962508AFCF007A9D06 /* ModuleARouter.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = ModuleARouter.podspec; sourceTree = SOURCE_ROOT; };
+		3A5F21962508AFCF007A9D06 /* ModuleARouter.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = ModuleARouter.podspec; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		8DDAC38643E4B1302BC90528 /* Pods-ModuleARouter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ModuleARouter.debug.xcconfig"; path = "Target Support Files/Pods-ModuleARouter/Pods-ModuleARouter.debug.xcconfig"; sourceTree = "<group>"; };
 		A0D396FCBB1756FAF50D3B3C /* Pods_ModuleARouter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ModuleARouter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */

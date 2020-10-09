@@ -31,6 +31,6 @@ Pod::Spec.new do |s|
     
   s.source_files     = 'Global/Router/*'
   
-  s.dependency 'RaRouter'
+  s.dependency 'GlobalDemoRouter', '>= 1.0.0-Router'
   
 end

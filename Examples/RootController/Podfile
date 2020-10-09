@@ -30,6 +30,6 @@ target 'RootControllerRouter' do
   
   project 'RootControllerRouter/RootControllerRouter.xcodeproj'
 
-  pod 'RaRouter', '>= 2.0.0-beta.1'
+  pod 'RaRouter'
   
 end

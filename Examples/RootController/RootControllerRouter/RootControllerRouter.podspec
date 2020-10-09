@@ -31,6 +31,6 @@ Pod::Spec.new do |s|
     
   s.source_files     = 'RootControllerRouter/Router/*'
   
-  s.dependency 'RaRouter', '>= 2.0.0-beta.1'
+  s.dependency 'RaRouter'
   
 end

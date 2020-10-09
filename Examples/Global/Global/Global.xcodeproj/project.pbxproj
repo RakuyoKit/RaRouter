@@ -15,7 +15,7 @@
 		3A8D10F12530392C00A10429 /* GlobalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8D10F02530392C00A10429 /* GlobalTests.swift */; };
 		3A8D10FC2530392C00A10429 /* GlobalUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8D10FB2530392C00A10429 /* GlobalUITests.swift */; };
 		3A8D116625303A8D00A10429 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8D116525303A8D00A10429 /* Register.swift */; };
-		3A8D118925303BFA00A10429 /* Global.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 3A8D118825303BFA00A10429 /* Global.podspec */; };
+		3A8D118925303BFA00A10429 /* GlobalDemo.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 3A8D118825303BFA00A10429 /* GlobalDemo.podspec */; };
 		43CF6ECA468026354A6C3CFC /* Pods_Global.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAE540B0E9C04BAF99AD51D9 /* Pods_Global.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,7 +51,7 @@
 		3A8D10FB2530392C00A10429 /* GlobalUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalUITests.swift; sourceTree = "<group>"; };
 		3A8D10FD2530392C00A10429 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A8D116525303A8D00A10429 /* Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
-		3A8D118825303BFA00A10429 /* Global.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = Global.podspec; sourceTree = SOURCE_ROOT; };
+		3A8D118825303BFA00A10429 /* GlobalDemo.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = GlobalDemo.podspec; sourceTree = SOURCE_ROOT; };
 		9C5571A39726AAF4899F13D0 /* Pods-Global.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Global.debug.xcconfig"; path = "Target Support Files/Pods-Global/Pods-Global.debug.xcconfig"; sourceTree = "<group>"; };
 		D9ED665BB3A9A125FE2A375F /* Pods-Global.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Global.release.xcconfig"; path = "Target Support Files/Pods-Global/Pods-Global.release.xcconfig"; sourceTree = "<group>"; };
 		EAE540B0E9C04BAF99AD51D9 /* Pods_Global.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Global.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,7 +108,7 @@
 		3A8D10D82530392A00A10429 /* Global */ = {
 			isa = PBXGroup;
 			children = (
-				3A8D118825303BFA00A10429 /* Global.podspec */,
+				3A8D118825303BFA00A10429 /* GlobalDemo.podspec */,
 				3A8D115D25303A3300A10429 /* Router */,
 				3A8D115C25303A2F00A10429 /* Other */,
 			);
@@ -279,7 +279,7 @@
 				3A8D10E62530392C00A10429 /* LaunchScreen.storyboard in Resources */,
 				3A8D10E32530392C00A10429 /* Assets.xcassets in Resources */,
 				3A8D10E12530392A00A10429 /* Main.storyboard in Resources */,
-				3A8D118925303BFA00A10429 /* Global.podspec in Resources */,
+				3A8D118925303BFA00A10429 /* GlobalDemo.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

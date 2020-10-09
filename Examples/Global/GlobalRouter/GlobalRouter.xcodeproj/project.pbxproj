@@ -52,7 +52,7 @@
 		3A8D113A2530394800A10429 /* GlobalRouterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalRouterUITests.swift; sourceTree = "<group>"; };
 		3A8D113C2530394800A10429 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A8D1154253039C500A10429 /* Interface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interface.swift; sourceTree = "<group>"; };
-		3A8D118325303BEE00A10429 /* GlobalDemoRouter.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = GlobalDemoRouter.podspec; sourceTree = SOURCE_ROOT; };
+		3A8D118325303BEE00A10429 /* GlobalDemoRouter.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = GlobalDemoRouter.podspec; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		7BB0ABA4A35B9FF8B943B78D /* Pods-GlobalRouter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GlobalRouter.debug.xcconfig"; path = "Target Support Files/Pods-GlobalRouter/Pods-GlobalRouter.debug.xcconfig"; sourceTree = "<group>"; };
 		816ADB4348DCCEE537645AEC /* Pods-GlobalRouter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GlobalRouter.release.xcconfig"; path = "Target Support Files/Pods-GlobalRouter/Pods-GlobalRouter.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */

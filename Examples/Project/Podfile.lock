@@ -1,4 +1,8 @@
 PODS:
+  - GlobalDemo (1.0.0):
+    - GlobalDemoRouter (>= 1.0.0-Router)
+  - GlobalDemoRouter (1.0.0-Router):
+    - RaRouter
   - ModuleA (1.0.0):
     - ModuleARouter (>= 1.0.0-Router)
   - ModuleARouter (1.0.0-Router):
@@ -11,6 +15,8 @@ PODS:
     - RaRouter (>= 2.0.0-beta.1)
 
 DEPENDENCIES:
+  - GlobalDemo (from `../Global/Global/`)
+  - GlobalDemoRouter (from `../Global/GlobalRouter/`)
   - ModuleA (from `../ModuleA/ModuleA/`)
   - ModuleARouter (from `../ModuleA/ModuleARouter/`)
   - RootController (from `../RootController/RootController/`)
@@ -21,6 +27,10 @@ SPEC REPOS:
     - RaRouter
 
 EXTERNAL SOURCES:
+  GlobalDemo:
+    :path: "../Global/Global/"
+  GlobalDemoRouter:
+    :path: "../Global/GlobalRouter/"
   ModuleA:
     :path: "../ModuleA/ModuleA/"
   ModuleARouter:
@@ -31,12 +41,14 @@ EXTERNAL SOURCES:
     :path: "../RootController/RootControllerRouter/"
 
 SPEC CHECKSUMS:
+  GlobalDemo: e39f19ebe7361f3dff4cd28f17f05d52bc0d66e2
+  GlobalDemoRouter: 0a030debff5af2f12e21f4ca24e2a118ef8b3160
   ModuleA: 860697a2d7090502044fe41472c4106fb3cd2fd4
   ModuleARouter: e564491bd206e540c8c886dc2e7cb67a061af95c
   RaRouter: 09fbbb2850e9bf764c2b23ca0fb8fbeec1ac8559
   RootController: 827caf27e7a3b80cd2f08799574a37e385c81eeb
   RootControllerRouter: c128d05d18a9040a286ef74cb373348b2f821502
 
-PODFILE CHECKSUM: e37dc9d7a5b2fdb3a833dc08db447186120b2adc
+PODFILE CHECKSUM: 32026e2aa651a26e9f295cfef88015919b2c495d
 
 COCOAPODS: 1.9.3

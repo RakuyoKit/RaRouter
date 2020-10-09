@@ -13,11 +13,15 @@ install! 'cocoapods',
 #         :incremental_installation => true
 
 target 'Project' do
-
+  
   # ModuleA
   pod 'ModuleA', :path => '../ModuleA/ModuleA/'
   pod 'ModuleARouter', :path => '../ModuleA/ModuleARouter/'
-
+  
+  # Global
+  pod 'GlobalDemo', :path => '../Global/Global/'
+  pod 'GlobalDemoRouter', :path => '../Global/GlobalRouter/'
+  
   # RootController
   pod 'RootController', :path => '../RootController/RootController/'
   pod 'RootControllerRouter', :path => '../RootController/RootControllerRouter/'
