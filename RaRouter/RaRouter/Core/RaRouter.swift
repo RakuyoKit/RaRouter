@@ -8,6 +8,9 @@
 
 import Foundation
 
+/// The default implementation of `RaRouter`
+public enum Router<Module: ModuleRouter>: RaRouter { }
+
 /// Router.
 public protocol RaRouter {
     

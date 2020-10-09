@@ -1,5 +1,5 @@
 //
-//  Router.swift
+//  GlobalRouter.swift
 //  RaRouter
 //
 //  Created by Rakuyo on 2020/4/7.
@@ -7,9 +7,6 @@
 //
 
 import Foundation
-
-/// The default implementation of `RaRouter`
-public enum Router<Module: ModuleRouter>: RaRouter { }
 
 /// A global component. The route can be called without specifying a specific module.
 ///
