@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   
   s.license       = 'MIT'
   
-  s.author        = { 'Rakuyo' => 'wugaoyu@mbcore.com' }
+  s.author        = { 'Rakuyo' => 'rakuyo.mo@gmail.com' }
   
   s.source        = { :git => 'https://github.com/rakuyoMo/RaRouter.git', :tag => s.version.to_s }
   
