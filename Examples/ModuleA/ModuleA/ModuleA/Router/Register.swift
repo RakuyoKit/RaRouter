@@ -100,8 +100,8 @@ private extension ModuleA.Factory.RealFactory {
                 }
             ]),
             
-            SectionDataSource(title: "Perform routing via `Global`.", dataSource: [
-                DataSource(title: "Print clicked index in the console") { _ in
+            SectionDataSource(title: "Global", dataSource: [
+                DataSource(title: "Perform routing via `Global`") { _ in
                     _ = Router<Global>.do("Demo://GlobalDemo/cannotBeExecutedDirectly")
                     return (nil, false)
                 }
