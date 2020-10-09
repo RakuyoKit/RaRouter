@@ -59,6 +59,7 @@ private extension DetectMemoryLeaksViewController {
             
             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(delay)) { [weak self] in
                 assert(self == nil, "\(value) not deallocated after being \(disappearanceSource)")
+                print("The controller was released correctly.")
             }
         }
     }

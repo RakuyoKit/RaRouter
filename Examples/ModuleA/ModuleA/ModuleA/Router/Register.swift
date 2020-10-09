@@ -23,6 +23,7 @@ extension ModuleA.Factory: FactoryMediator {
             },
             
             ModuleA.Table.requestPush.rawValue : { (url, value) in
+                print("Will request push permission.")
                 UNUserNotificationCenter.current().requestAuthorization(options: [.badge, .sound, .alert]) { _, _ in }
                 return .success(())
             }
